@@ -229,7 +229,7 @@ modules:
       # use the source directory relative to manifest
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 0c0fca2704218eb570af13a46aac2f1010796180
+        tag: "v2.11.0"
       # patch: replace constexpr by const for floating point operations
       # see https://github.com/CloudCompare/CloudCompare/issues/848
       - type: patch
