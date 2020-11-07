@@ -79,8 +79,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14/CGAL-4.14.tar.xz
-        sha256: 59464b1eaee892f2223ba570a7642892c999e29524ab102a6efd7c29c94a29f7
+        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0.2/CGAL-5.0.2.tar.xz
+        sha256: bb3594ba390735404f0972ece301f369b1ff12646ad25e48056b4d49c976e1fa
     buildsystem: cmake
     builddir: true
     config-opts:
@@ -90,8 +90,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: http://download.osgeo.org/proj/proj-6.1.0.tar.gz
-        md5: 4ec5d9240b0e290670886519f250946c
+        url: http://download.osgeo.org/proj/proj-7.0.1.tar.gz
+        sha256: a7026d39c9c80d51565cfc4b33d22631c11e491004e19020b3ff5a0791e1779f
     buildsystem: cmake
     builddir: true
     config-opts:
@@ -106,8 +106,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.0.0/gdal-3.0.0.tar.gz
-        md5: 797a4400e673aa2ba647603c57b9b2b6
+        url: https://github.com/OSGeo/gdal/releases/download/v3.1.1/gdal-3.1.1.tar.gz
+        sha256: 5af23429d6d481acedad8bbfc4e50f346241366265cbaaabc53763c0ea5d8f0e
     buildsystem: autotools
     config-opts:
       - --disable-all-optional-drivers
@@ -115,8 +115,8 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.5.1.tar.gz
-        sha256: f9e99733c170d11052f562bcd2c7cb4de53ed405f7acdde4f16195cd3ead612c
+        url: http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.6.0.tar.gz
+        sha256: 9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca
     builddir: true
     buildsystem: simple
     build-commands:
@@ -126,8 +126,8 @@ modules:
   - name: PDAL
     sources:
       - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/1.9.1/PDAL-1.9.1-src.tar.gz
-        md5: 8955f5a5e621b928b543dd541ee0e7b9
+        url: https://github.com/PDAL/PDAL/releases/download/2.1.0/PDAL-2.1.0-src.tar.gz
+        md5: dca6dd34e9f6e84f852de442c75e2e08
     buildsystem: cmake
     builddir: true
     config-opts:
@@ -147,8 +147,8 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.2.tar.gz
-        sha256: dd6191f8aa256d3b4686b64b0544eea2b450d98b4254996ffdfe630e0c610413
+        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
+        sha256: fb96fc49b1fb892d1e64e53a6ada8accf6f0e6d30ce0937956ec68d39bd72c7e
     buildsystem: autotools
     builddir: true
 
@@ -174,8 +174,8 @@ modules:
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-19.17.tar.bz2
-        sha256: 24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b
+        url: http://dlib.net/files/dlib-19.20.tar.bz2
+        sha256: df9aa456ed5e190597fa8dafc1471670ced0128d0f115f2be7677c9c42f4328d
     buildsystem: cmake
     builddir: true
     config-opts:
@@ -184,8 +184,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.9.1.tar.gz
-        sha256: 0add34d53cd27f8c468a59b8e931a636ad3174b60581c0387abb98a9fc9cddb6
+        url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.11.0.tar.gz
+        sha256: 4255c3d3572e9774b5a1dccc235711b7a723197b79430ef539c2044e9ce65954
     buildsystem: cmake
     builddir: true
     config-opts:
