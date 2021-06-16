@@ -1,6 +1,6 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "5.12"
+runtime-version: "5.15"
 sdk: org.kde.Sdk
 command: CloudCompare
 finish-args:
@@ -61,16 +61,16 @@ modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-current/mpfr-4.0.2.tar.xz
-        sha256: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+        url: https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
+        sha256: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
     buildsystem: autotools
     builddir: true
 
   - name: boost
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
-        sha256: 9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.bz2
+        sha256: 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
     buildsystem: simple
     build-commands:
     - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
@@ -79,9 +79,9 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14/CGAL-4.14.tar.xz
-        sha256: 59464b1eaee892f2223ba570a7642892c999e29524ab102a6efd7c29c94a29f7
-    buildsystem: cmake
+        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
+        sha256: 5bafe7abe8435beca17a1082062d363368ec1e3f0d6581bb0da8b010fb389fe4
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -90,9 +90,9 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: http://download.osgeo.org/proj/proj-6.1.0.tar.gz
-        md5: 4ec5d9240b0e290670886519f250946c
-    buildsystem: cmake
+        url: https://download.osgeo.org/proj/proj-6.3.2.tar.gz
+        sha256: cb776a70f40c35579ae4ba04fb4a388c1d1ce025a1df6171350dc19f25b80311
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DPROJ_TESTS=OFF
@@ -106,8 +106,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.0.0/gdal-3.0.0.tar.gz
-        md5: 797a4400e673aa2ba647603c57b9b2b6
+        url: https://github.com/OSGeo/gdal/releases/download/v3.2.3/gdal-3.2.3.tar.gz
+        sha256: 86a35aad60a1eb87c2c0c145f9bccd83a47c4781254544ed5246f64d55ee1f18
     buildsystem: autotools
     config-opts:
       - --disable-all-optional-drivers
@@ -115,25 +115,22 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.5.1.tar.gz
-        sha256: f9e99733c170d11052f562bcd2c7cb4de53ed405f7acdde4f16195cd3ead612c
+        url: https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.6.0.tar.gz
+        sha256: 9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca
     builddir: true
-    buildsystem: simple
-    build-commands:
-      - ./configure --prefix=/app
-      - make install -j
+    buildsystem: cmake-ninja
 
   - name: PDAL
     sources:
       - type: archive
         url: https://github.com/PDAL/PDAL/releases/download/1.9.1/PDAL-1.9.1-src.tar.gz
         md5: 8955f5a5e621b928b543dd541ee0e7b9
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DWITH_TESTS=OFF
 
-  - name: TBB
+  - name: TBB # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1385
     sources:
       - type: archive
         url: https://github.com/oneapi-src/oneTBB/archive/2019_U8.tar.gz
@@ -141,24 +138,24 @@ modules:
       # CMake support
       - type: patch
         path: patches/tbb_cmake.patch
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     builddir: true
 
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.2.tar.gz
-        sha256: dd6191f8aa256d3b4686b64b0544eea2b450d98b4254996ffdfe630e0c610413
-    buildsystem: autotools
+        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.3.tar.xz
+        sha256: 12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149
+    buildsystem: cmake-ninja
     builddir: true
 
   - name: Eigen
     sources:
       - type: archive
-        url: http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
-        sha256: 9f13cf90dedbe3e52a19f43000d71fdf72e986beb9a5436dddcd61ff9d77a3ce
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
+        sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
     builddir: true
-    buildsystem: cmake
+    buildsystem: cmake-ninja
 
   - name: FLANN
     sources:
@@ -169,24 +166,24 @@ modules:
       - type: patch
         path: patches/flann_empty_source.patch
     builddir: true
-    buildsystem: cmake
+    buildsystem: cmake-ninja
 
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-19.17.tar.bz2
-        sha256: 24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b
-    buildsystem: cmake
+        url: http://dlib.net/files/dlib-19.22.tar.bz2
+        sha256: 20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DDLIB_NO_GUI_SUPPORT=ON
 
-  - name: PCL
+  - name: PCL # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1459
     sources:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.9.1.tar.gz
         sha256: 0add34d53cd27f8c468a59b8e931a636ad3174b60581c0387abb98a9fc9cddb6
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DWITH_LIBUSB=OFF
@@ -229,13 +226,13 @@ modules:
       # use the source directory relative to manifest
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: "v2.11.0"
+        tag: "v2.11.3"
       # patch: replace constexpr by const for floating point operations
       # see https://github.com/CloudCompare/CloudCompare/issues/848
       - type: patch
         path: patches/cc_constexpr_double.patch
     builddir: true
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
@@ -267,6 +264,7 @@ modules:
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=OFF  # GL/glu.h: No such file or directory
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
+      - -DPLUGIN_STANDARD_QRDBIO=OFF # This is OFF because it requires an account to get the library, see https://github.com/CloudCompare/CloudCompare/blob/master/plugins/core/IO/qRDBIO/README.md
       - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
 
