@@ -226,11 +226,7 @@ modules:
       # use the source directory relative to manifest
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: "v2.11.3"
-      # patch: replace constexpr by const for floating point operations
-      # see https://github.com/CloudCompare/CloudCompare/issues/848
-      - type: patch
-        path: patches/cc_constexpr_double.patch
+        commit: 74d3f0822b85e9b0a62871e3471e6ca3d53e659c
     builddir: true
     buildsystem: cmake-ninja
     config-opts:

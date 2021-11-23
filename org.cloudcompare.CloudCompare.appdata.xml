@@ -3,7 +3,7 @@
   <id>org.cloudcompare.CloudCompare</id>
   <name>CloudCompare</name>
   <releases>
-    <release date="2020-06-14" version="2.11"/>
+    <release date="2021-11-23" version="2.12-beta"/>
   </releases>
   <project_license>GPL-2.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
