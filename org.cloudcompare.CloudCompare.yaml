@@ -120,15 +120,24 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
 
+  - name: laz-perf
+    sources:
+      - type: archive
+        url: https://github.com/hobu/laz-perf/archive/refs/tags/2.1.0.tar.gz
+        sha256: 0812ee1fb34dbe245e89cf98cbd3ecec2f3e09db10bf679e6feb686e6908aa3d
+    builddir: true
+    buildsystem: cmake-ninja
+
   - name: PDAL
     sources:
       - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/1.9.1/PDAL-1.9.1-src.tar.gz
-        md5: 8955f5a5e621b928b543dd541ee0e7b9
+        url: https://github.com/PDAL/PDAL/releases/download/2.3.0/PDAL-2.3.0-src.tar.gz
+        md5: 1c899546211df92029df3ed884d1d560
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DWITH_TESTS=OFF
+      - -DWITH_LAZPERF=ON
 
   - name: TBB # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1385
     sources:
@@ -226,11 +235,7 @@ modules:
       # use the source directory relative to manifest
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: "v2.11.3"
-      # patch: replace constexpr by const for floating point operations
-      # see https://github.com/CloudCompare/CloudCompare/issues/848
-      - type: patch
-        path: patches/cc_constexpr_double.patch
+        commit: 74d3f0822b85e9b0a62871e3471e6ca3d53e659c
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
