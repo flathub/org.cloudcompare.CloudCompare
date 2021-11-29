@@ -62,7 +62,26 @@ cleanup:
 
     - /doc
 
+    - /rdblib
+
 modules:
+  - name: rdblib
+    sources:
+      - type: archive
+        only-arches: ["x86_64"]
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.3.7/linux/rdblib-2.3.7-x86_64-linux.tar.gz
+        sha256: 181ff40b6145c9af8ff0d38cfa2f89480bf57c308e63a810e0760a791cf5d75c
+      - type: archive
+        only-arches: ["aarch64"]
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.3.7/linux/rdblib-2.3.7-arm64-linux.tar.gz
+        sha256: a3867888595fb4794c9643de3685afdc9b2f6ba196f552b6ce18ec11b16dbc20
+    buildsystem: simple
+    build-commands:
+    - mkdir -p /app/rdblib
+    - cp -r . /app/rdblib
+    - mkdir -p /app/share/rdblib
+    - cp license.txt /app/share/rdblib
+
   - name: MPFR
     sources:
       - type: archive
@@ -258,7 +277,10 @@ modules:
       - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
       - -DPLUGIN_IO_QPDAL=ON
       - -DPLUGIN_IO_QPHOTOSCAN=ON
-      - -DPLUGIN_IO_QRDB=OFF # This is OFF because it requires an account to get the library, see https://github.com/CloudCompare/CloudCompare/blob/master/plugins/core/IO/qRDBIO/README.md
+      - -Drdb_DIR=/app/rdblib/interface/cpp # path to rdb-config.cmake provided by rdblib-module
+      - -DPLUGIN_IO_QRDB=ON
+      - -DPLUGIN_IO_QRDB_FETCH_DEPENDENCY=OFF # flatpak build itself has no internet access
+      - -DPLUGIN_IO_QRDB_INSTALL_DEPENDENCY=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
