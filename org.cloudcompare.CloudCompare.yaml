@@ -24,11 +24,13 @@ cleanup:
     - /bin/gnmanalyse
     - /bin/gnmmanage
     - /bin/listgeo
+    - /bin/makegeo
     - /bin/MemParse
     - /bin/nearblack
     - /bin/ogr*
     - /bin/pdal*
     - /bin/PParse
+    - /bin/projsync
     - /bin/PSVIWriter
     - /bin/Redirect
     - /bin/SAX*
@@ -45,17 +47,20 @@ cleanup:
     - "*.a"
     - "*.la"
 
+    - /share/cmake
     - /share/doc
     - /share/eigen3
     - /share/flann
     - /share/gdal
     - /share/info
     - /share/man
-    - /share/pcl-1.9
+    - /share/pcl-*
     - /share/pkgconfig
     - /share/proj
 
     - /include
+
+    - /doc
 
 modules:
   - name: MPFR
