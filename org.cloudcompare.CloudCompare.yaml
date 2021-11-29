@@ -57,6 +57,7 @@ cleanup:
     - /share/pcl-*
     - /share/pkgconfig
     - /share/proj
+    - /share/rdblib
 
     - /include
 
