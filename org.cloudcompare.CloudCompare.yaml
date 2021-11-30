@@ -65,6 +65,8 @@ cleanup:
     - /rdblib
 
 modules:
+  - shared-modules/glu/glu-9.json
+
   - name: rdblib
     sources:
       - type: archive
