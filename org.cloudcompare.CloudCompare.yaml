@@ -24,11 +24,13 @@ cleanup:
     - /bin/gnmanalyse
     - /bin/gnmmanage
     - /bin/listgeo
+    - /bin/makegeo
     - /bin/MemParse
     - /bin/nearblack
     - /bin/ogr*
     - /bin/pdal*
     - /bin/PParse
+    - /bin/projsync
     - /bin/PSVIWriter
     - /bin/Redirect
     - /bin/SAX*
@@ -45,17 +47,20 @@ cleanup:
     - "*.a"
     - "*.la"
 
+    - /share/cmake
     - /share/doc
     - /share/eigen3
     - /share/flann
     - /share/gdal
     - /share/info
     - /share/man
-    - /share/pcl-1.9
+    - /share/pcl-*
     - /share/pkgconfig
     - /share/proj
 
     - /include
+
+    - /doc
 
 modules:
   - name: MPFR
@@ -240,12 +245,9 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
-      - -DCOMPILE_CC_CORE_LIB_WITH_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
-      - -DDLIB_ROOT=/app/include
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
       - -DPLUGIN_GL_QEDL=ON
       - -DPLUGIN_GL_QSSAO=ON
@@ -256,6 +258,7 @@ modules:
       - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
       - -DPLUGIN_IO_QPDAL=ON
       - -DPLUGIN_IO_QPHOTOSCAN=ON
+      - -DPLUGIN_IO_QRDB=OFF # This is OFF because it requires an account to get the library, see https://github.com/CloudCompare/CloudCompare/blob/master/plugins/core/IO/qRDBIO/README.md
       - -DPLUGIN_STANDARD_QANIMATION=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
@@ -269,7 +272,6 @@ modules:
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=OFF  # GL/glu.h: No such file or directory
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
-      - -DPLUGIN_STANDARD_QRDBIO=OFF # This is OFF because it requires an account to get the library, see https://github.com/CloudCompare/CloudCompare/blob/master/plugins/core/IO/qRDBIO/README.md
       - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
 
