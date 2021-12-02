@@ -38,7 +38,10 @@ cleanup:
     - /bin/SEnumVal
     - /bin/StdInParse
     - /bin/testepsg
+    - /bin/vsyasm
     - /bin/XInclude
+    - /bin/yasm
+    - /bin/ytasm
 
     - /lib/cmake
     - /lib/debug
@@ -64,6 +67,8 @@ cleanup:
     - /doc
 
     - /rdblib
+
+    - /cork
 
 modules:
   - shared-modules/glu/glu-9.json
@@ -256,6 +261,35 @@ modules:
       - -DBUILD_tools=OFF
       - -DBUILD_tracking=OFF
       - -DBUILD_visualization=OFF
+
+  - name: yasm
+    sources:
+      - type: archive
+        url: http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+        sha256: 3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f
+    buildsystem: autotools
+    builddir: true
+
+  - name: MPIR
+    sources:
+      - type: archive
+        url: https://mpir.org/mpir-3.0.0.tar.bz2
+        sha256: 52f63459cf3f9478859de29e00357f004050ead70b45913f2c2269d9708675bb
+    buildsystem: autotools
+    builddir: true
+    config-opts:
+      - --with-pic
+
+  - name: Cork
+    sources:
+      - type: git
+        url: https://github.com/CloudCompare/cork.git
+        commit: a09d474b8fba2c2825367f33c31af0004897cb7e
+    builddir: true
+    buildsystem: simple
+    build-commands:
+      - make -j ${FLATPAK_BUILDER_N_JOBS} CXXFLAGS="-DSUPPORT_TOPO_STREAM_OPERATORS -fPIC"
+      - cp -r . /app/cork
 
   - name: CloudCompare
     sources:
