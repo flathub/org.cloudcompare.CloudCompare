@@ -293,10 +293,9 @@ modules:
 
   - name: CloudCompare
     sources:
-      # use the source directory relative to manifest
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 74d3f0822b85e9b0a62871e3471e6ca3d53e659c
+        commit: 5523e9d1e8920127d043527cfb4ca4fe48147611
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -322,7 +321,11 @@ modules:
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
       - -DPLUGIN_STANDARD_QCOMPASS=ON
-      - -DPLUGIN_STANDARD_QCORK=OFF # error: no matching conversion for functional-style cast from 'const char [14]' to 'std::exception'
+      - -DPLUGIN_STANDARD_QCORK=ON
+      - -DCORK_INCLUDE_DIR=/app/cork/src/
+      - -DMPIR_INCLUDE_DIR=UNUSED # setting 'MPIR_INCLUDE_DIR' is required by the qCORK plugin but it is actually not used
+      - -DCORK_RELEASE_LIBRARY_FILE=/app/cork/lib/libcork.a
+      - -DMPIR_RELEASE_LIBRARY_FILE=/app/lib/libmpir.a
       - -DPLUGIN_STANDARD_QCSF=ON
       - -DPLUGIN_STANDARD_QFACETS=ON
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
