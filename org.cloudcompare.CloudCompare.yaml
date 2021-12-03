@@ -97,6 +97,9 @@ modules:
         sha256: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
     buildsystem: autotools
     builddir: true
+    config-opts:
+      - --disable-shared
+      - --with-pic
 
   - name: boost
     sources:
@@ -106,7 +109,7 @@ modules:
     buildsystem: simple
     build-commands:
     - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
-    - ./b2 install -j${FLATPAK_BUILDER_N_JOBS}
+    - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
@@ -124,9 +127,10 @@ modules:
       - type: archive
         url: http://download.osgeo.org/proj/proj-7.0.1.tar.gz
         sha256: a7026d39c9c80d51565cfc4b33d22631c11e491004e19020b3ff5a0791e1779f
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
       - -DPROJ_TESTS=OFF
       - -DBUILD_CCT=OFF
       - -DBUILD_CS2CS=OFF
@@ -159,6 +163,10 @@ modules:
         sha256: 0812ee1fb34dbe245e89cf98cbd3ecec2f3e09db10bf679e6feb686e6908aa3d
     builddir: true
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF # builds liblazperf.so and liblazperf_s.a anyway
+      - -DWITH_TESTS=OFF
 
   - name: PDAL
     sources:
@@ -181,6 +189,12 @@ modules:
         path: patches/tbb_cmake.patch
     buildsystem: cmake-ninja
     builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DTBB_BUILD_SHARED=OFF
+      - -DTBB_BUILD_STATIC=ON
+      - -DTBB_BUILD_TESTS=OFF
 
   - name: XercesC
     sources:
@@ -189,6 +203,10 @@ modules:
         sha256: 12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149
     buildsystem: cmake-ninja
     builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
   - name: Eigen
     sources:
@@ -208,6 +226,13 @@ modules:
         path: patches/flann_empty_source.patch
     builddir: true
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF # builds libflann_cpp.so and libflann_cpp_s.a anyway
+      - -DBUILD_C_BINDINGS=OFF
+      - -DBUILD_EXAMPLES=OFF
+      - -DBUILD_TESTS=OFF
+      - -DBUILD_DOC=OFF
 
   - name: Dlib
     sources:
@@ -217,6 +242,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
       - -DDLIB_NO_GUI_SUPPORT=ON
 
   - name: PCL
@@ -224,9 +250,16 @@ modules:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.11.0.tar.gz
         sha256: 4255c3d3572e9774b5a1dccc235711b7a723197b79430ef539c2044e9ce65954
+        # make OpenGL optional by only keeping QUIET
+      - type: patch
+        path: patches/pcl_opengl_quiet.patch
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DPCL_SHARED_LIBS=OFF
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DWITH_LIBUSB=OFF
       - -DWITH_QT=OFF
       - -DWITH_VTK=OFF
@@ -278,6 +311,7 @@ modules:
     buildsystem: autotools
     builddir: true
     config-opts:
+      - --disable-shared
       - --with-pic
 
   - name: Cork
