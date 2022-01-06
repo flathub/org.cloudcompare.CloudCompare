@@ -250,9 +250,6 @@ modules:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.11.0.tar.gz
         sha256: 4255c3d3572e9774b5a1dccc235711b7a723197b79430ef539c2044e9ce65954
-        # make OpenGL optional by only keeping QUIET
-      - type: patch
-        path: patches/pcl_opengl_quiet.patch
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -261,6 +258,7 @@ modules:
       - -DPCL_SHARED_LIBS=OFF
       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DWITH_LIBUSB=OFF
+      - -DWITH_OPENGL=OFF
       - -DWITH_QT=OFF
       - -DWITH_VTK=OFF
       - -DWITH_PCAP=OFF
