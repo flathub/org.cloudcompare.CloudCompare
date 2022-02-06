@@ -1,6 +1,6 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "5.15"
+runtime-version: "5.15-21.08"
 sdk: org.kde.Sdk
 command: CloudCompare
 finish-args:
@@ -44,7 +44,6 @@ cleanup:
     - /bin/ytasm
 
     - /lib/cmake
-    - /lib/debug
     - /lib/gdalplugins
     - /lib/pkgconfig
     - "*.a"
