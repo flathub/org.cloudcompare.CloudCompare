@@ -333,6 +333,8 @@ modules:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
         commit: 5523e9d1e8920127d043527cfb4ca4fe48147611
+      # fix libE57Format compilation with clang
+      # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
         path: patches/cloudcompare-fixes.patch
     builddir: true
