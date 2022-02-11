@@ -1,0 +1,14 @@
+diff --git a/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp b/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
+index 8963a1d..5bfe894 100644
+--- a/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
++++ b/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
+@@ -25,6 +25,9 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <algorithm>
++#include <limits>
++
+ #include <xercesc/sax2/Attributes.hpp>
+ #include <xercesc/sax2/XMLReaderFactory.hpp>
+ 
