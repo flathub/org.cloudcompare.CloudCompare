@@ -235,22 +235,22 @@ modules:
     config-opts:
       - -DWITH_TESTS=OFF
 
-  - name: TBB # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1385
+  - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/2019_U8.tar.gz
-        sha256: 6b540118cbc79f9cbc06a35033c18156c21b84ab7b6cf56d773b168ad2b68566
-      # CMake support
-      - type: patch
-        path: patches/tbb_cmake.patch
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.8.0.tar.gz
+        sha256: eee380323bb7ce864355ed9431f85c43955faaae9e9bce35c62b372d7ffd9f8b
+        x-checker-data:
+          type: anitya
+          project-id: 8217
+          stable-only: true
+          url-template: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DTBB_BUILD_SHARED=OFF
-      - -DTBB_BUILD_STATIC=ON
-      - -DTBB_BUILD_TESTS=OFF
+      - -DBUILD_SHARED_LIBS=ON
+      - -DTBB_TEST=OFF
 
   - name: Eigen
     sources:
