@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "5.15-21.08"
+runtime-version: "5.15-22.08"
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm12
+  - org.freedesktop.Sdk.Extension.llvm15
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -71,12 +71,10 @@ cleanup:
     - /cork
 
 build-options:
-  append-path: /usr/lib/sdk/llvm12/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm12/lib
+  append-path: /usr/lib/sdk/llvm15/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
 
 modules:
-  - shared-modules/glu/glu-9.json
-
   - name: rdblib
     sources:
       - type: archive
@@ -97,8 +95,13 @@ modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
-        sha256: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
+        url: https://www.mpfr.org/mpfr-4.2.0/mpfr-4.2.0.tar.gz
+        sha256: f1cc1c6bb14d18f0c61cc416e083f5e697b6e0e3cf9630b9b33e8e483fc960f0
+        x-checker-data:
+          type: anitya
+          project-id: 2019
+          stable-only: true
+          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.gz
     buildsystem: autotools
     builddir: true
     config-opts:
@@ -110,6 +113,11 @@ modules:
       - type: archive
         url: https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz
         sha256: 5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131
+        x-checker-data:
+          type: anitya
+          project-id: 6845
+          stable-only: true
+          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
     - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
@@ -118,9 +126,14 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0.2/CGAL-5.0.2.tar.xz
-        sha256: bb3594ba390735404f0972ece301f369b1ff12646ad25e48056b4d49c976e1fa
-    buildsystem: cmake
+        url: https://github.com/CGAL/cgal/releases/download/v5.5.2/CGAL-5.5.2-library.tar.xz
+        sha256: 5c5da70d627a9271e0c73d8335dbfcd4d48f4411f9a006017328f9cf811973da
+        x-checker-data:
+          type: anitya
+          project-id: 273
+          stable-only: true
+          url-template: https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -129,13 +142,18 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: http://download.osgeo.org/proj/proj-7.0.1.tar.gz
-        sha256: a7026d39c9c80d51565cfc4b33d22631c11e491004e19020b3ff5a0791e1779f
+        url: https://github.com/OSGeo/PROJ/releases/download/9.2.0/proj-9.2.0.tar.gz
+        sha256: dea816f5aa732ae6b2ee3977b9bdb28b1d848cf56a1aad8faf6708b89f0ed50e
+        x-checker-data:
+          type: anitya
+          project-id: 9463
+          stable-only: true
+          url-template: https://github.com/OSGeo/PROJ/releases/download/$version/proj-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPROJ_TESTS=OFF
+      - -DBUILD_TESTING=OFF
       - -DBUILD_CCT=OFF
       - -DBUILD_CS2CS=OFF
       - -DBUILD_GEOD=OFF
@@ -143,28 +161,56 @@ modules:
       - -DBUILD_PROJ=OFF
       - -DBUILD_PROJINFO=OFF
 
-  - name: GDAL
+  - name: XercesC
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.2.3/gdal-3.2.3.tar.gz
-        sha256: 86a35aad60a1eb87c2c0c145f9bccd83a47c4781254544ed5246f64d55ee1f18
-    buildsystem: autotools
+        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.4.tar.gz
+        sha256: 3d8ec1c7f94e38fee0e4ca5ad1e1d9db23cbf3a10bba626f6b4afa2dedafe5ab
+        x-checker-data:
+          type: anitya
+          project-id: 5182
+          url-template: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-$version.tar.gz
+    buildsystem: cmake-ninja
+    builddir: true
     config-opts:
-      - --disable-all-optional-drivers
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
   - name: GeoTIFF
     sources:
       - type: archive
-        url: https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.6.0.tar.gz
-        sha256: 9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca
+        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.1/libgeotiff-1.7.1.tar.gz
+        sha256: 05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6
+        x-checker-data:
+          type: anitya
+          project-id: 21361
+          stable-only: true
+          url-template: https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
+
+  - name: GDAL
+    sources:
+      - type: archive
+        url: https://github.com/OSGeo/gdal/releases/download/v3.6.2/gdal-3.6.2.tar.gz
+        sha256: cd5bf004af85b88414676b0d5694d3192414e556961ee3d47164f3298078a818
+        x-checker-data:
+          type: anitya
+          project-id: 881
+          stable-only: true
+          url-template: https://github.com/OSGeo/gdal/releases/download/v$version/gdal-$version.tar.gz
+    builddir: true
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_PYTHON_BINDINGS=OFF
+      - -DACCEPT_MISSING_SQLITE3_RTREE=ON
 
   - name: laz-perf
     sources:
       - type: archive
-        url: https://github.com/hobu/laz-perf/archive/refs/tags/2.1.0.tar.gz
-        sha256: 0812ee1fb34dbe245e89cf98cbd3ecec2f3e09db10bf679e6feb686e6908aa3d
+        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.3.0.tar.gz
+        sha256: 029e830758d2a0d873110b714e7f918c1a8fbad6f6538f0af9f41c3fec9de0c0
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -175,59 +221,58 @@ modules:
   - name: PDAL
     sources:
       - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/2.3.0/PDAL-2.3.0-src.tar.gz
-        md5: 1c899546211df92029df3ed884d1d560
+        url: https://github.com/PDAL/PDAL/releases/download/2.5.2/PDAL-2.5.2-src.tar.gz
+        sha256: 3966620cbe48c464d70fd5d43fff25596a16abe94abd27d3f48d079fa1ef1f39
+        x-checker-data:
+          type: anitya
+          project-id: 138228
+          stable-only: true
+          url-template: https://github.com/PDAL/PDAL/releases/download/$version/PDAL-$version-src.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DWITH_TESTS=OFF
-      - -DWITH_LAZPERF=ON
 
-  - name: TBB # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1385
+  - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/2019_U8.tar.gz
-        sha256: 6b540118cbc79f9cbc06a35033c18156c21b84ab7b6cf56d773b168ad2b68566
-      # CMake support
-      - type: patch
-        path: patches/tbb_cmake.patch
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.8.0.tar.gz
+        sha256: eee380323bb7ce864355ed9431f85c43955faaae9e9bce35c62b372d7ffd9f8b
+        x-checker-data:
+          type: anitya
+          project-id: 8217
+          stable-only: true
+          url-template: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DTBB_BUILD_SHARED=OFF
-      - -DTBB_BUILD_STATIC=ON
-      - -DTBB_BUILD_TESTS=OFF
-
-  - name: XercesC
-    sources:
-      - type: archive
-        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.3.tar.xz
-        sha256: 12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      - -DBUILD_SHARED_LIBS=ON
+      - -DTBB_TEST=OFF
 
   - name: Eigen
     sources:
       - type: archive
         url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
         sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
+        x-checker-data:
+          type: anitya
+          project-id: 666
+          stable-only: true
+          url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
 
   - name: FLANN
     sources:
       - type: archive
-        url: https://github.com/flann-lib/flann/archive/refs/tags/1.9.1.tar.gz
-        sha256: b23b5f4e71139faa3bcb39e6bbcc76967fbaf308c4ee9d4f5bfbeceaa76cc5d3
-      # patch FLANN to prevent empty source for 'add_library'
-      - type: patch
-        path: patches/flann_empty_source.patch
+        url: https://github.com/flann-lib/flann/archive/refs/tags/1.9.2.tar.gz
+        sha256: e26829bb0017f317d9cc45ab83ddcb8b16d75ada1ae07157006c1e7d601c8824
+        x-checker-data:
+          type: anitya
+          project-id: 21432
+          stable-only: true
+          url-template: https://github.com/flann-lib/flann/archive/refs/tags/$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -243,6 +288,11 @@ modules:
       - type: archive
         url: http://dlib.net/files/dlib-19.22.tar.bz2
         sha256: 20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572
+        x-checker-data:
+          type: anitya
+          project-id: 18600
+          stable-only: true
+          url-template: http://dlib.net/files/dlib-$version.tar.bz2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -252,8 +302,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.11.0.tar.gz
-        sha256: 4255c3d3572e9774b5a1dccc235711b7a723197b79430ef539c2044e9ce65954
+        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.0.tar.gz
+        sha256: b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -300,21 +350,41 @@ modules:
   - name: yasm
     sources:
       - type: archive
-        url: http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+        url: https://github.com/yasm/yasm/releases/download/v1.3.0/yasm-1.3.0.tar.gz
         sha256: 3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f
+        x-checker-data:
+          type: anitya
+          project-id: 5286
+          stable-only: true
+          url-template: https://github.com/yasm/yasm/releases/download/v$version/yasm-$version.tar.gz
     buildsystem: autotools
     builddir: true
 
   - name: MPIR
     sources:
       - type: archive
-        url: https://mpir.org/mpir-3.0.0.tar.bz2
-        sha256: 52f63459cf3f9478859de29e00357f004050ead70b45913f2c2269d9708675bb
+        url: https://github.com/wbhart/mpir/archive/refs/tags/mpir-3.0.0.tar.gz
+        sha256: 86a5039badc3e6738219a262873a1db5513405e15ece9527b718fcd0fac09bb2
     buildsystem: autotools
     builddir: true
     config-opts:
       - --disable-shared
       - --with-pic
+
+  # GLU from 'shared-modules' with updated URL.
+  # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
+  - {
+      "name": "glu",
+      "config-opts": ["--disable-static"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz",
+          "sha256": "332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba"
+        }
+      ],
+      "cleanup": [ "/include", "/lib/*.a", "/lib/*.la", "/lib/pkgconfig" ]
+    }
 
   - name: Cork
     sources:
@@ -331,7 +401,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.12.0
+        tag: v2.12.4
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
@@ -339,7 +409,6 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
@@ -376,6 +445,12 @@ modules:
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
       - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
+    post-install:
+      - install -d /app/share/icons/hicolor/256x256/apps
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
+      - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
+      - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
 
   - name: launchers
     buildsystem: simple
@@ -383,19 +458,12 @@ modules:
       - type: file
         path: org.cloudcompare.CloudCompare.desktop
       - type: file
-        path: org.cloudcompare.CloudCompare.png
-      - type: file
         path: org.cloudcompare.CloudCompare.Viewer.desktop
-      - type: file
-        path: org.cloudcompare.CloudCompare.Viewer.png
       - type: file
         path: org.cloudcompare.CloudCompare.appdata.xml
     build-commands:
       - install -d /app/share/applications
       - install -m644 org.cloudcompare.CloudCompare.desktop /app/share/applications/org.cloudcompare.CloudCompare.desktop
       - install -m644 org.cloudcompare.CloudCompare.Viewer.desktop /app/share/applications/org.cloudcompare.CloudCompare.Viewer.desktop
-      - install -d /app/share/icons/hicolor/256x256/apps
-      - install -m644 org.cloudcompare.CloudCompare.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
-      - install -m644 org.cloudcompare.CloudCompare.Viewer.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
       - install -d /app/share/metainfo
       - install -m644 org.cloudcompare.CloudCompare.appdata.xml /app/share/metainfo/org.cloudcompare.CloudCompare.appdata.xml
