@@ -75,8 +75,6 @@ build-options:
   prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
 
 modules:
-  - shared-modules/glu/glu-9.json
-
   - name: rdblib
     sources:
       - type: archive
@@ -372,6 +370,21 @@ modules:
     config-opts:
       - --disable-shared
       - --with-pic
+
+  # GLU from 'shared-modules' with updated URL.
+  # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
+  - {
+      "name": "glu",
+      "config-opts": ["--disable-static"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz",
+          "sha256": "332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba"
+        }
+      ],
+      "cleanup": [ "/include", "/lib/*.a", "/lib/*.la", "/lib/pkgconfig" ]
+    }
 
   - name: Cork
     sources:
