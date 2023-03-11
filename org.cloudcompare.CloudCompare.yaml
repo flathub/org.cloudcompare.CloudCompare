@@ -446,11 +446,11 @@ modules:
       - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
     post-install:
-      - install -d /app/share/icons/hicolor/scalable/apps
-      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon.svg /app/share/icons/hicolor/scalable/apps/org.cloudcompare.CloudCompare.svg
-      - chmod 644 /app/share/icons/hicolor/scalable/apps/org.cloudcompare.CloudCompare.svg
-      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon.svg /app/share/icons/hicolor/scalable/apps/org.cloudcompare.CloudCompare.Viewer.svg
-      - chmod 644 /app/share/icons/hicolor/scalable/apps/org.cloudcompare.CloudCompare.Viewer.svg
+      - install -d /app/share/icons/hicolor/256x256/apps
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
+      - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
+      - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
 
   - name: launchers
     buildsystem: simple
