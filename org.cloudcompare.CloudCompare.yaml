@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: "5.15-22.08"
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm12
+  - org.freedesktop.Sdk.Extension.llvm15
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -71,8 +71,8 @@ cleanup:
     - /cork
 
 build-options:
-  append-path: /usr/lib/sdk/llvm12/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm12/lib
+  append-path: /usr/lib/sdk/llvm15/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
 
 modules:
   - shared-modules/glu/glu-9.json
