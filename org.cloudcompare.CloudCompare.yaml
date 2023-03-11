@@ -1,6 +1,6 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "5.15-22.08"
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm15
@@ -14,61 +14,61 @@ finish-args:
   - --filesystem=host
 
 cleanup:
-    - /bin/applygeo
-    - /bin/cgal_*
-    - /bin/CreateDOMDocument
-    - /bin/DOM*
-    - /bin/EnumVal
-    - /bin/flann*
-    - /bin/gdal*
-    - /bin/geotifcp
-    - /bin/gnmanalyse
-    - /bin/gnmmanage
-    - /bin/listgeo
-    - /bin/makegeo
-    - /bin/MemParse
-    - /bin/nearblack
-    - /bin/ogr*
-    - /bin/pdal*
-    - /bin/PParse
-    - /bin/projsync
-    - /bin/PSVIWriter
-    - /bin/Redirect
-    - /bin/SAX*
-    - /bin/SCMPrint
-    - /bin/SEnumVal
-    - /bin/StdInParse
-    - /bin/testepsg
-    - /bin/vsyasm
-    - /bin/XInclude
-    - /bin/yasm
-    - /bin/ytasm
+  - /bin/applygeo
+  - /bin/cgal_*
+  - /bin/CreateDOMDocument
+  - /bin/DOM*
+  - /bin/EnumVal
+  - /bin/flann*
+  - /bin/gdal*
+  - /bin/geotifcp
+  - /bin/gnmanalyse
+  - /bin/gnmmanage
+  - /bin/listgeo
+  - /bin/makegeo
+  - /bin/MemParse
+  - /bin/nearblack
+  - /bin/ogr*
+  - /bin/pdal*
+  - /bin/PParse
+  - /bin/projsync
+  - /bin/PSVIWriter
+  - /bin/Redirect
+  - /bin/SAX*
+  - /bin/SCMPrint
+  - /bin/SEnumVal
+  - /bin/StdInParse
+  - /bin/testepsg
+  - /bin/vsyasm
+  - /bin/XInclude
+  - /bin/yasm
+  - /bin/ytasm
 
-    - /lib/cmake
-    - /lib/gdalplugins
-    - /lib/pkgconfig
-    - "*.a"
-    - "*.la"
+  - /lib/cmake
+  - /lib/gdalplugins
+  - /lib/pkgconfig
+  - '*.a'
+  - '*.la'
 
-    - /share/cmake
-    - /share/doc
-    - /share/eigen3
-    - /share/flann
-    - /share/gdal
-    - /share/info
-    - /share/man
-    - /share/pcl-*
-    - /share/pkgconfig
-    - /share/proj
-    - /share/rdblib
+  - /share/cmake
+  - /share/doc
+  - /share/eigen3
+  - /share/flann
+  - /share/gdal
+  - /share/info
+  - /share/man
+  - /share/pcl-*
+  - /share/pkgconfig
+  - /share/proj
+  - /share/rdblib
 
-    - /include
+  - /include
 
-    - /doc
+  - /doc
 
-    - /rdblib
+  - /rdblib
 
-    - /cork
+  - /cork
 
 build-options:
   append-path: /usr/lib/sdk/llvm15/bin
@@ -78,19 +78,19 @@ modules:
   - name: rdblib
     sources:
       - type: archive
-        only-arches: ["x86_64"]
+        only-arches: [x86_64]
         url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.1/linux/rdblib-2.4.1-x86_64-linux.tar.gz
         sha256: f7f543fbfa9adfdaf05243cbadb55708d6556336a33dc4b2cc5f7827849a6571
       - type: archive
-        only-arches: ["aarch64"]
+        only-arches: [aarch64]
         url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.1/linux/rdblib-2.4.1-arm64-linux.tar.gz
         sha256: a71f74bc0ba92c7553d0a2a8794a67ec58477261ba2cafb6a8d363aab90f5aba
     buildsystem: simple
     build-commands:
-    - mkdir -p /app/rdblib
-    - cp -r . /app/rdblib
-    - mkdir -p /app/share/rdblib
-    - cp license.txt /app/share/rdblib
+      - mkdir -p /app/rdblib
+      - cp -r . /app/rdblib
+      - mkdir -p /app/share/rdblib
+      - cp license.txt /app/share/rdblib
 
   - name: MPFR
     sources:
@@ -111,8 +111,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz
-        sha256: 5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+        sha256: 205666dea9f6a7cfed87c7a6dfbeb52a2c1b9de55712c9c1a87735d7181452b6
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -120,8 +120,8 @@ modules:
           url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
-    - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
-    - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
+      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
+      - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
@@ -253,8 +253,8 @@ modules:
   - name: Eigen
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
-        sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
+        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
         x-checker-data:
           type: anitya
           project-id: 666
@@ -286,8 +286,8 @@ modules:
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-19.22.tar.bz2
-        sha256: 20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572
+        url: http://dlib.net/files/dlib-19.24.tar.bz2
+        sha256: 28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4
         x-checker-data:
           type: anitya
           project-id: 18600
@@ -373,18 +373,9 @@ modules:
 
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
-  - {
-      "name": "glu",
-      "config-opts": ["--disable-static"],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz",
-          "sha256": "332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba"
-        }
-      ],
-      "cleanup": [ "/include", "/lib/*.a", "/lib/*.la", "/lib/pkgconfig" ]
-    }
+  - {name: glu, config-opts: [--disable-static], sources: [{type: archive, url: https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz,
+          sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
+    cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
 
   - name: Cork
     sources:
@@ -394,7 +385,8 @@ modules:
     builddir: true
     buildsystem: simple
     build-commands:
-      - make -j ${FLATPAK_BUILDER_N_JOBS} CXXFLAGS="-DSUPPORT_TOPO_STREAM_OPERATORS -fPIC"
+      - make -j ${FLATPAK_BUILDER_N_JOBS} CXXFLAGS="-DSUPPORT_TOPO_STREAM_OPERATORS
+        -fPIC"
       - cp -r . /app/cork
 
   - name: CloudCompare
