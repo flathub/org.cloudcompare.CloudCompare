@@ -97,8 +97,13 @@ modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.xz
-        sha256: 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
+        url: https://www.mpfr.org/mpfr-4.2.0/mpfr-4.2.0.tar.gz
+        sha256: f1cc1c6bb14d18f0c61cc416e083f5e697b6e0e3cf9630b9b33e8e483fc960f0
+        x-checker-data:
+          type: anitya
+          project-id: 2019
+          stable-only: true
+          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.gz
     buildsystem: autotools
     builddir: true
     config-opts:
@@ -110,6 +115,11 @@ modules:
       - type: archive
         url: https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz
         sha256: 5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131
+        x-checker-data:
+          type: anitya
+          project-id: 6845
+          stable-only: true
+          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
     - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
@@ -118,9 +128,14 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-5.0.2/CGAL-5.0.2.tar.xz
-        sha256: bb3594ba390735404f0972ece301f369b1ff12646ad25e48056b4d49c976e1fa
-    buildsystem: cmake
+        url: https://github.com/CGAL/cgal/releases/download/v5.5.2/CGAL-5.5.2-library.tar.xz
+        sha256: 5c5da70d627a9271e0c73d8335dbfcd4d48f4411f9a006017328f9cf811973da
+        x-checker-data:
+          type: anitya
+          project-id: 273
+          stable-only: true
+          url-template: https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -129,13 +144,18 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: http://download.osgeo.org/proj/proj-7.0.1.tar.gz
-        sha256: a7026d39c9c80d51565cfc4b33d22631c11e491004e19020b3ff5a0791e1779f
+        url: https://github.com/OSGeo/PROJ/releases/download/9.2.0/proj-9.2.0.tar.gz
+        sha256: dea816f5aa732ae6b2ee3977b9bdb28b1d848cf56a1aad8faf6708b89f0ed50e
+        x-checker-data:
+          type: anitya
+          project-id: 9463
+          stable-only: true
+          url-template: https://github.com/OSGeo/PROJ/releases/download/$version/proj-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPROJ_TESTS=OFF
+      - -DBUILD_TESTING=OFF
       - -DBUILD_CCT=OFF
       - -DBUILD_CS2CS=OFF
       - -DBUILD_GEOD=OFF
@@ -143,28 +163,56 @@ modules:
       - -DBUILD_PROJ=OFF
       - -DBUILD_PROJINFO=OFF
 
-  - name: GDAL
+  - name: XercesC
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.2.3/gdal-3.2.3.tar.gz
-        sha256: 86a35aad60a1eb87c2c0c145f9bccd83a47c4781254544ed5246f64d55ee1f18
-    buildsystem: autotools
+        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.4.tar.gz
+        sha256: 3d8ec1c7f94e38fee0e4ca5ad1e1d9db23cbf3a10bba626f6b4afa2dedafe5ab
+        x-checker-data:
+          type: anitya
+          project-id: 5182
+          url-template: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-$version.tar.gz
+    buildsystem: cmake-ninja
+    builddir: true
     config-opts:
-      - --disable-all-optional-drivers
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
   - name: GeoTIFF
     sources:
       - type: archive
-        url: https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.6.0.tar.gz
-        sha256: 9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca
+        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.1/libgeotiff-1.7.1.tar.gz
+        sha256: 05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6
+        x-checker-data:
+          type: anitya
+          project-id: 21361
+          stable-only: true
+          url-template: https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
+
+  - name: GDAL
+    sources:
+      - type: archive
+        url: https://github.com/OSGeo/gdal/releases/download/v3.6.2/gdal-3.6.2.tar.gz
+        sha256: cd5bf004af85b88414676b0d5694d3192414e556961ee3d47164f3298078a818
+        x-checker-data:
+          type: anitya
+          project-id: 881
+          stable-only: true
+          url-template: https://github.com/OSGeo/gdal/releases/download/v$version/gdal-$version.tar.gz
+    builddir: true
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_PYTHON_BINDINGS=OFF
+      - -DACCEPT_MISSING_SQLITE3_RTREE=ON
 
   - name: laz-perf
     sources:
       - type: archive
-        url: https://github.com/hobu/laz-perf/archive/refs/tags/2.1.0.tar.gz
-        sha256: 0812ee1fb34dbe245e89cf98cbd3ecec2f3e09db10bf679e6feb686e6908aa3d
+        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.3.0.tar.gz
+        sha256: 029e830758d2a0d873110b714e7f918c1a8fbad6f6538f0af9f41c3fec9de0c0
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -175,13 +223,17 @@ modules:
   - name: PDAL
     sources:
       - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/2.3.0/PDAL-2.3.0-src.tar.gz
-        md5: 1c899546211df92029df3ed884d1d560
+        url: https://github.com/PDAL/PDAL/releases/download/2.5.2/PDAL-2.5.2-src.tar.gz
+        sha256: 3966620cbe48c464d70fd5d43fff25596a16abe94abd27d3f48d079fa1ef1f39
+        x-checker-data:
+          type: anitya
+          project-id: 138228
+          stable-only: true
+          url-template: https://github.com/PDAL/PDAL/releases/download/$version/PDAL-$version-src.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DWITH_TESTS=OFF
-      - -DWITH_LAZPERF=ON
 
   - name: TBB # This can't be updated, see https://github.com/CloudCompare/CloudCompare/issues/1385
     sources:
@@ -200,34 +252,29 @@ modules:
       - -DTBB_BUILD_STATIC=ON
       - -DTBB_BUILD_TESTS=OFF
 
-  - name: XercesC
-    sources:
-      - type: archive
-        url: http://apache.mirror.iweb.ca//xerces/c/3/sources/xerces-c-3.2.3.tar.xz
-        sha256: 12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-
   - name: Eigen
     sources:
       - type: archive
         url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
         sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
+        x-checker-data:
+          type: anitya
+          project-id: 666
+          stable-only: true
+          url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
 
   - name: FLANN
     sources:
       - type: archive
-        url: https://github.com/flann-lib/flann/archive/refs/tags/1.9.1.tar.gz
-        sha256: b23b5f4e71139faa3bcb39e6bbcc76967fbaf308c4ee9d4f5bfbeceaa76cc5d3
-      # patch FLANN to prevent empty source for 'add_library'
-      - type: patch
-        path: patches/flann_empty_source.patch
+        url: https://github.com/flann-lib/flann/archive/refs/tags/1.9.2.tar.gz
+        sha256: e26829bb0017f317d9cc45ab83ddcb8b16d75ada1ae07157006c1e7d601c8824
+        x-checker-data:
+          type: anitya
+          project-id: 21432
+          stable-only: true
+          url-template: https://github.com/flann-lib/flann/archive/refs/tags/$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -243,6 +290,11 @@ modules:
       - type: archive
         url: http://dlib.net/files/dlib-19.22.tar.bz2
         sha256: 20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572
+        x-checker-data:
+          type: anitya
+          project-id: 18600
+          stable-only: true
+          url-template: http://dlib.net/files/dlib-$version.tar.bz2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -252,8 +304,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/pcl-1.11.0.tar.gz
-        sha256: 4255c3d3572e9774b5a1dccc235711b7a723197b79430ef539c2044e9ce65954
+        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.0.tar.gz
+        sha256: b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -300,16 +352,21 @@ modules:
   - name: yasm
     sources:
       - type: archive
-        url: http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+        url: https://github.com/yasm/yasm/releases/download/v1.3.0/yasm-1.3.0.tar.gz
         sha256: 3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f
+        x-checker-data:
+          type: anitya
+          project-id: 5286
+          stable-only: true
+          url-template: https://github.com/yasm/yasm/releases/download/v$version/yasm-$version.tar.gz
     buildsystem: autotools
     builddir: true
 
   - name: MPIR
     sources:
       - type: archive
-        url: https://mpir.org/mpir-3.0.0.tar.bz2
-        sha256: 52f63459cf3f9478859de29e00357f004050ead70b45913f2c2269d9708675bb
+        url: https://github.com/wbhart/mpir/archive/refs/tags/mpir-3.0.0.tar.gz
+        sha256: 86a5039badc3e6738219a262873a1db5513405e15ece9527b718fcd0fac09bb2
     buildsystem: autotools
     builddir: true
     config-opts:
