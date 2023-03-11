@@ -388,7 +388,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.12.0
+        tag: v2.12.4
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
@@ -396,7 +396,6 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON

@@ -3,7 +3,7 @@
   <id>org.cloudcompare.CloudCompare</id>
   <name>CloudCompare</name>
   <releases>
-    <release date="2022-03-31" version="2.12"/>
+    <release date="2022-07-15" version="2.12.4"/>
   </releases>
   <project_license>GPL-2.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
