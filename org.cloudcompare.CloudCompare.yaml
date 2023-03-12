@@ -153,6 +153,8 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_CCT=OFF
       - -DBUILD_CS2CS=OFF
@@ -189,6 +191,10 @@ modules:
           url-template: https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DWITH_UTILITIES=OFF
 
   - name: GDAL
     sources:
@@ -203,7 +209,13 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DBUILD_PYTHON_BINDINGS=OFF
+      - -DBUILD_APPS=OFF
+      - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
+      - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
       - -DACCEPT_MISSING_SQLITE3_RTREE=ON
 
   - name: laz-perf
@@ -231,6 +243,9 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DWITH_TESTS=OFF
 
   - name: TBB
@@ -297,6 +312,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
       - -DDLIB_NO_GUI_SUPPORT=ON
 
   - name: PCL
@@ -359,6 +375,8 @@ modules:
           url-template: https://github.com/yasm/yasm/releases/download/v$version/yasm-$version.tar.gz
     buildsystem: autotools
     builddir: true
+    config-opts:
+      - --disable-shared
 
   - name: MPIR
     sources:
