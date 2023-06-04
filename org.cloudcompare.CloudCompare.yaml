@@ -307,7 +307,7 @@ modules:
           type: anitya
           project-id: 18600
           stable-only: true
-          url-template: http://dlib.net/files/dlib-$version.tar.bz2
+          url-template: http://dlib.net/files/dlib-${major}.${minor}.tar.bz2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
