@@ -142,8 +142,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.2.0/proj-9.2.0.tar.gz
-        sha256: dea816f5aa732ae6b2ee3977b9bdb28b1d848cf56a1aad8faf6708b89f0ed50e
+        url: https://github.com/OSGeo/PROJ/releases/download/9.2.1/proj-9.2.1.tar.gz
+        sha256: 15ebf4afa8744b9e6fccb5d571fc9f338dc3adcf99907d9e62d1af815d4971a1
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -201,11 +201,11 @@ modules:
       - type: archive
         url: https://github.com/OSGeo/gdal/releases/download/v3.6.4/gdal-3.6.4.tar.gz
         sha256: f98a654f348a08ef2a09ac78bc9ac0707d7de2b7f942685f5953041399ee6959
-        x-checker-data:
-          type: anitya
-          project-id: 881
-          stable-only: true
-          url-template: https://github.com/OSGeo/gdal/releases/download/v$version/gdal-$version.tar.gz
+        # x-checker-data:
+        #   type: anitya
+        #   project-id: 881
+        #   stable-only: true
+        #   url-template: https://github.com/OSGeo/gdal/releases/download/v$version/gdal-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -233,8 +233,8 @@ modules:
   - name: PDAL
     sources:
       - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/2.5.3/PDAL-2.5.3-src.tar.bz2
-        sha256: 1d193e9cf11766a394722e1899d6a7d1fb81387af113250beff58e6325851b13
+        url: https://github.com/PDAL/PDAL/releases/download/2.5.4/PDAL-2.5.4-src.tar.bz2
+        sha256: db9231cfe3d5199075aca6e479a3b9fced1d090a300bddc938717398d3e58c4b
         x-checker-data:
           type: anitya
           project-id: 138228
@@ -307,7 +307,7 @@ modules:
           type: anitya
           project-id: 18600
           stable-only: true
-          url-template: http://dlib.net/files/dlib-$version.tar.bz2
+          url-template: http://dlib.net/files/dlib-${major}.${minor}.tar.bz2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
