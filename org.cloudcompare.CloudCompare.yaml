@@ -79,12 +79,12 @@ modules:
     sources:
       - type: archive
         only-arches: [x86_64]
-        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.1/linux/rdblib-2.4.1-x86_64-linux.tar.gz
-        sha256: f7f543fbfa9adfdaf05243cbadb55708d6556336a33dc4b2cc5f7827849a6571
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.2/linux/rdblib-2.4.2-x86_64-linux.tar.gz
+        sha256: 576b05a422ad381bdddf2deb12f8fa0975bb974ab9373ca1ab3d56f9dc73a5ee
       - type: archive
         only-arches: [aarch64]
-        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.1/linux/rdblib-2.4.1-arm64-linux.tar.gz
-        sha256: a71f74bc0ba92c7553d0a2a8794a67ec58477261ba2cafb6a8d363aab90f5aba
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.2/linux/rdblib-2.4.2-arm64-linux.tar.gz
+        sha256: b7728e341fdb83b88ef48ebf2a3557a264ccbf5d87f862b976bd6f6a4b069f53
     buildsystem: simple
     build-commands:
       - mkdir -p /app/rdblib
