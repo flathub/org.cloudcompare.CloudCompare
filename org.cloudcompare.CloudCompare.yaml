@@ -68,8 +68,6 @@ cleanup:
 
   - /rdblib
 
-  - /cork
-
 build-options:
   append-path: /usr/lib/sdk/llvm15/bin
   prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
@@ -378,40 +376,16 @@ modules:
     config-opts:
       - --disable-shared
 
-  - name: MPIR
-    sources:
-      - type: archive
-        url: https://github.com/wbhart/mpir/archive/refs/tags/mpir-3.0.0.tar.gz
-        sha256: 86a5039badc3e6738219a262873a1db5513405e15ece9527b718fcd0fac09bb2
-    buildsystem: autotools
-    builddir: true
-    config-opts:
-      - --disable-shared
-      - --with-pic
-
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
   - {name: glu, config-opts: [--disable-static], sources: [{type: archive, url: https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz,
           sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
     cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
 
-  - name: Cork
-    sources:
-      - type: git
-        url: https://github.com/CloudCompare/cork.git
-        commit: a09d474b8fba2c2825367f33c31af0004897cb7e
-    builddir: true
-    buildsystem: simple
-    build-commands:
-      - make -j ${FLATPAK_BUILDER_N_JOBS} CXXFLAGS="-DSUPPORT_TOPO_STREAM_OPERATORS
-        -fPIC"
-      - cp -r . /app/cork
-
   - name: CloudCompare
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.12.4
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
@@ -440,11 +414,6 @@ modules:
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
       - -DPLUGIN_STANDARD_QCOMPASS=ON
-      - -DPLUGIN_STANDARD_QCORK=ON
-      - -DCORK_INCLUDE_DIR=/app/cork/src/
-      - -DMPIR_INCLUDE_DIR=UNUSED # setting 'MPIR_INCLUDE_DIR' is required by the qCORK plugin but it is actually not used
-      - -DCORK_RELEASE_LIBRARY_FILE=/app/cork/lib/libcork.a
-      - -DMPIR_RELEASE_LIBRARY_FILE=/app/lib/libmpir.a
       - -DPLUGIN_STANDARD_QCSF=ON
       - -DPLUGIN_STANDARD_QFACETS=ON
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
