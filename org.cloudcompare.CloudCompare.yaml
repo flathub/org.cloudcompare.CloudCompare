@@ -29,7 +29,6 @@ cleanup:
   - /bin/MemParse
   - /bin/nearblack
   - /bin/ogr*
-  - /bin/pdal*
   - /bin/PParse
   - /bin/projsync
   - /bin/PSVIWriter
@@ -210,24 +209,6 @@ modules:
       - -DBUILD_SHARED_LIBS=OFF # builds liblazperf.so and liblazperf_s.a anyway
       - -DWITH_TESTS=OFF
 
-  - name: PDAL
-    sources:
-      - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/2.5.5/PDAL-2.5.5-src.tar.bz2
-        sha256: b32b16475619a6bdfaee5a07a9b859206e18de5acff2a4447502fd0a9c6538d6
-        x-checker-data:
-          type: anitya
-          project-id: 138228
-          stable-only: true
-          url-template: https://github.com/PDAL/PDAL/releases/download/$version/PDAL-$version-src.tar.bz2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-      - -DWITH_TESTS=OFF
-
   - name: TBB
     sources:
       - type: archive
@@ -357,6 +338,21 @@ modules:
     builddir: true
     config-opts:
       - --disable-shared
+  
+  - name: LASzip
+    sources:
+      - type: archive
+        url: https://github.com/LASzip/LASzip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz
+        sha256: 53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d
+        x-checker-data:
+          type: anitya
+          project-id: 241499
+          stable-only: true
+          url-template: https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
 
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
@@ -386,8 +382,8 @@ modules:
       - -DPLUGIN_IO_QCSV_MATRIX=ON
       - -DPLUGIN_IO_QE57=ON
       - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
-      - -DPLUGIN_IO_QPDAL=ON
       - -DPLUGIN_IO_QPHOTOSCAN=ON
+      - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
@@ -400,7 +396,6 @@ modules:
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
-      - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
