@@ -3,9 +3,9 @@
   <id>org.cloudcompare.CloudCompare</id>
   <name>CloudCompare</name>
   <releases>
-    <release date="2022-07-15" version="2.12.4"/>
+    <release date="2023-06-15" version="2.13.beta1"/>
   </releases>
-  <project_license>GPL-2.0</project_license>
+  <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
 
   <!-- Copyright 2003 EDF R&D / TELECOM ParisTech (ENST-TSI) -->
