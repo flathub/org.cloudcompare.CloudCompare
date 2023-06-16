@@ -197,18 +197,6 @@ modules:
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
       - -DACCEPT_MISSING_SQLITE3_RTREE=ON
 
-  - name: laz-perf
-    sources:
-      - type: archive
-        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.3.0.tar.gz
-        sha256: 029e830758d2a0d873110b714e7f918c1a8fbad6f6538f0af9f41c3fec9de0c0
-    builddir: true
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF # builds liblazperf.so and liblazperf_s.a anyway
-      - -DWITH_TESTS=OFF
-
   - name: TBB
     sources:
       - type: archive
