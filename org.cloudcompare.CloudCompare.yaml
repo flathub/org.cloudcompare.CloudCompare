@@ -399,8 +399,7 @@ modules:
       - type: patch
         path: patches/q3DMASC.patch # should be fixed upstream
       - type: git
-        url: https://github.com/rjanvier/CloudCompare-PythonPlugin.git # to change once PR is merged
-        branch: rjanvier_update_cc_version
+        url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
         dest: plugins/private/CloudCompare-PythonPlugin
     builddir: true
     build-options:
