@@ -61,7 +61,7 @@ cleanup:
   - /share/proj
 
   - /include
-
+  
   - /doc
 
   - /rdblib
@@ -341,6 +341,46 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
+     
+  - name: OpenCV	
+    sources: 
+      - type: archive
+        url: https://github.com/opencv/opencv/archive/4.7.0.zip
+        sha256: db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8
+        x-checker-data:
+          type: anitya
+          project-id: 6615
+          stable-only: true
+          url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DWITH_GTK=OFF
+      - -DBUILD_LIST=ml,core
+      - -DWITH_OPENCL=ON
+      - -DWITH_PNG=OFF
+      - -DWITH_TIFF=OFF
+      - -DWITH_JPEG=OFF
+      - -DWITH_WEBP=OFF
+      - -DWITH_OPENJPEG=OFF
+      - -DWITH_JASPER=OFF
+      - -DWITH_OPENEXR=OFF 
+      - -DWITH_V4L=OFF
+      - -DWITH_FFMPEG=OFF
+      - -DWITH_GSTREAMER=OFF
+      - -DWITH_TBB=ON
+      - -DWITH_GTK=OFF
+      - -DWITH_PROTOBUF=OFF
+      - -DBUILD_opencv_python2=OFF
+      - -DBUILD_opencv_python3=OFF
+
+
+
+
+
+  # Python3 modules needed by CloudCompare-PythonPlugin
+  - python3-modules.json
 
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
@@ -356,7 +396,15 @@ modules:
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
         path: patches/cloudcompare-fixes.patch
+      - type: patch
+        path: patches/q3DMASC.patch # should be fixed upstream
+      - type: git
+        url: https://github.com/rjanvier/CloudCompare-PythonPlugin.git # to change once PR is merged
+        branch: rjanvier_update_cc_version
+        dest: plugins/private/CloudCompare-PythonPlugin
     builddir: true
+    build-options:
+      cxxflags: -I/usr/include/python3.10 -Wno-deprecated-declarations # reduce QT noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DOPTION_USE_GDAL=ON
@@ -385,6 +433,7 @@ modules:
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
       - -DPLUGIN_STANDARD_QSRA=ON
+      - -DINSTALL_Q3DMASC_PLUGIN=ON
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
