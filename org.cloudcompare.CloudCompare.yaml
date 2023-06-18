@@ -99,7 +99,7 @@ modules:
           url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
+      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
       - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
@@ -397,13 +397,15 @@ modules:
       - type: patch
         path: patches/cloudcompare-fixes.patch
       - type: patch
-        path: patches/q3DMASC.patch # should be fixed upstream
+        path: patches/q3DMASC.patch # Should be fixed upstream
+      - type: patch
+        path: patches/qTreeIso.patch # Should be fixed upstream
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
         dest: plugins/private/CloudCompare-PythonPlugin
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.10 -Wno-deprecated-declarations # reduce QT noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.10 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DOPTION_USE_GDAL=ON
@@ -432,7 +434,9 @@ modules:
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
       - -DPLUGIN_STANDARD_QSRA=ON
+      - -DPLUGIN_STANDARD_QTREEISO=ON
       - -DINSTALL_Q3DMASC_PLUGIN=ON
+
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png

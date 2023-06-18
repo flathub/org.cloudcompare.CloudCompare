@@ -1,0 +1,24 @@
+diff --git a/plugins/core/Standard/qTreeIso/include/Graph.h b/plugins/core/Standard/qTreeIso/include/Graph.h
+index 52fff73..b326a78 100644
+--- a/plugins/core/Standard/qTreeIso/include/Graph.h
++++ b/plugins/core/Standard/qTreeIso/include/Graph.h
+@@ -75,7 +75,7 @@ namespace CP
+ 	template<typename T>
+ 	using EdgeAttributeMap = boost::adj_list_edge_property_map<
+ 		boost::directed_tag, EdgeAttribute<T>, EdgeAttribute<T> &
+-		, unsigned __int64, CP::EdgeAttribute<T>, boost::edge_bundle_t>;
++		, uint64_t, CP::EdgeAttribute<T>, boost::edge_bundle_t>;
+ 	template<typename T>
+ 	using VertexIndexMap = typename boost::property_map<Graph<T>, boost::vertex_index_t>::type;
+ 	template<typename T>
+diff --git a/plugins/core/Standard/qTreeIso/ui/CMakeLists.txt b/plugins/core/Standard/qTreeIso/ui/CMakeLists.txt
+index 99d9d03..87c04b1 100644
+--- a/plugins/core/Standard/qTreeIso/ui/CMakeLists.txt
++++ b/plugins/core/Standard/qTreeIso/ui/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ 
+ target_sources( ${PROJECT_NAME}
+ 	PRIVATE
+-		${CMAKE_CURRENT_LIST_DIR}/TreeISODlg.ui
++		${CMAKE_CURRENT_LIST_DIR}/TreeIsoDlg.ui
+ )
