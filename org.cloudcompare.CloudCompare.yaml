@@ -2,6 +2,8 @@ app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
 runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
+base: com.riverbankcomputing.PyQt.BaseApp
+base-version: 5.15-22.08
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm15
 command: CloudCompare
@@ -376,14 +378,17 @@ modules:
       - -DBUILD_opencv_python2=OFF
       - -DBUILD_opencv_python3=OFF
 
-  # Python3 modules needed by CloudCompare-PythonPlugin
-  - python3-modules.json
-
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
   - {name: glu, config-opts: [--disable-static], sources: [{type: archive, url: https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz,
           sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
     cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
+
+  # Python3 modules needed by CloudCompare-PythonPlugin
+  - python3-pybind11.json
+  # Python3 modules needed by dendromatics and 3DFin
+  - dendromatics.yaml
+  - 3DFin.yaml
 
   - name: CloudCompare
     sources:
@@ -407,35 +412,35 @@ modules:
       cxxflags: -I/usr/include/python3.10 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
-      # - -DOPTION_USE_GDAL=ON
-      # - -DOPTION_USE_DXF_LIB=ON
-      # - -DOPTION_USE_SHAPE_LIB=ON
-      # - -DEIGEN_ROOT_DIR=/app/include/eigen3
-      # - -DPLUGIN_GL_QEDL=ON
-      # - -DPLUGIN_GL_QSSAO=ON
-      # - -DPLUGIN_IO_QADDITIONAL=ON
-      # - -DPLUGIN_IO_QCORE=ON
-      # - -DPLUGIN_IO_QCSV_MATRIX=ON
-      # - -DPLUGIN_IO_QE57=ON
-      # - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
-      # - -DPLUGIN_IO_QPHOTOSCAN=ON
-      # - -DPLUGIN_IO_QLAS=ON
-      # - -DPLUGIN_STANDARD_QANIMATION=ON
-      # - -DPLUGIN_STANDARD_QBROOM=ON
-      # - -DPLUGIN_STANDARD_QCANUPO=ON
-      # - -DPLUGIN_STANDARD_QCLOUDLAYERS=ON
-      # - -DPLUGIN_STANDARD_QCOMPASS=ON
-      # - -DPLUGIN_STANDARD_QCSF=ON
-      # - -DPLUGIN_STANDARD_QFACETS=ON
-      # - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
-      # - -DPLUGIN_STANDARD_QHPR=ON
-      # - -DPLUGIN_STANDARD_QM3C2=ON
-      # - -DPLUGIN_STANDARD_QPCL=ON
-      # - -DPLUGIN_STANDARD_QPCV=ON
-      # - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
-      # - -DPLUGIN_STANDARD_QSRA=ON
-      # - -DPLUGIN_STANDARD_QTREEISO=ON
-      # - -DINSTALL_Q3DMASC_PLUGIN=ON
+      - -DOPTION_USE_GDAL=ON
+      - -DOPTION_USE_DXF_LIB=ON
+      - -DOPTION_USE_SHAPE_LIB=ON
+      - -DEIGEN_ROOT_DIR=/app/include/eigen3
+      - -DPLUGIN_GL_QEDL=ON
+      - -DPLUGIN_GL_QSSAO=ON
+      - -DPLUGIN_IO_QADDITIONAL=ON
+      - -DPLUGIN_IO_QCORE=ON
+      - -DPLUGIN_IO_QCSV_MATRIX=ON
+      - -DPLUGIN_IO_QE57=ON
+      - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
+      - -DPLUGIN_IO_QPHOTOSCAN=ON
+      - -DPLUGIN_IO_QLAS=ON
+      - -DPLUGIN_STANDARD_QANIMATION=ON
+      - -DPLUGIN_STANDARD_QBROOM=ON
+      - -DPLUGIN_STANDARD_QCANUPO=ON
+      - -DPLUGIN_STANDARD_QCLOUDLAYERS=ON
+      - -DPLUGIN_STANDARD_QCOMPASS=ON
+      - -DPLUGIN_STANDARD_QCSF=ON
+      - -DPLUGIN_STANDARD_QFACETS=ON
+      - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
+      - -DPLUGIN_STANDARD_QHPR=ON
+      - -DPLUGIN_STANDARD_QM3C2=ON
+      - -DPLUGIN_STANDARD_QPCL=ON
+      - -DPLUGIN_STANDARD_QPCV=ON
+      - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
+      - -DPLUGIN_STANDARD_QSRA=ON
+      - -DPLUGIN_STANDARD_QTREEISO=ON
+      - -DINSTALL_Q3DMASC_PLUGIN=ON
       - -DPLUGIN_PYTHON=ON
       - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=OFF
 
