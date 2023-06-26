@@ -362,21 +362,10 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DWITH_GTK=OFF
-      - -DBUILD_LIST=ml,core
+      - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
       - -DWITH_OPENCL=ON
-      - -DWITH_PNG=OFF
-      - -DWITH_TIFF=OFF
-      - -DWITH_JPEG=OFF
-      - -DWITH_WEBP=OFF
-      - -DWITH_OPENJPEG=OFF
-      - -DWITH_JASPER=OFF
-      - -DWITH_OPENEXR=OFF 
-      - -DWITH_V4L=OFF
-      - -DWITH_FFMPEG=OFF
-      - -DWITH_GSTREAMER=OFF
+      - -DWITH_QT=ON
       - -DWITH_TBB=ON
-      - -DWITH_GTK=OFF
       - -DWITH_PROTOBUF=OFF
       - -DBUILD_opencv_python2=OFF
       - -DBUILD_opencv_python3=OFF
@@ -437,6 +426,7 @@ modules:
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
       - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
+      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
