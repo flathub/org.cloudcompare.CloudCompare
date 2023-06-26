@@ -403,8 +403,6 @@ modules:
         path: patches/cloudcompare-fixes.patch
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
-      - type: patch
-        path: patches/qTreeIso.patch # Should be fixed upstream
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
         dest: plugins/private/CloudCompare-PythonPlugin
@@ -438,6 +436,7 @@ modules:
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
+      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
