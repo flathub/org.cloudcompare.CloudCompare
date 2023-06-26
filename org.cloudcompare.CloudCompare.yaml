@@ -406,6 +406,7 @@ modules:
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
+      - -DINSTALL_Q3DMASC_PLUGIN=ON
       - -DPLUGIN_GL_QEDL=ON
       - -DPLUGIN_GL_QSSAO=ON
       - -DPLUGIN_IO_QADDITIONAL=ON
@@ -424,6 +425,7 @@ modules:
       - -DPLUGIN_STANDARD_QFACETS=ON
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
+      - -DPLUGIN_STANDARD_QJSONRPC=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
       - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
       - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
@@ -432,9 +434,9 @@ modules:
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
       - -DPLUGIN_STANDARD_QSRA=ON
       - -DPLUGIN_STANDARD_QTREEISO=ON
-      - -DINSTALL_Q3DMASC_PLUGIN=ON
       - -DPLUGIN_PYTHON=ON
       - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=OFF
+
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
