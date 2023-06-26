@@ -15,7 +15,6 @@ finish-args:
   - --share=network
   - --filesystem=host
   - --env=PYTHONPATH=/app/lib/cloudcompare
-
 cleanup:
   - /bin/applygeo
   - /bin/cgal_*
@@ -43,8 +42,14 @@ cleanup:
   - /bin/testepsg
   - /bin/vsyasm
   - /bin/XInclude
-  - /bin/yasm
-  - /bin/ytasm
+  - /bin/yasm 
+  - /bin/3DFin
+  - /bin/f2py*
+  - /bin/jakteristics
+  - /bin/opencv_version
+  - /bin/pybind11-config
+  - /bin/setup_vars_opencv4.sh
+  - /bin/vba_extract.py
 
   - /lib/cmake
   - /lib/gdalplugins
@@ -66,8 +71,6 @@ cleanup:
   - /include
   
   - /doc
-
-  - /rdblib
 
 build-options:
   append-path: /usr/lib/sdk/llvm15/bin
@@ -443,7 +446,6 @@ modules:
       - -DINSTALL_Q3DMASC_PLUGIN=ON
       - -DPLUGIN_PYTHON=ON
       - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=OFF
-
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
