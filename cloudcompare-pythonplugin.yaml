@@ -1,0 +1,11 @@
+name: python3-cc-pythonplugin-deps
+buildsystem: simple
+build-commands: 
+- pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} --no-build-isolation pip pybind11 --ignore-installed pip
+sources:
+- type : file
+  url: https://files.pythonhosted.org/packages/52/ed/68e989fdac8f352cb6d506fac111ba1e1b74c0ef3660fadeeeeb765bc03c/pybind11-2.10.4-py3-none-any.whl
+  sha256: ec9be0c45061c829648d7e8c98a7d041768b768c934acd15196e0f1943d9a818
+- type: file
+  url: https://files.pythonhosted.org/packages/08/e3/57d4c24a050aa0bcca46b2920bff40847db79535dc78141eb83581a52eb8/pip-23.1.2-py3-none-any.whl
+  sha256: 3ef6ac33239e4027d9a5598a381b9d30880a1477e50039db2eac6e8a8f6d1b18

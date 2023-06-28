@@ -72,10 +72,6 @@ cleanup:
   
   - /doc
 
-build-options:
-  append-path: /usr/lib/sdk/llvm15/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
-
 modules:
   - name: MPFR
     sources:
@@ -362,7 +358,7 @@ modules:
     cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
 
   # Python3 modules needed by CloudCompare-PythonPlugin
-  - python3-pybind11.json
+  - cloudcompare-pythonplugin.yaml
   # Python3 modules needed by dendromatics and 3DFin
   - dendromatics.yaml
   - 3DFin.yaml
@@ -378,7 +374,8 @@ modules:
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
-        url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
+        url: https://github.com/rjanvier/CloudCompare-PythonPlugin.git
+        branch: rjanvier_fix_warnings
         dest: plugins/private/CloudCompare-PythonPlugin
       - type: patch
         path: patches/CloudCompare-PythonPlugin.patch
