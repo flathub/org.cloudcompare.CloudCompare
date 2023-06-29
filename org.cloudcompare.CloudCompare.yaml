@@ -14,7 +14,7 @@ finish-args:
   - --device=dri
   - --share=network
   - --filesystem=host
-  - --env=PYTHONPATH=/home/monumentum/.local/lib/python3.10/site-packages:/app/lib/cloudcompare
+  - --env=PYTHONPATH=/app/lib/cloudcompare
 cleanup:
   - /bin/applygeo
   - /bin/cgal_*
@@ -359,9 +359,6 @@ modules:
 
   # Python3 modules needed by CloudCompare-PythonPlugin
   - cloudcompare-pythonplugin.yaml
-  # Python3 modules needed by dendromatics and 3DFin
-  - dendromatics.yaml
-  - 3DFin.yaml
 
   - name: CloudCompare
     sources:
@@ -422,6 +419,10 @@ modules:
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
+
+  # Python3 modules needed by dendromatics and 3DFin
+  - dendromatics.yaml
+  - 3DFin.yaml
 
   - name: launchers
     buildsystem: simple
