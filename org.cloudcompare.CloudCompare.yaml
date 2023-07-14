@@ -11,7 +11,10 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
-  - --filesystem=host
+  - --filesystem=home
+  - --filesystem=/tmp
+  - --filesystem=xdg-run/gvfs # GVfs
+  - --filesystem=/media # automount via udisks
 
 cleanup:
   - /bin/applygeo
