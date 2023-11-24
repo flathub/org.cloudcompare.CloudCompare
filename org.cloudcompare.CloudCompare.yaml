@@ -202,8 +202,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.7.2/gdal-3.7.2.tar.gz
-        sha256: fd8aabc63e02bcce2aecc0234af58171b91f478b6111f75b4b236919dac369a5
+        url: https://github.com/OSGeo/gdal/releases/download/v3.8.0/gdal-3.8.0.tar.gz
+        sha256: 69d881cf6e883623bd18e2a6e02ac34ef27db1a9ee68b09961d13703c0862002
         x-checker-data:
           type: anitya
           project-id: 881
@@ -254,8 +254,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.10.0.tar.gz
-        sha256: 487023a955e5a3cc6d3a0d5f89179f9b6c0ae7222613a7185b0227ba0c83700b
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz
+        sha256: 782ce0cab62df9ea125cdea253a50534862b563f1d85d4cda7ad4e77550ac363
         x-checker-data:
           type: anitya
           project-id: 8217
