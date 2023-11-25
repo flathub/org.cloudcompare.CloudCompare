@@ -226,6 +226,10 @@ modules:
       - type: archive
         url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.3.0.tar.gz
         sha256: 029e830758d2a0d873110b714e7f918c1a8fbad6f6538f0af9f41c3fec9de0c0
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/hobuinc/laz-perf/tags
+          pattern: https://github.com/hobuinc/laz-perf/archive/refs/tags/([\d.]+).tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -323,6 +327,10 @@ modules:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.0.tar.gz
         sha256: b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/PointCloudLibrary/pcl/tags
+          pattern: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-([\d.]+).tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -386,6 +394,10 @@ modules:
       - type: archive
         url: https://github.com/wbhart/mpir/archive/refs/tags/mpir-3.0.0.tar.gz
         sha256: 86a5039badc3e6738219a262873a1db5513405e15ece9527b718fcd0fac09bb2
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/wbhart/mpir/tags
+          pattern: https://github.com/wbhart/mpir/archive/refs/tags/mpir-([\d.]+).tar.gz
     buildsystem: autotools
     builddir: true
     config-opts:
@@ -415,6 +427,9 @@ modules:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
         tag: v2.12.4
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
