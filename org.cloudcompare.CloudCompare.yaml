@@ -2,8 +2,6 @@ app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
 runtime-version: 5.15-23.08
 sdk: org.kde.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm15
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -72,10 +70,6 @@ cleanup:
   - /rdblib
 
   - /cork
-
-build-options:
-  append-path: /usr/lib/sdk/llvm15/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
 
 modules:
   - name: rdblib
