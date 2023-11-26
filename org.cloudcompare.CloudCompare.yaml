@@ -419,6 +419,10 @@ modules:
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
         path: patches/libE57Format-93.patch
+      # fix libE57Format std integer include
+      # https://github.com/asmaloney/libE57Format/issues/269
+      - type: patch
+        path: patches/libE57Format-269.patch
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
