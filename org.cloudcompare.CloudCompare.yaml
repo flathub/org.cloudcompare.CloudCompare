@@ -224,8 +224,8 @@ modules:
   - name: laz-perf
     sources:
       - type: archive
-        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.3.0.tar.gz
-        sha256: 029e830758d2a0d873110b714e7f918c1a8fbad6f6538f0af9f41c3fec9de0c0
+        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.4.0.tar.gz
+        sha256: ddc1219cac345aee53a33b52dde6b28892e85708b848ab6831dc0c9aa795534d
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -321,8 +321,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.0.tar.gz
-        sha256: b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
+        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.1.tar.gz
+        sha256: 8ab98a9db371d822de0859084a375a74bdc7f31c96d674147710cf4101b79621
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
