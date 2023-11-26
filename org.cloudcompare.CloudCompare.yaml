@@ -418,7 +418,7 @@ modules:
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
-        path: patches/cloudcompare-fixes.patch
+        path: patches/libE57Format-93.patch
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
