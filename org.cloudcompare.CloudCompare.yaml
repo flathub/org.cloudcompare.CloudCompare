@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-22.08
+runtime-version: 5.15-23.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm15
+  - org.freedesktop.Sdk.Extension.llvm17
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -74,8 +74,8 @@ cleanup:
   - /cork
 
 build-options:
-  append-path: /usr/lib/sdk/llvm15/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm15/lib
+  append-path: /usr/lib/sdk/llvm17/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
 
 modules:
   - name: rdblib
@@ -418,7 +418,11 @@ modules:
       # fix libE57Format compilation with clang
       # https://github.com/asmaloney/libE57Format/issues/93
       - type: patch
-        path: patches/cloudcompare-fixes.patch
+        path: patches/libE57Format-93.patch
+      # fix libE57Format std integer include
+      # https://github.com/asmaloney/libE57Format/issues/269
+      - type: patch
+        path: patches/libE57Format-269.patch
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
