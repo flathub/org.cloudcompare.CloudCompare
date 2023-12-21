@@ -169,8 +169,8 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.4.tar.gz
-        sha256: 3d8ec1c7f94e38fee0e4ca5ad1e1d9db23cbf3a10bba626f6b4afa2dedafe5ab
+        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
+        sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
         x-checker-data:
           type: anitya
           project-id: 5182
@@ -202,8 +202,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.8.1/gdal-3.8.1.tar.gz
-        sha256: 75b0019c8f47bb5f1c2be2182340fc2f45ab1c684204c2aa4971d6127d819f2d
+        url: https://github.com/OSGeo/gdal/releases/download/v3.8.2/gdal-3.8.2.tar.gz
+        sha256: e914690d2694671d75bab15b451a42c2f115d7267a5b600eb361e94b58a089d6
         x-checker-data:
           type: anitya
           project-id: 881
