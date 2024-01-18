@@ -11,18 +11,18 @@ sources:
   url: https://files.pythonhosted.org/packages/57/c2/6a6e7b46226c5733ec3dc54abfa1dad130b8a8c0c3365fc0502585027d98/dendromatics-0.2.0-py3-none-any.whl
   sha256: 60e179efd830b779d0ddc5c590cd61d754beadd6d56af666595150999d21093b
 - type: file
-  url: https://files.pythonhosted.org/packages/d4/c8/85761023c8af0ef0adeca7e204090b42ebb46109da15a034955c5d6cfd2a/lazrs-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 4b5157f7718d5784f9b78cc6f8dc8567e7f3bbafcd16b814beb8984b4a4c9a59
+  url: https://files.pythonhosted.org/packages/d1/7f/0eac494e5b87d313a19e19bd8a0c9d012b60c7e042acd8a9b55af251d32f/lazrs-0.5.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 85899e3c6c7af5989d8bfe1446515e8290794b423a0dd3f237dc5d0b3038300a
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/3c/25/4292916c1f4b7bb4af615e1437b6ec75ba73f0a3463157a7485bc196881a/pandas-2.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: dd46bde7309088481b1cf9c58e3f0e204b9ff9e3244f441accd220dd3365ce7c
+  url: https://files.pythonhosted.org/packages/d0/28/88b81881c056376254618fad622a5e94b5126db8c61157ea1910cd1c040a/pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: d9cd88488cceb7635aebb84809d087468eb33551097d600c6dad13602029c2df
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/1d/ac/d9b98a37670d755f2488dba7e2b3a91e1f4123fe32c726827a03a24af7b1/pydantic-1.10.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 939328fd539b8d0edf244327398a667b6b140afd3bf7e347cf9813c736211896
+  url: https://files.pythonhosted.org/packages/d2/16/2edfe3e52de9d46fee81d9b9ace90fd7a49a86e7a36d7fc280183f77515a/pydantic-1.10.13-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: e31647d85a2013d926ce60b84f9dd5300d44535a9941fe825dc349ae1f760df9
   only-arches:
   - x86_64
 - type: file

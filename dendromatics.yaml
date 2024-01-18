@@ -8,34 +8,34 @@ build-commands:
   laspy numpy joblib threadpoolctl click scikit-learn scipy typer jakteristics pip
 sources:
 - type: file
-  url: https://files.pythonhosted.org/packages/a5/5b/913915161f65f1dcb871dd3cf698d7b5c5d83bc4a0754a2452dd7ba5b199/cloth_simulation_filter-1.1.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 886718abb13f14ebdcd8d83def2a417f7648e1778908170dd037fbe85260a4c3
+  url: https://files.pythonhosted.org/packages/36/b6/33e05dc3d5051d3e9dff69033411d8ca2d28a55187197b2cc5070c247ee5/cloth_simulation_filter-1.1.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 6b69d2d0d851234ba6f4e1415d37c408e25d3ca8977ced8bb1b8387eddc2d631
   only-arches:
   - x86_64
 - type: file
   url: https://files.pythonhosted.org/packages/bf/0e/c68adf10adda05f28a6ed7b9f4cd7b8e07f641b44af88ba72d9c89e4de7a/typer-0.9.0-py3-none-any.whl
   sha256: 5d96d986a21493606a358cae4461bd8cdf83cbf33a5aa950ae629ca3b51467ee
 - type: file
-  url: https://files.pythonhosted.org/packages/2f/30/f44bd008b782ee2a260aa35917fad29a3d31658ad8648619b99629d1e4fa/jakteristics-0.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 504bc1c062d289c7aebad372434c20593456c459f77545d2217ca29fc4f662a8
+  url: https://files.pythonhosted.org/packages/9a/a2/389103083d7e05cc9b876002f85d0bad63dab6c3bf9da0a310f5ab3e4d72/jakteristics-0.6.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 7b82ff567b4f15189c61f764bd981265f919a20bfcefadffc08574ee0e283fbb
   only-arches:
   - x86_64
 - type: file
   url: https://files.pythonhosted.org/packages/7a/68/c864ea8e55c1fc3f1259375a0a31c60a06618cda4e14572c7d0e0aada6c2/laspy-2.4.1.tar.gz
   sha256: 13caecc7325cb2242cb25394984d21b3b5f796c88bcb44bc2ed2d3cf1b972ac4
 - type: file
-  url: https://files.pythonhosted.org/packages/6f/72/38f9a536bdb5bfb1682f2520f133ec6e08dde8bcca1f632e347641d90763/numpy-1.24.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 2d926b52ba1367f9acb76b0df6ed21f0b16a1ad87c6720a1121674e5cf63e2b6
+  url: https://files.pythonhosted.org/packages/22/97/dfb1a31bb46686f09e68ea6ac5c63fdee0d22d7b23b8f3f7ea07712869ef/numpy-1.24.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 7215847ce88a85ce39baf9e89070cb860c98fdddacbaa6c0da3ffb31b3350bd5
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/ef/bb/b625922655b063f2c2cba49b8268dac332b78b9fa7738b9e59b04909d069/scikit_learn-1.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 184a42842a4e698ffa4d849b6019de50a77a0aa24d26afa28fa49c9190bb144b
+  url: https://files.pythonhosted.org/packages/4c/64/a1e6e92b850b39200c82e3bc54d556b2c634b3904c39ac5cdb10b1c5765f/scikit_learn-1.2.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: bf036ea7ef66115e0d49655f16febfa547886deba20149555a41d28f56fd6d3c
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/76/22/287d06df9b359ba6df3f986e83267f240132379e4181c43cead3c5d41227/scipy-1.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 2f9ea0a37aca111a407cb98aa4e8dfde6e5d9333bae06dfa5d938d14c80bb5c3
+  url: https://files.pythonhosted.org/packages/21/cd/fe2d4af234b80dc08c911ce63fdaee5badcdde3e9bcd9a68884580652ef0/scipy-1.10.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 15a35c4242ec5f292c3dd364a7c71a61be87a3d4ddcc693372813c0b73c9af1d
   only-arches:
   - x86_64
 - type: file
