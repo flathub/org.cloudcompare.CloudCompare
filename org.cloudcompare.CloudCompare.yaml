@@ -13,7 +13,6 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
-  - --filesystem=host
   - --env=PYTHONPATH=/app/lib/cloudcompare 
   - --filesystem=home
   - --filesystem=/tmp
