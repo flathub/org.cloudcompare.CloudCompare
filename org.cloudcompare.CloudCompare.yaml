@@ -14,7 +14,7 @@ finish-args:
   - --device=dri
   - --share=network
   - --filesystem=host
-  - --env=PYTHONPATH=/app/lib/cloudcompare
+  - --env=PYTHONPATH=/app/lib/cloudcompare 
   - --filesystem=home
   - --filesystem=/tmp
   - --filesystem=xdg-run/gvfs # GVfs
@@ -395,7 +395,6 @@ modules:
       - -DPLUGIN_IO_QCORE=ON
       - -DPLUGIN_IO_QCSV_MATRIX=ON
       - -DPLUGIN_IO_QE57=ON
-      - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
       - -DPLUGIN_IO_QPHOTOSCAN=ON
       - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
