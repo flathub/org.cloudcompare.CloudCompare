@@ -1,11 +1,11 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-22.08
+runtime-version: 5.15-23.08
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-22.08
+base-version: 5.15-23.08
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm15
+  - org.freedesktop.Sdk.Extension.llvm17
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -15,6 +15,11 @@ finish-args:
   - --share=network
   - --filesystem=host
   - --env=PYTHONPATH=/app/lib/cloudcompare
+  - --filesystem=home
+  - --filesystem=/tmp
+  - --filesystem=xdg-run/gvfs # GVfs
+  - --filesystem=/media # automount via udisks
+
 cleanup:
   - /bin/applygeo
   - /bin/cgal_*
@@ -72,12 +77,16 @@ cleanup:
   
   - /doc
 
+build-options:
+  append-path: /usr/lib/sdk/llvm17/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
+
 modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-4.2.0/mpfr-4.2.0.tar.gz
-        sha256: f1cc1c6bb14d18f0c61cc416e083f5e697b6e0e3cf9630b9b33e8e483fc960f0
+        url: https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz
+        sha256: 116715552bd966c85b417c424db1bbdf639f53836eb361549d1f8d6ded5cb4c6
         x-checker-data:
           type: anitya
           project-id: 2019
@@ -92,8 +101,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.gz
-        sha256: 66a469b6e608a51f8347236f4912e27dc5c60c60d7d53ae9bfe4683316c6f04c
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.gz
+        sha256: c0685b68dd44cc46574cce86c4e17c0f611b15e195be9848dfd0769a0a207628
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -123,8 +132,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.2.1/proj-9.2.1.tar.gz
-        sha256: 15ebf4afa8744b9e6fccb5d571fc9f338dc3adcf99907d9e62d1af815d4971a1
+        url: https://github.com/OSGeo/PROJ/releases/download/9.3.1/proj-9.3.1.tar.gz
+        sha256: b0f919cb9e1f42f803a3e616c2b63a78e4d81ecfaed80978d570d3a5e29d10bc
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -147,8 +156,8 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.4.tar.gz
-        sha256: 3d8ec1c7f94e38fee0e4ca5ad1e1d9db23cbf3a10bba626f6b4afa2dedafe5ab
+        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
+        sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
         x-checker-data:
           type: anitya
           project-id: 5182
@@ -180,8 +189,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.7.0/gdal-3.7.0.tar.gz
-        sha256: 5a806d759f403a15bbbf8a14ecc6947071afc5ab91e5abaef0d11d1d2d16bf94
+        url: https://github.com/OSGeo/gdal/releases/download/v3.8.2/gdal-3.8.2.tar.gz
+        sha256: e914690d2694671d75bab15b451a42c2f115d7267a5b600eb361e94b58a089d6
         x-checker-data:
           type: anitya
           project-id: 881
@@ -198,12 +207,11 @@ modules:
       - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
       - -DACCEPT_MISSING_SQLITE3_RTREE=ON
-
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.9.0.tar.gz
-        sha256: 1ce48f34dada7837f510735ff1172f6e2c261b09460e3bf773b49791d247d24e
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz
+        sha256: 782ce0cab62df9ea125cdea253a50534862b563f1d85d4cda7ad4e77550ac363
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -269,8 +277,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.0.tar.gz
-        sha256: b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
+        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.1.tar.gz
+        sha256: 8ab98a9db371d822de0859084a375a74bdc7f31c96d674147710cf4101b79621
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -367,21 +375,20 @@ modules:
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
-        url: https://github.com/rjanvier/CloudCompare-PythonPlugin.git
-        branch: rjanvier_fix_warnings
+        url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
         dest: plugins/private/CloudCompare-PythonPlugin
       - type: patch
         path: patches/CloudCompare-PythonPlugin.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.10 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
-      - -DINSTALL_Q3DMASC_PLUGIN=ON
+      - -DPLUGIN_STANDARD_3DMASC=ON
       - -DPLUGIN_GL_QEDL=ON
       - -DPLUGIN_GL_QSSAO=ON
       - -DPLUGIN_IO_QADDITIONAL=ON
@@ -411,7 +418,8 @@ modules:
       - -DPLUGIN_STANDARD_QSRA=ON
       - -DPLUGIN_STANDARD_QTREEISO=ON
       - -DPLUGIN_PYTHON=ON
-      - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=OFF
+      - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=ON
+      - -DCMAKE_POLICY_DEFAULT_CMP0148=OLD
 
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
