@@ -1,0 +1,21 @@
+diff --git a/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp b/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
+index 85a5a8e..6683a30 100644
+--- a/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
++++ b/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
+@@ -198,13 +198,13 @@ void PythonInterpreter::initialize(const PythonConfig &config)
+         }
+     };
+ 
+-    char soName[25];
+-    snprintf(soName, 24, "libpython%d.%d.so", PythonVersion.major, PythonVersion.minor);
++    char soName[60];
++    snprintf(soName, 59, "/usr/lib/x86_64-linux-gnu/libpython%d.%d.so.1.0", PythonVersion.major, PythonVersion.minor);
+     m_libPythonHandle = dlopen(soName, RTLD_LAZY | RTLD_GLOBAL);
+     if (!m_libPythonHandle)
+     {
+         displaydlopenError();
+-        snprintf(soName, 24, "libpython%d.%dm.so", PythonVersion.major, PythonVersion.minor);
++        snprintf(soName, 59, "libpython%d.%dm.so", PythonVersion.major, PythonVersion.minor);
+         m_libPythonHandle = dlopen(soName, RTLD_LAZY | RTLD_GLOBAL);
+         if (!m_libPythonHandle)
+         {

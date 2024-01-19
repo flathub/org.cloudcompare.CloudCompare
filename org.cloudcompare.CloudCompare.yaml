@@ -2,6 +2,8 @@ app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
 runtime-version: 5.15-23.08
 sdk: org.kde.Sdk
+base: com.riverbankcomputing.PyQt.BaseApp
+base-version: 5.15-23.08
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm17
 command: CloudCompare
@@ -11,6 +13,7 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
+  - --env=PYTHONPATH=/app/lib/cloudcompare 
   - --filesystem=home
   - --filesystem=/tmp
   - --filesystem=xdg-run/gvfs # GVfs
@@ -32,7 +35,6 @@ cleanup:
   - /bin/MemParse
   - /bin/nearblack
   - /bin/ogr*
-  - /bin/pdal*
   - /bin/PParse
   - /bin/projsync
   - /bin/PSVIWriter
@@ -44,8 +46,14 @@ cleanup:
   - /bin/testepsg
   - /bin/vsyasm
   - /bin/XInclude
-  - /bin/yasm
-  - /bin/ytasm
+  - /bin/yasm 
+  - /bin/3DFin
+  - /bin/f2py*
+  - /bin/jakteristics
+  - /bin/opencv_version
+  - /bin/pybind11-config
+  - /bin/setup_vars_opencv4.sh
+  - /bin/vba_extract.py
 
   - /lib/cmake
   - /lib/gdalplugins
@@ -63,38 +71,16 @@ cleanup:
   - /share/pcl-*
   - /share/pkgconfig
   - /share/proj
-  - /share/rdblib
 
   - /include
 
   - /doc
-
-  - /rdblib
-
-  - /cork
 
 build-options:
   append-path: /usr/lib/sdk/llvm17/bin
   prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
 
 modules:
-  - name: rdblib
-    sources:
-      - type: archive
-        only-arches: [x86_64]
-        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.3/linux/rdblib-2.4.3-x86_64-linux.tar.gz
-        sha256: 49d01b4a6d776578c3e6e89672961277a3d2915d3ffc2651080c27151458828c
-      - type: archive
-        only-arches: [aarch64]
-        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.3/linux/rdblib-2.4.3-arm64-linux.tar.gz
-        sha256: 5e90d17f1d7c63658bfaaa3d460eb785732fb1cb510a7a60866acff55cf31c89
-    buildsystem: simple
-    build-commands:
-      - mkdir -p /app/rdblib
-      - cp -r . /app/rdblib
-      - mkdir -p /app/share/rdblib
-      - cp license.txt /app/share/rdblib
-
   - name: MPFR
     sources:
       - type: archive
@@ -123,7 +109,7 @@ modules:
           url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono
+      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
       - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
@@ -220,40 +206,6 @@ modules:
       - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
       - -DACCEPT_MISSING_SQLITE3_RTREE=ON
-
-  - name: laz-perf
-    sources:
-      - type: archive
-        url: https://github.com/hobuinc/laz-perf/archive/refs/tags/3.4.0.tar.gz
-        sha256: ddc1219cac345aee53a33b52dde6b28892e85708b848ab6831dc0c9aa795534d
-    builddir: true
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF # builds liblazperf.so and liblazperf_s.a anyway
-      - -DWITH_TESTS=OFF
-
-  - name: PDAL
-    sources:
-      - type: archive
-        url: https://github.com/PDAL/PDAL/releases/download/2.6.2/PDAL-2.6.2-src.tar.bz2
-        sha256: 4ec3d128af4d15924ddac91ddac56335cf32897c743349460cfa41d51f0f9e4e
-        x-checker-data:
-          type: anitya
-          project-id: 138228
-          stable-only: true
-          url-template: https://github.com/PDAL/PDAL/releases/download/$version/PDAL-$version-src.tar.bz2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-      - -DWITH_TESTS=OFF
-      - -DWITH_BACKTRACE=OFF
-    post-install:
-      - chmod -R u+w /app/include/pdal
-
   - name: TBB
     sources:
       - type: archive
@@ -369,31 +321,42 @@ modules:
       - -DBUILD_tracking=OFF
       - -DBUILD_visualization=OFF
 
-  - name: yasm
+  - name: LASzip
     sources:
       - type: archive
-        url: https://github.com/yasm/yasm/releases/download/v1.3.0/yasm-1.3.0.tar.gz
-        sha256: 3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f
+        url: https://github.com/LASzip/LASzip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz
+        sha256: 53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d
         x-checker-data:
           type: anitya
-          project-id: 5286
+          project-id: 241499
           stable-only: true
-          url-template: https://github.com/yasm/yasm/releases/download/v$version/yasm-$version.tar.gz
-    buildsystem: autotools
+          url-template: https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - --disable-shared
-
-  - name: MPIR
-    sources:
+      - -DCMAKE_BUILD_TYPE=Release
+     
+  - name: OpenCV	
+    sources: 
       - type: archive
-        url: https://github.com/wbhart/mpir/archive/refs/tags/mpir-3.0.0.tar.gz
-        sha256: 86a5039badc3e6738219a262873a1db5513405e15ece9527b718fcd0fac09bb2
-    buildsystem: autotools
+        url: https://github.com/opencv/opencv/archive/4.7.0.zip
+        sha256: db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8
+        x-checker-data:
+          type: anitya
+          project-id: 6615
+          stable-only: true
+          url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - --disable-shared
-      - --with-pic
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
+      - -DWITH_OPENCL=ON
+      - -DWITH_QT=ON
+      - -DWITH_TBB=ON
+      - -DWITH_PROTOBUF=OFF
+      - -DBUILD_opencv_python2=OFF
+      - -DBUILD_opencv_python3=OFF
 
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
@@ -401,76 +364,73 @@ modules:
           sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
     cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
 
-  - name: Cork
-    sources:
-      - type: git
-        url: https://github.com/CloudCompare/cork.git
-        commit: a09d474b8fba2c2825367f33c31af0004897cb7e
-    builddir: true
-    buildsystem: simple
-    build-commands:
-      - make -j ${FLATPAK_BUILDER_N_JOBS} CXXFLAGS="-DSUPPORT_TOPO_STREAM_OPERATORS
-        -fPIC"
-      - cp -r . /app/cork
+  # Python3 modules needed by CloudCompare-PythonPlugin
+  - cloudcompare-pythonplugin.yaml
 
   - name: CloudCompare
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.12.4
-      # fix libE57Format compilation with clang
-      # https://github.com/asmaloney/libE57Format/issues/93
+        commit: df8cd4da063c5d7fe9574ef427b49d49d3a28a11
       - type: patch
-        path: patches/libE57Format-93.patch
-      # fix libE57Format std integer include
-      # https://github.com/asmaloney/libE57Format/issues/269
+        path: patches/q3DMASC.patch # Should be fixed upstream
+      - type: git
+        url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
+        commit: 5f95d18bc67c6a322ed8add752edba02ac59e7a5 
+        dest: plugins/private/CloudCompare-PythonPlugin
       - type: patch
-        path: patches/libE57Format-269.patch
+        path: patches/CloudCompare-PythonPlugin.patch
     builddir: true
+    build-options:
+      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
+      - -DPLUGIN_STANDARD_3DMASC=ON
       - -DPLUGIN_GL_QEDL=ON
       - -DPLUGIN_GL_QSSAO=ON
       - -DPLUGIN_IO_QADDITIONAL=ON
       - -DPLUGIN_IO_QCORE=ON
       - -DPLUGIN_IO_QCSV_MATRIX=ON
       - -DPLUGIN_IO_QE57=ON
-      - -DPLUGIN_IO_QFBX=OFF  # Autodesk FBX not available
-      - -DPLUGIN_IO_QPDAL=ON
       - -DPLUGIN_IO_QPHOTOSCAN=ON
-      - -Drdb_DIR=/app/rdblib/interface/cpp # path to rdb-config.cmake provided by rdblib-module
-      - -DPLUGIN_IO_QRDB=ON
-      - -DPLUGIN_IO_QRDB_FETCH_DEPENDENCY=OFF # flatpak build itself has no internet access
-      - -DPLUGIN_IO_QRDB_INSTALL_DEPENDENCY=ON
+      - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
+      - -DPLUGIN_STANDARD_QCLOUDLAYERS=ON
       - -DPLUGIN_STANDARD_QCOMPASS=ON
-      - -DPLUGIN_STANDARD_QCORK=ON
-      - -DCORK_INCLUDE_DIR=/app/cork/src/
-      - -DMPIR_INCLUDE_DIR=UNUSED # setting 'MPIR_INCLUDE_DIR' is required by the qCORK plugin but it is actually not used
-      - -DCORK_RELEASE_LIBRARY_FILE=/app/cork/lib/libcork.a
-      - -DMPIR_RELEASE_LIBRARY_FILE=/app/lib/libmpir.a
+      - -DPLUGIN_STANDARD_QCOLORIMETRIC_SEGMENTER=ON
       - -DPLUGIN_STANDARD_QCSF=ON
       - -DPLUGIN_STANDARD_QFACETS=ON
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
+      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
+      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
+      - -DPLUGIN_STANDARD_QMPLANE=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
       - -DPLUGIN_STANDARD_QPOISSON_RECON=ON
-      - -DPLUGIN_STANDARD_QRANSAC_SD=ON
       - -DPLUGIN_STANDARD_QSRA=ON
+      - -DPLUGIN_STANDARD_QTREEISO=ON
+      - -DPLUGIN_PYTHON=ON
+      - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=ON
+      - -DCMAKE_POLICY_DEFAULT_CMP0148=OLD
+
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
+
+  # Python3 modules needed by dendromatics and 3DFin
+  - dendromatics.yaml
+  - 3DFin.yaml
 
   - name: launchers
     buildsystem: simple
