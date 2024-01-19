@@ -73,7 +73,7 @@ cleanup:
   - /share/proj
 
   - /include
-  
+
   - /doc
 
 build-options:
