@@ -1,7 +1,7 @@
-diff --git a/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp b/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
+diff --git a/plugins/private/CloudCompare-PythonRuntime/src/PythonInterpreter.cpp b/plugins/private/CloudCompare-PythonRuntime/src/PythonInterpreter.cpp
 index 85a5a8e..6683a30 100644
---- a/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
-+++ b/plugins/private/CloudCompare-PythonPlugin/src/PythonInterpreter.cpp
+--- a/plugins/private/CloudCompare-PythonRuntime/src/PythonInterpreter.cpp
++++ b/plugins/private/CloudCompare-PythonRuntime/src/PythonInterpreter.cpp
 @@ -198,13 +198,13 @@ void PythonInterpreter::initialize(const PythonConfig &config)
          }
      };

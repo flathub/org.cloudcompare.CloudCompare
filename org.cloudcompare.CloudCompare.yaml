@@ -364,8 +364,8 @@ modules:
           sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
     cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
 
-  # Python3 modules needed by CloudCompare-PythonPlugin
-  - cloudcompare-pythonplugin.yaml
+  # Python3 modules needed by CloudCompare-PythonRuntime
+  - cloudcompare-pythonruntime.yaml
 
   - name: CloudCompare
     sources:
@@ -375,11 +375,11 @@ modules:
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
-        url: https://github.com/tmontaigu/CloudCompare-PythonPlugin.git
-        commit: 5f95d18bc67c6a322ed8add752edba02ac59e7a5 
-        dest: plugins/private/CloudCompare-PythonPlugin
+        url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
+        commit: 5a6d3d1e129a7bd5850e153d0291edd9f341586c 
+        dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
-        path: patches/CloudCompare-PythonPlugin.patch
+        path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
       cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
