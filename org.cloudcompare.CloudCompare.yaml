@@ -13,7 +13,7 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --share=network
-  - --env=PYTHONPATH=/app/lib/cloudcompare 
+  - --env=PYTHONPATH=/app/lib/cloudcompare
   - --filesystem=home
   - --filesystem=/tmp
   - --filesystem=xdg-run/gvfs # GVfs
@@ -75,6 +75,9 @@ cleanup:
   - /include
 
   - /doc
+
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 
 build-options:
   append-path: /usr/lib/sdk/llvm17/bin
