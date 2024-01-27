@@ -38,5 +38,5 @@ sources:
   url: https://files.pythonhosted.org/packages/a3/fb/52b62131e21b24ee297e4e95ed41eba29647dad0e0051a92bb66b43c70ff/tzdata-2023.4-py2.py3-none-any.whl
   sha256: aa3ace4329eeacda5b7beb7ea08ece826c28d761cda36e747cfbf97996d39bf3
 - type: file
-  url: https://files.pythonhosted.org/packages/84/3f/fedd013368b223e44029d9022c93b2da43dbdfd4a9ab3ac83eeb8f27a26d/3dfin-0.3.0rc2-py3-none-any.whl
-  sha256: af17c597aa38e2956323a23c7c114ce6dfd5ff218cb3ab3015a083e4c5361b49
+  url: https://files.pythonhosted.org/packages/5c/f9/a5bfac21ae2454f04bca9eafe65b96b576fd8ee2d8a025852d37ab493672/3dfin-0.3.0-py3-none-any.whl
+  sha256: 90a5aef5761fcc85b090dc620f816436f6efe8f5e552377c7b08b0710d69fe95
