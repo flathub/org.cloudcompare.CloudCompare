@@ -388,6 +388,9 @@ modules:
       cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
+      - -DCCCORELIB_USE_CGAL=ON
+      - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
