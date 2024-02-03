@@ -374,12 +374,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: adb5cbda26457170bb352747aa738178902d41d1
+        commit: 2fee143b06110ca21cce1af23bf796176ee2033f
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 5dfdb6effc657531e002363217b05de8c20bda76 
+        commit: b1896c0ef69b536bc6c19a3bd1df5e9a1e1d8162 
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
@@ -388,6 +388,9 @@ modules:
       cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
+      - -DCCCORELIB_USE_CGAL=ON
+      - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
