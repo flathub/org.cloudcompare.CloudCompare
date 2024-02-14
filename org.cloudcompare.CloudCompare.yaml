@@ -374,7 +374,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 1c1f67b827d768d81336310757de771f5dff3335
+        tag: v2.13
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
