@@ -374,12 +374,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 2fee143b06110ca21cce1af23bf796176ee2033f
+        commit: 1c1f67b827d768d81336310757de771f5dff3335
       - type: patch
         path: patches/q3DMASC.patch # Should be fixed upstream
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: b1896c0ef69b536bc6c19a3bd1df5e9a1e1d8162 
+        commit: f3ce345971a63fa50ebdb08d8db532e050fbea3a
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
