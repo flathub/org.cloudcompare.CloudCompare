@@ -4,12 +4,12 @@ name: python3-dendromatics-deps
 buildsystem: simple
 build-commands:
 - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-  --prefix=${FLATPAK_DEST} --no-build-isolation cloth-simulation-filter 
+  --prefix=${FLATPAK_DEST} --no-build-isolation csf_3dfin 
   laspy numpy joblib threadpoolctl click scikit-learn scipy typer jakteristics pip
 sources:
 - type: file
-  url: https://files.pythonhosted.org/packages/36/b6/33e05dc3d5051d3e9dff69033411d8ca2d28a55187197b2cc5070c247ee5/cloth_simulation_filter-1.1.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 6b69d2d0d851234ba6f4e1415d37c408e25d3ca8977ced8bb1b8387eddc2d631
+  url: https://files.pythonhosted.org/packages/15/cc/c5cea380edaba84969184e19d7ba8e3573cc07c9155361c96e09453b61c3/CSF_3DFin-1.1.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: dea604a7593ae092f34120672afaf77d744d73be5beb10fbc038659eba5eca89
   only-arches:
   - x86_64
 - type: file
