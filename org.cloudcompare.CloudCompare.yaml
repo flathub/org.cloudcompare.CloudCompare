@@ -338,8 +338,8 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-     
-  - name: OpenCV	
+
+  - name: OpenCV
     sources: 
       - type: archive
         url: https://github.com/opencv/opencv/archive/4.7.0.zip
