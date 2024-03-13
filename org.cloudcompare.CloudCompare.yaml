@@ -46,7 +46,7 @@ cleanup:
   - /bin/testepsg
   - /bin/vsyasm
   - /bin/XInclude
-  - /bin/yasm 
+  - /bin/yasm
   - /bin/3DFin
   - /bin/f2py*
   - /bin/jakteristics
@@ -118,8 +118,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v5.5.2/CGAL-5.5.2-library.tar.xz
-        sha256: 5c5da70d627a9271e0c73d8335dbfcd4d48f4411f9a006017328f9cf811973da
+        url: https://github.com/CGAL/cgal/releases/download/v5.6.1/CGAL-5.6.1-library.tar.xz
+        sha256: 6640f91dad9956764db27440932ac3a2f6269bf8066690f639dd7e995e3e1925
         x-checker-data:
           type: anitya
           project-id: 273
@@ -134,8 +134,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.3.1/proj-9.3.1.tar.gz
-        sha256: b0f919cb9e1f42f803a3e616c2b63a78e4d81ecfaed80978d570d3a5e29d10bc
+        url: https://github.com/OSGeo/PROJ/releases/download/9.4.0/proj-9.4.0.tar.gz
+        sha256: 3643b19b1622fe6b2e3113bdb623969f5117984b39f173b4e3fb19a8833bd216
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -191,8 +191,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.8.3/gdal-3.8.3.tar.gz
-        sha256: f7a30387a8239e9da26200f787a02136df2ee6473e86b36d05ad682761a049ea
+        url: https://github.com/OSGeo/gdal/releases/download/v3.8.4/gdal-3.8.4.tar.gz
+        sha256: c435a2ec08eca3d4c2bfe774081f8c433c00e56ee2f0f2f4f6494c2d078fcfb9
         x-checker-data:
           type: anitya
           project-id: 881
@@ -340,7 +340,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
 
   - name: OpenCV
-    sources: 
+    sources:
       - type: archive
         url: https://github.com/opencv/opencv/archive/4.7.0.zip
         sha256: db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8
