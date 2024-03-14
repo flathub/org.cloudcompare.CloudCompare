@@ -46,7 +46,7 @@ cleanup:
   - /bin/testepsg
   - /bin/vsyasm
   - /bin/XInclude
-  - /bin/yasm 
+  - /bin/yasm
   - /bin/3DFin
   - /bin/f2py*
   - /bin/jakteristics
@@ -103,8 +103,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.gz
-        sha256: c0685b68dd44cc46574cce86c4e17c0f611b15e195be9848dfd0769a0a207628
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz
+        sha256: a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -118,8 +118,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v5.5.2/CGAL-5.5.2-library.tar.xz
-        sha256: 5c5da70d627a9271e0c73d8335dbfcd4d48f4411f9a006017328f9cf811973da
+        url: https://github.com/CGAL/cgal/releases/download/v5.6.1/CGAL-5.6.1-library.tar.xz
+        sha256: 6640f91dad9956764db27440932ac3a2f6269bf8066690f639dd7e995e3e1925
         x-checker-data:
           type: anitya
           project-id: 273
@@ -129,13 +129,12 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DCGAL_HEADER_ONLY=ON
 
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.3.1/proj-9.3.1.tar.gz
-        sha256: b0f919cb9e1f42f803a3e616c2b63a78e4d81ecfaed80978d570d3a5e29d10bc
+        url: https://github.com/OSGeo/PROJ/releases/download/9.4.0/proj-9.4.0.tar.gz
+        sha256: 3643b19b1622fe6b2e3113bdb623969f5117984b39f173b4e3fb19a8833bd216
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -191,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.8.2/gdal-3.8.2.tar.gz
-        sha256: e914690d2694671d75bab15b451a42c2f115d7267a5b600eb361e94b58a089d6
+        url: https://github.com/OSGeo/gdal/releases/download/v3.8.4/gdal-3.8.4.tar.gz
+        sha256: c435a2ec08eca3d4c2bfe774081f8c433c00e56ee2f0f2f4f6494c2d078fcfb9
         x-checker-data:
           type: anitya
           project-id: 881
@@ -208,7 +207,6 @@ modules:
       - -DBUILD_APPS=OFF
       - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
-      - -DACCEPT_MISSING_SQLITE3_RTREE=ON
   - name: TBB
     sources:
       - type: archive
@@ -279,8 +277,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.1.tar.gz
-        sha256: 8ab98a9db371d822de0859084a375a74bdc7f31c96d674147710cf4101b79621
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.0/source.tar.gz
+        sha256: db7580a83c4a2df4e6e12aa05615fea90cbb4d72e5746772dbb86e4a8590c62c
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -338,9 +336,9 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-     
-  - name: OpenCV	
-    sources: 
+
+  - name: OpenCV
+    sources:
       - type: archive
         url: https://github.com/opencv/opencv/archive/4.7.0.zip
         sha256: db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8
@@ -374,12 +372,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 2fee143b06110ca21cce1af23bf796176ee2033f
-      - type: patch
-        path: patches/q3DMASC.patch # Should be fixed upstream
+        branch: various_improvements
+        commit: 9c7e29a71169b7941fbfa60f5fab41ca2a496457
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: b1896c0ef69b536bc6c19a3bd1df5e9a1e1d8162 
+        commit: f3ce345971a63fa50ebdb08d8db532e050fbea3a
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch

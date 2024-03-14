@@ -8,8 +8,8 @@ build-commands:
   --prefix=${FLATPAK_DEST} --no-build-isolation python_dateutil pytz tzdata dendromatics lazrs pandas pydantic XlsxWriter 3DFin
 sources:
 - type: file
-  url: https://files.pythonhosted.org/packages/14/e8/5a7310c2954f0fe4c7a0286e078c9301c91f2f8e9291740fbd66f6110fa1/dendromatics-0.4.0-py3-none-any.whl
-  sha256: 4aac7afae3476b5eb5832a7250a4a6e582877c53cbb94c64a0ccccf7cf980f0a
+  url: https://files.pythonhosted.org/packages/70/57/7f7f764aaef1f687f892a9a75034201e8c62d617bb33da40a9b004b1216d/dendromatics-0.4.1-py3-none-any.whl
+  sha256: acaf4975002c3e62121ec60b7370685fdd76bf67a3a1182d375229f213126f35
 - type: file
   url: https://files.pythonhosted.org/packages/d1/7f/0eac494e5b87d313a19e19bd8a0c9d012b60c7e042acd8a9b55af251d32f/lazrs-0.5.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
   sha256: 85899e3c6c7af5989d8bfe1446515e8290794b423a0dd3f237dc5d0b3038300a
@@ -38,5 +38,5 @@ sources:
   url: https://files.pythonhosted.org/packages/a3/fb/52b62131e21b24ee297e4e95ed41eba29647dad0e0051a92bb66b43c70ff/tzdata-2023.4-py2.py3-none-any.whl
   sha256: aa3ace4329eeacda5b7beb7ea08ece826c28d761cda36e747cfbf97996d39bf3
 - type: file
-  url: https://files.pythonhosted.org/packages/50/22/83d10cf6ef04c18a3e28cbf6631bc875d9ced5172323ece97d1dc1491405/3dfin-0.3.1-py3-none-any.whl
-  sha256: 3fd5fc3d051a9748de458a4ec751fc841dd5849cf2f1bd5c3a3477471ac20d44
+  url: https://files.pythonhosted.org/packages/33/9a/aba5dc915029c45d68d32a430ac7df63267dafd6e39119aaa5e7d9842803/3dfin-0.3.2-py3-none-any.whl
+  sha256: c823e4ebfa279a4fceb26fa780d1ab13c12531591c284f3a186f2573f9c92e31
