@@ -8,8 +8,8 @@ build-commands:
   laspy numpy joblib threadpoolctl click scikit-learn scipy typer jakteristics pip
 sources:
 - type: file
-  url: https://files.pythonhosted.org/packages/15/cc/c5cea380edaba84969184e19d7ba8e3573cc07c9155361c96e09453b61c3/CSF_3DFin-1.1.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: dea604a7593ae092f34120672afaf77d744d73be5beb10fbc038659eba5eca89
+  url: https://files.pythonhosted.org/packages/29/7d/4234d5123f0e12e209b505e72396334362a469737ec97e4a39e49fcecd1b/CSF_3DFin-1.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: a24d9da81fef6cc5940483754bde96de75fe678b0568df27a432bd689acb6781
   only-arches:
   - x86_64
 - type: file
