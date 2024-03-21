@@ -103,13 +103,13 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.gz
-        sha256: c0685b68dd44cc46574cce86c4e17c0f611b15e195be9848dfd0769a0a207628
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 6845
-        #   stable-only: true
-        #   url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz
+        sha256: a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
+        x-checker-data:
+          type: anitya
+          project-id: 6845
+          stable-only: true
+          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
@@ -129,7 +129,6 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DCGAL_HEADER_ONLY=ON
 
   - name: PROJ
     sources:
@@ -208,7 +207,6 @@ modules:
       - -DBUILD_APPS=OFF
       - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
-      - -DACCEPT_MISSING_SQLITE3_RTREE=ON
   - name: TBB
     sources:
       - type: archive
@@ -279,8 +277,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.13.1.tar.gz
-        sha256: 8ab98a9db371d822de0859084a375a74bdc7f31c96d674147710cf4101b79621
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.0/source.tar.gz
+        sha256: db7580a83c4a2df4e6e12aa05615fea90cbb4d72e5746772dbb86e4a8590c62c
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -374,9 +372,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.13
-      - type: patch
-        path: patches/q3DMASC.patch # Should be fixed upstream
+        tag: v2.13.1
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
         commit: f3ce345971a63fa50ebdb08d8db532e050fbea3a
