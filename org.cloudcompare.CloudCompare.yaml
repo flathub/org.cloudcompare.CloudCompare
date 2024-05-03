@@ -87,8 +87,8 @@ modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz
-        sha256: 116715552bd966c85b417c424db1bbdf639f53836eb361549d1f8d6ded5cb4c6
+        url: https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.bz2
+        sha256: b9df93635b20e4089c29623b19420c4ac848a1b29df1cfd59f26cab0d2666aa0
         x-checker-data:
           type: anitya
           project-id: 2019
