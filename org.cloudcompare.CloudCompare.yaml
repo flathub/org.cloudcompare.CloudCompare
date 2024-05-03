@@ -292,7 +292,6 @@ modules:
       - -DWITH_VTK=OFF
       - -DWITH_PCAP=OFF
       - -DPCL_ONLY_CORE_POINT_TYPES=ON
-      - -DOpenGL_GL_PREFERENCE=GLVND
       - -DBUILD_2d=ON
       - -DBUILD_CUDA=OFF
       - -DBUILD_GPU=OFF
