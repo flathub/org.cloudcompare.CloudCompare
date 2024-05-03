@@ -277,8 +277,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.0/source.tar.gz
-        sha256: db7580a83c4a2df4e6e12aa05615fea90cbb4d72e5746772dbb86e4a8590c62c
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.1/source.tar.gz
+        sha256: cc3dc26a9ea176cb588fb1f182324399dbaf11e5ba1bea95c7d39005b7a5d352
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
