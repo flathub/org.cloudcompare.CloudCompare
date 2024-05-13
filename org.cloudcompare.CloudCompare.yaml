@@ -103,8 +103,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz
-        sha256: a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.gz
+        sha256: be0d91732d5b0cc6fbb275c7939974457e79b54d6f07ce2e3dfdd68bef883b0b
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.8.5/gdal-3.8.5.tar.gz
-        sha256: 0c865c7931c7e9bb4832f50fb53aec8676cbbaccd6e55945011b737fb89a49c2
+        url: https://github.com/OSGeo/gdal/releases/download/v3.9.0/gdal-3.9.0.tar.gz
+        sha256: 3b29b573b60d156cf160805290474b625c4197ca36a79fd14f83ec8f77f29ba0
         x-checker-data:
           type: anitya
           project-id: 881
