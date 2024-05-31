@@ -93,7 +93,7 @@ modules:
           type: anitya
           project-id: 2019
           stable-only: true
-          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.gz
+          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2
     buildsystem: autotools
     builddir: true
     config-opts:
