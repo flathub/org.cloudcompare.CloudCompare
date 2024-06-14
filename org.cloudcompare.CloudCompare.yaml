@@ -324,8 +324,8 @@ modules:
   - name: LASzip
     sources:
       - type: archive
-        url: https://github.com/LASzip/LASzip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz
-        sha256: 53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d
+        url: https://github.com/LASzip/LASzip/releases/download/3.4.4/laszip-src-3.4.4.tar.gz
+        sha256: 41f826848ff106f471b134224f58075ac8e36a62b6ba0ad75be8a8c191bdba4b
         x-checker-data:
           type: anitya
           project-id: 241499
