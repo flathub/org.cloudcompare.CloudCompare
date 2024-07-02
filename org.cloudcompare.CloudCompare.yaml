@@ -348,6 +348,7 @@ modules:
           url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
+    libdir: /app/lib
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
@@ -355,8 +356,6 @@ modules:
       - -DWITH_QT=ON
       - -DWITH_TBB=ON
       - -DWITH_PROTOBUF=OFF
-      - -DBUILD_opencv_python2=OFF
-      - -DBUILD_opencv_python3=OFF
 
   # GLU from 'shared-modules' with updated URL.
   # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
