@@ -350,7 +350,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
+      - -DBUILD_LIST=ml,core,imgproc,imgcodecs,highgui
       - -DWITH_OPENCL=ON
       - -DWITH_QT=ON
       - -DWITH_TBB=ON
@@ -382,7 +382,7 @@ modules:
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.11 -I/app/include/opencv4 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
