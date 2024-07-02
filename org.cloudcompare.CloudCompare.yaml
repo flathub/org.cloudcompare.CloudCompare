@@ -373,7 +373,7 @@ modules:
         url: https://github.com/CloudCompare/CloudCompare.git
         #tag: v2.13.2
         #branch: version_2.13.X
-        commit: d19b039d46f176ff4dd27e2d3498dbd5ee8eb591
+        commit: 990373370c79ab8b759ca6a6c650be32608c4db2
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
         commit: 315aa6689cb01409f7c232794a25732559084c8e
