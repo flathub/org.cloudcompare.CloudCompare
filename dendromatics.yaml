@@ -5,7 +5,7 @@ buildsystem: simple
 build-commands:
 - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
   --prefix=${FLATPAK_DEST} --no-build-isolation csf_3dfin 
-  laspy numpy joblib threadpoolctl click scikit-learn scipy typer jakteristics pip
+  laspy numpy joblib threadpoolctl click scikit-learn scipy pgeof pip
 sources:
 - type: file
   url: https://files.pythonhosted.org/packages/29/7d/4234d5123f0e12e209b505e72396334362a469737ec97e4a39e49fcecd1b/CSF_3DFin-1.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -16,31 +16,31 @@ sources:
   url: https://files.pythonhosted.org/packages/bf/0e/c68adf10adda05f28a6ed7b9f4cd7b8e07f641b44af88ba72d9c89e4de7a/typer-0.9.0-py3-none-any.whl
   sha256: 5d96d986a21493606a358cae4461bd8cdf83cbf33a5aa950ae629ca3b51467ee
 - type: file
-  url: https://files.pythonhosted.org/packages/9a/a2/389103083d7e05cc9b876002f85d0bad63dab6c3bf9da0a310f5ab3e4d72/jakteristics-0.6.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 7b82ff567b4f15189c61f764bd981265f919a20bfcefadffc08574ee0e283fbb
+  url: https://files.pythonhosted.org/packages/bc/64/8be19bc661fe6281b1c9343f9caa18e187ddc9506abb20b0110e0d7eaed5/laspy-2.5.4-py3-none-any.whl
+  sha256: 5fc37a8a1a5e22c98bad4123281b55e5e41784943ca251828d72c932b167583e
+- type: file
+  url: https://files.pythonhosted.org/packages/42/e1/c89c454bf297975d0d1328574d92ba93c3377607dc0d2e35b7fc4c74b6e7/pgeof-0.2.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 59c8a7661d4ffb8f04b1ae7b315e63cfc97579561b9041a6486556336d441f31
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/e1/2d/7d850b1f06988e998aed5f5b03bf3ba0d43758aa8b2fedd0f2519b1e23c5/laspy-2.5.3.tar.gz
-  sha256: 4ad698914358ea5a096da52e69bceccd320d9ddfb367480a5c2b5e086db812b7
-- type: file
-  url: https://files.pythonhosted.org/packages/5a/62/007b63f916aca1d27f5fede933fda3315d931ff9b2c28b9c2cf388cd8edb/numpy-1.26.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: f25e2811a9c932e43943a2615e65fc487a0b6b49218899e62e426e7f0a57eeda
+  url: https://files.pythonhosted.org/packages/3a/d0/edc009c27b406c4f9cbc79274d6e46d634d139075492ad055e3d68445925/numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 666dbfb6ec68962c033a450943ded891bed2d54e6755e35e5835d63f4f6931d5
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/5b/be/208f17ce87a5e55094b0e8ffd55b06919ab9b56e7e4ce2a64cd9095ec5d2/scikit_learn-1.4.0-1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 2b465dd1dcd237b7b1dcd1a9048ccbf70a98c659474324fa708464c3a2533fad
+  url: https://files.pythonhosted.org/packages/46/c0/63d3a8da39a2ee051df229111aa93f6dca2b56f8080abd34993938166455/scikit_learn-1.5.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 118a8d229a41158c9f90093e46b3737120a165181a1b58c03461447aa4657415
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/d4/b8/7169935f9a2ea9e274ad8c21d6133d492079e6ebc3fc69a915c2375616b0/scipy-1.12.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  sha256: 8b8066bce124ee5531d12a74b617d9ac0ea59245246410e19bca549656d9a40a
+  url: https://files.pythonhosted.org/packages/89/bb/80c9c98d887c855710fd31fc5ae5574133e98203b3475b07579251803662/scipy-1.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  sha256: 9e3154691b9f7ed73778d746da2df67a19d046a6c8087c8b385bc4cdb2cfca74
   only-arches:
   - x86_64
 - type: file
-  url: https://files.pythonhosted.org/packages/10/40/d551139c85db202f1f384ba8bcf96aca2f329440a844f924c8a0040b6d02/joblib-1.3.2-py3-none-any.whl
-  sha256: ef4331c65f239985f3f2220ecc87db222f08fd22097a3dd5698f693875f8cbb9
+  url: https://files.pythonhosted.org/packages/91/29/df4b9b42f2be0b623cbd5e2140cafcaa2bef0759a00b7b70104dcfe2fb51/joblib-1.4.2-py3-none-any.whl
+  sha256: 06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6
 - type: file
   url: https://files.pythonhosted.org/packages/81/12/fd4dea011af9d69e1cad05c75f3f7202cdcbeac9b712eea58ca779a72865/threadpoolctl-3.2.0-py3-none-any.whl
   sha256: 2b7818516e423bdaebb97c723f86a7c6b0a83d3f3b0970328d66f4d9104dc032
