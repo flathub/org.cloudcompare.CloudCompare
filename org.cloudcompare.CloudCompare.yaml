@@ -348,7 +348,7 @@ modules:
           url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
-    libdir: /app/lib
+    libdir: /lib
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
