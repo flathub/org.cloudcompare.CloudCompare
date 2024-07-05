@@ -93,7 +93,7 @@ modules:
           type: anitya
           project-id: 2019
           stable-only: true
-          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.gz
+          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2
     buildsystem: autotools
     builddir: true
     config-opts:
@@ -133,8 +133,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.4.0/proj-9.4.0.tar.gz
-        sha256: 3643b19b1622fe6b2e3113bdb623969f5117984b39f173b4e3fb19a8833bd216
+        url: https://github.com/OSGeo/PROJ/releases/download/9.4.1/proj-9.4.1.tar.gz
+        sha256: ffe20170ee2b952207adf8a195e2141eab12cda181e49fdeb54425d98c7171d7
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -173,8 +173,8 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.1/libgeotiff-1.7.1.tar.gz
-        sha256: 05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6
+        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.3/libgeotiff-1.7.3.tar.gz
+        sha256: ba23a3a35980ed3de916e125c739251f8e3266be07540200125a307d7cf5a704
         x-checker-data:
           type: anitya
           project-id: 21361
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.8.5/gdal-3.8.5.tar.gz
-        sha256: 0c865c7931c7e9bb4832f50fb53aec8676cbbaccd6e55945011b737fb89a49c2
+        url: https://github.com/OSGeo/gdal/releases/download/v3.9.1/gdal-3.9.1.tar.gz
+        sha256: 46cd95ad0f270af0cd317ddc28fa5e0a7ad0b0fd160a7bd22909150df53e3418
         x-checker-data:
           type: anitya
           project-id: 881
@@ -210,8 +210,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.12.0.tar.gz
-        sha256: c7bb7aa69c254d91b8f0041a71c5bcc3936acb64408a1719aec0b2b7639dd84f
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz
+        sha256: 3ad5dd08954b39d113dc5b3f8a8dc6dc1fd5250032b7c491eb07aed5c94133e1
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -324,8 +324,8 @@ modules:
   - name: LASzip
     sources:
       - type: archive
-        url: https://github.com/LASzip/LASzip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz
-        sha256: 53f546a7f06fc969b38d1d71cceb1862b4fc2c4a0965191a0eee81a57c7b373d
+        url: https://github.com/LASzip/LASzip/releases/download/3.4.4/laszip-src-3.4.4.tar.gz
+        sha256: 41f826848ff106f471b134224f58075ac8e36a62b6ba0ad75be8a8c191bdba4b
         x-checker-data:
           type: anitya
           project-id: 241499
@@ -339,8 +339,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.7.0.zip
-        sha256: db6fb5e7dc76829d738fdbcdba11a810c66ca0a4752e531eaf3d793361e96de8
+        url: https://github.com/opencv/opencv/archive/4.9.0.zip
+        sha256: 9b5b64d50bf4a3ddeab430a9b13c5f9e023c9e67639ab50a74d0c298b5a61b74
         x-checker-data:
           type: anitya
           project-id: 6615
@@ -350,7 +350,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_LIST=ml,core,imgproc, imgcodecs, highgui
+      - -DBUILD_LIST=ml,core,imgproc,imgcodecs,highgui
       - -DWITH_OPENCL=ON
       - -DWITH_QT=ON
       - -DWITH_TBB=ON
@@ -371,16 +371,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.13.1
+        tag: v2.13.2
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: f3ce345971a63fa50ebdb08d8db532e050fbea3a
+        commit: 315aa6689cb01409f7c232794a25732559084c8e
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.11 -I/app/include/opencv4 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
@@ -420,7 +420,6 @@ modules:
       - -DPLUGIN_STANDARD_QTREEISO=ON
       - -DPLUGIN_PYTHON=ON
       - -DPLUGIN_PYTHON_USE_EMBEDDED_MODULES=ON
-      - -DCMAKE_POLICY_DEFAULT_CMP0148=OLD
 
     post-install:
       - install -d /app/share/icons/hicolor/256x256/apps
