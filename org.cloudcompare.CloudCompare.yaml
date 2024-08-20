@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-23.08
+runtime-version: "6.7"
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-23.08
+base-version: "6.7"
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm17
 command: CloudCompare
@@ -371,7 +371,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.13.2
+        commit: b134a922104f2a840ac9f710967cf00cd57b3d2d # qt6_port
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
         commit: 315aa6689cb01409f7c232794a25732559084c8e
