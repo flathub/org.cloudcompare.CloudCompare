@@ -380,7 +380,7 @@ modules:
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -Wno-fpermissive -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
