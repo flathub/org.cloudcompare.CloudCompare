@@ -103,8 +103,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.gz
-        sha256: be0d91732d5b0cc6fbb275c7939974457e79b54d6f07ce2e3dfdd68bef883b0b
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.gz
+        sha256: 2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.9.1/gdal-3.9.1.tar.gz
-        sha256: 46cd95ad0f270af0cd317ddc28fa5e0a7ad0b0fd160a7bd22909150df53e3418
+        url: https://github.com/OSGeo/gdal/releases/download/v3.9.2/gdal-3.9.2.tar.gz
+        sha256: c9767e79ca7245f704bfbcb47d771b2dc317d743536b78d648c3e92b95fbc21e
         x-checker-data:
           type: anitya
           project-id: 881
@@ -380,7 +380,7 @@ modules:
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.11 -I/app/include/opencv4 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
