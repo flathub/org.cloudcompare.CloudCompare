@@ -133,8 +133,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.4.1/proj-9.4.1.tar.gz
-        sha256: ffe20170ee2b952207adf8a195e2141eab12cda181e49fdeb54425d98c7171d7
+        url: https://github.com/OSGeo/PROJ/releases/download/9.5.0/proj-9.5.0.tar.gz
+        sha256: 659af0d558f7c5618c322fde2d3392910806faee8684687959339021fa207d99
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -400,6 +400,7 @@ modules:
       - -DPLUGIN_IO_QPHOTOSCAN=ON
       - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
+      - -DQANIMATION_WITH_FFMPEG_SUPPORT=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
       - -DPLUGIN_STANDARD_QCLOUDLAYERS=ON
