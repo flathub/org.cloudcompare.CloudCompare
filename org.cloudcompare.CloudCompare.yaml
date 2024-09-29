@@ -118,8 +118,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v5.6.1/CGAL-5.6.1-library.tar.xz
-        sha256: 6640f91dad9956764db27440932ac3a2f6269bf8066690f639dd7e995e3e1925
+        url: https://github.com/CGAL/cgal/releases/download/v6.0/CGAL-6.0-library.tar.xz
+        sha256: ed53a1498569a22341b482e579c6a3caf9ecbfb6e013f5a90ce780138073b520
         x-checker-data:
           type: anitya
           project-id: 273
