@@ -71,6 +71,7 @@ cleanup:
   - /share/pcl-*
   - /share/pkgconfig
   - /share/proj
+  - /share/rdblib
 
   - /include
 
@@ -84,6 +85,23 @@ build-options:
   prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
 
 modules:
+  - name: rdblib
+    sources:
+      - type: archive
+        only-arches: [x86_64]
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.5/linux/rdblib-2.4.5-x86_64-linux.tar.gz
+        sha256: 96720496230cc7fbbe1274b0a76415f5f73125773abe146ebd26afa888b67e0d
+      - type: archive
+        only-arches: [aarch64]
+        url: https://repository.riegl.com/software/libraries/rdblib/archive/2.4.5/linux/rdblib-2.4.5-arm64-linux.tar.gz
+        sha256: 8f57270def8f9bb8b3ce57750bd954dbd426c70fcb6bce5024f0524e9233651c
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/rdblib
+      - cp -r . /app/rdblib
+      - mkdir -p /app/share/rdblib
+      - cp license.txt /app/share/rdblib
+
   - name: MPFR
     sources:
       - type: archive
@@ -399,6 +417,10 @@ modules:
       - -DPLUGIN_IO_QE57=ON
       - -DPLUGIN_IO_QPHOTOSCAN=ON
       - -DPLUGIN_IO_QLAS=ON
+      - -Drdb_DIR=/app/rdblib/interface/cpp # path to rdb-config.cmake provided by rdblib-module
+      - -DPLUGIN_IO_QRDB=ON
+      - -DPLUGIN_IO_QRDB_FETCH_DEPENDENCY=OFF # flatpak build itself has no internet access
+      - -DPLUGIN_IO_QRDB_INSTALL_DEPENDENCY=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
       - -DPLUGIN_STANDARD_QBROOM=ON
       - -DPLUGIN_STANDARD_QCANUPO=ON
