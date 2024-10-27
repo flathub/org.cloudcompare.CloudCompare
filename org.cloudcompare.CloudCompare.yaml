@@ -118,8 +118,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.0.1/CGAL-6.0.1-library.tar.xz
-        sha256: c752737f91d1af71fa96038f0e37945ce82a5f1fffb6200172cfcdd77755a356
+        url: https://github.com/CGAL/cgal/releases/download/v5.6.1/CGAL-5.6.1-library.tar.xz
+        sha256: 6640f91dad9956764db27440932ac3a2f6269bf8066690f639dd7e995e3e1925
         x-checker-data:
           type: anitya
           project-id: 273
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.9.3/gdal-3.9.3.tar.gz
-        sha256: f293d8ccc6b98f617db88f8593eae37f7e4b32d49a615b2cba5ced12c7bebdae
+        url: https://github.com/OSGeo/gdal/releases/download/v3.9.2/gdal-3.9.2.tar.gz
+        sha256: c9767e79ca7245f704bfbcb47d771b2dc317d743536b78d648c3e92b95fbc21e
         x-checker-data:
           type: anitya
           project-id: 881
