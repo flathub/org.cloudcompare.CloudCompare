@@ -157,12 +157,12 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
+        url: http://dlcdn.apache.org/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
         sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
         x-checker-data:
           type: anitya
           project-id: 5182
-          url-template: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-$version.tar.gz
+          url-template: http://dlcdn.apache.org/xerces/c/3/sources/xerces-c-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
