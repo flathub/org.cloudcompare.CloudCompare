@@ -133,8 +133,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.5.0/proj-9.5.0.tar.gz
-        sha256: 659af0d558f7c5618c322fde2d3392910806faee8684687959339021fa207d99
+        url: https://github.com/OSGeo/PROJ/releases/download/9.5.1/proj-9.5.1.tar.gz
+        sha256: a8395f9696338ffd46b0feb603edbb730fad6746fba77753c77f7f997345e3d3
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.9.3/gdal-3.9.3.tar.gz
-        sha256: f293d8ccc6b98f617db88f8593eae37f7e4b32d49a615b2cba5ced12c7bebdae
+        url: https://github.com/OSGeo/gdal/releases/download/v3.10.0/gdal-3.10.0.tar.gz
+        sha256: 946ef444489bedbc1b04bd4c115d67ae8d3f3e4a5798d5a2f1cb2a11014105b2
         x-checker-data:
           type: anitya
           project-id: 881
