@@ -103,13 +103,13 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.gz
+        url: https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.gz
         sha256: 2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f
         x-checker-data:
           type: anitya
           project-id: 6845
           stable-only: true
-          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
+          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
