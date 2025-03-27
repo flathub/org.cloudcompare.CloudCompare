@@ -87,8 +87,8 @@ modules:
   - name: MPFR
     sources:
       - type: archive
-        url: https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.bz2
-        sha256: b9df93635b20e4089c29623b19420c4ac848a1b29df1cfd59f26cab0d2666aa0
+        url: https://www.mpfr.org/mpfr-4.2.2/mpfr-4.2.2.tar.bz2
+        sha256: 9ad62c7dc910303cd384ff8f1f4767a655124980bb6d8650fe62c815a231bb7b
         x-checker-data:
           type: anitya
           project-id: 2019
@@ -103,8 +103,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.gz
-        sha256: 2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f
+        url: https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz
+        sha256: f55c340aa49763b1925ccf02b2e83f35fdcf634c9d5164a2acb87540173c741d
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -133,8 +133,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.5.1/proj-9.5.1.tar.gz
-        sha256: a8395f9696338ffd46b0feb603edbb730fad6746fba77753c77f7f997345e3d3
+        url: https://github.com/OSGeo/PROJ/releases/download/9.6.0/proj-9.6.0.tar.gz
+        sha256: d8cae521c311c39513193657e75767f7cfbf2f91bd202fcd4a200028d3b57e14
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -210,8 +210,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.0.0.tar.gz
-        sha256: e8e89c9c345415b17b30a2db3095ba9d47647611662073f7fbf54ad48b7f3c2a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.1.0.tar.gz
+        sha256: ed067603ece0dc832d2881ba5c516625ac2522c665d95f767ef6304e34f961b5
         x-checker-data:
           type: anitya
           project-id: 8217
