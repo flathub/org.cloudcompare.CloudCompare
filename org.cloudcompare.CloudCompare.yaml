@@ -345,7 +345,7 @@ modules:
           type: anitya
           project-id: 6615
           stable-only: true
-          url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
+          url-template: https://github.com/opencv/opencv/archive/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
