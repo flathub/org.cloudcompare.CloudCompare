@@ -157,12 +157,12 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
-        sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
+        url: https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.3.0.tar.gz
+        sha256: 9555f1d06f82987fbb4658862705515740414fd34b4db6ad2ed76a2dc08d3bde
         x-checker-data:
           type: anitya
           project-id: 5182
-          url-template: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-$version.tar.gz
+          url-template: http://downloads.apache.org/xerces/c/3/sources/xerces-c-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -279,6 +279,11 @@ modules:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.1/source.tar.gz
         sha256: cc3dc26a9ea176cb588fb1f182324399dbaf11e5ba1bea95c7d39005b7a5d352
+        x-checker-data:
+          type: anitya
+          project-id: 141386
+          stable-only: true
+          url-template: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -345,7 +350,7 @@ modules:
           type: anitya
           project-id: 6615
           stable-only: true
-          url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
+          url-template: https://github.com/opencv/opencv/archive/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
