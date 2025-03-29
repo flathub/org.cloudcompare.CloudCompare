@@ -277,8 +277,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.1/source.tar.gz
-        sha256: cc3dc26a9ea176cb588fb1f182324399dbaf11e5ba1bea95c7d39005b7a5d352
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.0/source.tar.gz
+        sha256: fb79d085b08b8335f43ee4cacf4daa2624bb2c411e9243efa6a92c077273840a
         x-checker-data:
           type: anitya
           project-id: 141386
