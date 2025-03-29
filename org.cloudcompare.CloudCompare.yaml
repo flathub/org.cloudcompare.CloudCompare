@@ -157,7 +157,7 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.3.0.tar.gz
+        url: http://downloads.apache.org/xerces/c/3/sources/xerces-c-3.3.0.tar.gz
         sha256: 9555f1d06f82987fbb4658862705515740414fd34b4db6ad2ed76a2dc08d3bde
         x-checker-data:
           type: anitya
@@ -344,8 +344,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.9.0.zip
-        sha256: 9b5b64d50bf4a3ddeab430a9b13c5f9e023c9e67639ab50a74d0c298b5a61b74
+        url: https://github.com/opencv/opencv/archive/4.11.0.tar.gz
+        sha256: 9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f
         x-checker-data:
           type: anitya
           project-id: 6615
