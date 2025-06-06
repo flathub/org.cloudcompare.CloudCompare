@@ -133,8 +133,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.6.0/proj-9.6.0.tar.gz
-        sha256: d8cae521c311c39513193657e75767f7cfbf2f91bd202fcd4a200028d3b57e14
+        url: https://github.com/OSGeo/PROJ/releases/download/9.6.2/proj-9.6.2.tar.gz
+        sha256: 53d0cafaee3bb2390264a38668ed31d90787de05e71378ad7a8f35bb34c575d1
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -190,8 +190,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.10.3/gdal-3.10.3.tar.gz
-        sha256: e4bf7f104acbcb3e2d16c97fd1af2b92b28d0ba59d17d976e3ef08b794f4153b
+        url: https://github.com/OSGeo/gdal/releases/download/v3.11.0/gdal-3.11.0.tar.gz
+        sha256: 723d7b04e0f094be2636128d15165b45059ac5e53f143cbbd93280af0b347abd
         x-checker-data:
           type: anitya
           project-id: 881
@@ -260,8 +260,8 @@ modules:
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-19.24.tar.bz2
-        sha256: 28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4
+        url: http://dlib.net/files/dlib-20.0.tar.bz2
+        sha256: 5fce3181d9f0bf4e4bc867f13e5a0172f19d47918e6a4d335de478daf269fb63
         x-checker-data:
           type: anitya
           project-id: 18600
