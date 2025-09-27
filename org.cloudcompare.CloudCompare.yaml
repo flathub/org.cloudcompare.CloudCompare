@@ -1,11 +1,11 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-23.08
+runtime-version: 5.15-24.08
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-23.08
+base-version: 5.15-24.08
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm17
+  - org.freedesktop.Sdk.Extension.llvm18
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -80,8 +80,11 @@ cleanup-commands:
   - /app/cleanup-BaseApp.sh
 
 build-options:
-  append-path: /usr/lib/sdk/llvm17/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
+  append-path: /usr/lib/sdk/llvm18/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm18lib
+  env:
+    CC: clang
+    CXX: clang++
 
 modules:
   - name: MPFR
@@ -103,8 +106,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.gz
-        sha256: 2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f
+        url: https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2
+        sha256: 85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -112,8 +115,8 @@ modules:
           url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
-      - ./b2 cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
+      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
+      - ./b2 toolset=clang cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
@@ -129,6 +132,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
   - name: PROJ
     sources:
@@ -157,12 +161,14 @@ modules:
   - name: XercesC
     sources:
       - type: archive
-        url: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
-        sha256: 545cfcce6c4e755207bd1f27e319241e50e37c0c27250f11cda116018f1ef0f5
+        url: https://dlcdn.apache.org//xerces/c/3/sources/xerces-c-3.3.0.tar.gz
+        sha256: 9555f1d06f82987fbb4658862705515740414fd34b4db6ad2ed76a2dc08d3bde
         x-checker-data:
           type: anitya
           project-id: 5182
-          url-template: http://apache.mirror.iweb.ca/xerces/c/3/sources/xerces-c-$version.tar.gz
+          url-template: https://dlcdn.apache.org//xerces/c/3/sources/xerces-c-$version.tar.gz
+      - type: patch
+        path: patches/xerces.patch
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -184,7 +190,8 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
+      - -DBUILD_SHARED_LIBS=ON
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DWITH_UTILITIES=OFF
 
   - name: GDAL
@@ -260,8 +267,8 @@ modules:
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-19.24.tar.bz2
-        sha256: 28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4
+        url: http://dlib.net/files/dlib-20.0.zip
+        sha256: ea4dc1649cfae831b4488bc8ba2d4508bb0e766eedbf5c8c4fd7fd4e1a435bd9
         x-checker-data:
           type: anitya
           project-id: 18600
@@ -277,8 +284,8 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.14.1/source.tar.gz
-        sha256: cc3dc26a9ea176cb588fb1f182324399dbaf11e5ba1bea95c7d39005b7a5d352
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
+        sha256: f187b2646422ae6fb6daf7eec2d62c538ae7fe626397ed649c0e9b5a5b862b5a
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -358,23 +365,36 @@ modules:
       - -DBUILD_opencv_python2=OFF
       - -DBUILD_opencv_python3=OFF
 
-  # GLU from 'shared-modules' with updated URL.
-  # https://raw.githubusercontent.com/flathub/shared-modules/d47140b52c6ef4a9ae61fe0fda3b31c3e36f2291/glu/glu-9.json
-  - {name: glu, config-opts: [--disable-static], sources: [{type: archive, url: https://gitlab.freedesktop.org/mesa/glu/-/archive/glu-9.0.2/glu-glu-9.0.2.tar.gz,
-          sha256: 332d93a16376bc007e8232a8e5534da84e548cf3db9de040442c47a21f4625ba}],
-    cleanup: [/include, /lib/*.a, /lib/*.la, /lib/pkgconfig]}
+  - name: glu
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://mesa.freedesktop.org/archive/glu/glu-9.0.3.tar.xz
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+        x-checker-data:
+          type: anitya
+          project-id: 13518
+          stable-only: true
+          url-template: https://mesa.freedesktop.org/archive/glu/glu-$version.tar.xz
+    cleanup:
+      - /include
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
 
-  # Python3 modules needed by CloudCompare-PythonRuntime
-  - cloudcompare-pythonruntime.yaml
+  # Python3 modules needed by CloudCompare-PythonRuntime, 3DFin, etc
+  - python3-deps.yaml
 
   - name: CloudCompare
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.13.2
+        commit: 8660dcc86da2d86066649dc3e8438a813d310dc7 # Sept 21 2025
+      - type: patch
+        path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 315aa6689cb01409f7c232794a25732559084c8e
+        commit: a07c38407455bb0a7bd924bc65c3c26e6399bc15 # Sept 27 2025
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
@@ -383,8 +403,9 @@ modules:
       cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
-      - -DCCCORELIB_USE_CGAL=ON
+      - -DCMAKE_BUILD_TYPE=Release 
+      - -DBUILD_SHARED_LIBS=ON
+      - -DCCCORELIB_USE_CGAL=ON # implicit use for CGAL warning
       - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
@@ -428,10 +449,6 @@ modules:
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.png
       - cp ${FLATPAK_BUILDER_BUILDDIR}/qCC/images/icon/cc_viewer_icon_256.png /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
       - chmod 644 /app/share/icons/hicolor/256x256/apps/org.cloudcompare.CloudCompare.Viewer.png
-
-  # Python3 modules needed by dendromatics and 3DFin
-  - dendromatics.yaml
-  - 3DFin.yaml
 
   - name: launchers
     buildsystem: simple

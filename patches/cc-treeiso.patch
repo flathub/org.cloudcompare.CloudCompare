@@ -1,0 +1,27 @@
+From 1c616eafa181f2e5556080d4a806f557cd4bf49a Mon Sep 17 00:00:00 2001
+From: tmontaigu <thomas.montaigu@laposte.net>
+Date: Sat, 27 Sep 2025 16:56:33 +0200
+Subject: [PATCH] add numeric include for std::accumulate
+
+---
+ include/TreeIsoHelper.hpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/plugins/core/Standard/qTreeIso/include/TreeIsoHelper.hpp b/plugins/core/Standard/qTreeIso/include/TreeIsoHelper.hpp
+index 2e5247d..c1e586a 100644
++++ b/plugins/core/Standard/qTreeIso/include/TreeIsoHelper.hpp
+--- a/plugins/core/Standard/qTreeIso/include/TreeIsoHelper.hpp
+@@ -44,7 +44,10 @@
+ //Eigen
+ #include <Eigen/Dense>
+ 
++#include <ccPointCloud.h>
++
+ //STL
++#include <numeric>
+ #include <vector>
+ #include <functional>
+ #include <cstddef>
+-- 
+2.51.0
+
