@@ -87,22 +87,6 @@ build-options:
     CXX: clang++
 
 modules:
-  - name: MPFR
-    sources:
-      - type: archive
-        url: https://www.mpfr.org/mpfr-4.2.2/mpfr-4.2.2.tar.bz2
-        sha256: 9ad62c7dc910303cd384ff8f1f4767a655124980bb6d8650fe62c815a231bb7b
-        x-checker-data:
-          type: anitya
-          project-id: 2019
-          stable-only: true
-          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2
-    buildsystem: autotools
-    builddir: true
-    config-opts:
-      - --disable-shared
-      - --with-pic
-
   - name: boost
     sources:
       - type: archive
@@ -115,7 +99,7 @@ modules:
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
+      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
       - ./b2 toolset=clang cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
