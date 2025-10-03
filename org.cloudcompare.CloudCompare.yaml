@@ -4,8 +4,6 @@ runtime-version: 5.15-24.08
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
 base-version: 5.15-24.08
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -35,6 +33,7 @@ cleanup:
   - /bin/MemParse
   - /bin/nearblack
   - /bin/ogr*
+  - /bin/opencv_version
   - /bin/PParse
   - /bin/projsync
   - /bin/PSVIWriter
@@ -47,10 +46,14 @@ cleanup:
   - /bin/vsyasm
   - /bin/XInclude
   - /bin/yasm
+
+  # Python artifacts
   - /bin/3DFin
   - /bin/f2py*
-  - /bin/jakteristics
-  - /bin/opencv_version
+  - /bin/laspy
+  - /bin/numpy-config
+  - /bin/setuptools-scm
+
   - /bin/pybind11-config
   - /bin/setup_vars_opencv4.sh
   - /bin/vba_extract.py
@@ -68,6 +71,7 @@ cleanup:
   - /share/gdal
   - /share/info
   - /share/man
+  - /share/opencv4
   - /share/pcl-*
   - /share/pkgconfig
   - /share/proj
@@ -80,11 +84,8 @@ cleanup-commands:
   - /app/cleanup-BaseApp.sh
 
 build-options:
-  append-path: /usr/lib/sdk/llvm18/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm18lib
   env:
-    CC: clang
-    CXX: clang++
+    BASEAPP_REMOVE_WEBENGINE: "1" # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
 
 modules:
   - name: boost
@@ -99,8 +100,8 @@ modules:
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
-      - ./b2 toolset=clang cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
+      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
+      - ./b2 toolset=gcc cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
@@ -198,11 +199,12 @@ modules:
       - -DBUILD_APPS=OFF
       - -DGDAL_BUILD_OPTIONAL_DRIVERS=OFF
       - -DOGR_BUILD_OPTIONAL_DRIVERS=OFF
+
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.1.0.tar.gz
-        sha256: ed067603ece0dc832d2881ba5c516625ac2522c665d95f767ef6304e34f961b5
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.2.0.tar.gz
+        sha256: f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -335,8 +337,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.11.0.tar.gz
-        sha256: 9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f
+        url: https://github.com/opencv/opencv/archive/4.12.0.tar.gz
+        sha256: 44c106d5bb47efec04e531fd93008b3fcd1d27138985c5baf4eafac0e1ec9e9d
         x-checker-data:
           type: anitya
           project-id: 6615
