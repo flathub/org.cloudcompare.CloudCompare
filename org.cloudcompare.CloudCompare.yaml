@@ -58,8 +58,8 @@ cleanup:
   - /lib/cmake
   - /lib/gdalplugins
   - /lib/pkgconfig
-  - '*.a'
-  - '*.la'
+  - "*.a"
+  - "*.la"
 
   - /share/cmake
   - /share/doc
@@ -87,22 +87,6 @@ build-options:
     CXX: clang++
 
 modules:
-  - name: MPFR
-    sources:
-      - type: archive
-        url: https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.bz2
-        sha256: b9df93635b20e4089c29623b19420c4ac848a1b29df1cfd59f26cab0d2666aa0
-        x-checker-data:
-          type: anitya
-          project-id: 2019
-          stable-only: true
-          url-template: https://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2
-    buildsystem: autotools
-    builddir: true
-    config-opts:
-      - --disable-shared
-      - --with-pic
-
   - name: boost
     sources:
       - type: archive
@@ -112,17 +96,17 @@ modules:
           type: anitya
           project-id: 6845
           stable-only: true
-          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
+          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph
+      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
       - ./b2 toolset=clang cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.0/CGAL-6.0-library.tar.xz
-        sha256: ed53a1498569a22341b482e579c6a3caf9ecbfb6e013f5a90ce780138073b520
+        url: https://github.com/CGAL/cgal/releases/download/v6.1/CGAL-6.1-library.tar.xz
+        sha256: ef4861f1a55417d1e884306c9408ff64fdf39362a38443f17885c55f7f19278a
         x-checker-data:
           type: anitya
           project-id: 273
@@ -137,8 +121,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.5.0/proj-9.5.0.tar.gz
-        sha256: 659af0d558f7c5618c322fde2d3392910806faee8684687959339021fa207d99
+        url: https://github.com/OSGeo/PROJ/releases/download/9.7.0/proj-9.7.0.tar.gz
+        sha256: 65705ecd987b50bf63e15820ce6bd17c042feaabda981249831bd230f6689709
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -179,8 +163,8 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.3/libgeotiff-1.7.3.tar.gz
-        sha256: ba23a3a35980ed3de916e125c739251f8e3266be07540200125a307d7cf5a704
+        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.tar.gz
+        sha256: c598d04fdf2ba25c4352844dafa81dde3f7fd968daa7ad131228cd91e9d3dc47
         x-checker-data:
           type: anitya
           project-id: 21361
@@ -197,8 +181,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.9.2/gdal-3.9.2.tar.gz
-        sha256: c9767e79ca7245f704bfbcb47d771b2dc317d743536b78d648c3e92b95fbc21e
+        url: https://github.com/OSGeo/gdal/releases/download/v3.11.4/gdal-3.11.4.tar.gz
+        sha256: 0fa36ee34d4451db586d2bf78ea0dbfa3b0dfae0516587f8130d21add0ac9dad
         x-checker-data:
           type: anitya
           project-id: 881
@@ -217,8 +201,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz
-        sha256: 3ad5dd08954b39d113dc5b3f8a8dc6dc1fd5250032b7c491eb07aed5c94133e1
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.1.0.tar.gz
+        sha256: ed067603ece0dc832d2881ba5c516625ac2522c665d95f767ef6304e34f961b5
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -286,6 +270,11 @@ modules:
       - type: archive
         url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
         sha256: f187b2646422ae6fb6daf7eec2d62c538ae7fe626397ed649c0e9b5a5b862b5a
+        x-checker-data:
+          type: anitya
+          project-id: 141386
+          stable-only: true
+          url-template: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -346,13 +335,13 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.9.0.zip
-        sha256: 9b5b64d50bf4a3ddeab430a9b13c5f9e023c9e67639ab50a74d0c298b5a61b74
+        url: https://github.com/opencv/opencv/archive/4.11.0.tar.gz
+        sha256: 9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f
         x-checker-data:
           type: anitya
           project-id: 6615
           stable-only: true
-          url-template: https://github.com/LASzip/LASzip/releases/download/$version.tar.gz
+          url-template: https://github.com/opencv/opencv/archive/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -403,7 +392,7 @@ modules:
       cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Release 
+      - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
       - -DCCCORELIB_USE_CGAL=ON # implicit use for CGAL warning
       - -DCCCORELIB_USE_TBB=ON
