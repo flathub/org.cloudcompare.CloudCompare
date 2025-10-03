@@ -4,8 +4,6 @@ runtime-version: 5.15-24.08
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
 base-version: 5.15-24.08
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -86,12 +84,8 @@ cleanup-commands:
   - /app/cleanup-BaseApp.sh
 
 build-options:
-  append-path: /usr/lib/sdk/llvm18/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
   env:
-    CC: clang
-    CXX: clang++
-    BASEAPP_REMOVE_WEBENGINE: "1"
+    BASEAPP_REMOVE_WEBENGINE: "1" # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
 
 modules:
   - name: boost
@@ -106,8 +100,8 @@ modules:
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
-      - ./b2 toolset=clang cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
+      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
+      - ./b2 toolset=gcc cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
     sources:
