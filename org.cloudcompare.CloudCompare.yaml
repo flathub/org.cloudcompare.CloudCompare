@@ -35,6 +35,7 @@ cleanup:
   - /bin/MemParse
   - /bin/nearblack
   - /bin/ogr*
+  - /bin/opencv_version
   - /bin/PParse
   - /bin/projsync
   - /bin/PSVIWriter
@@ -47,10 +48,14 @@ cleanup:
   - /bin/vsyasm
   - /bin/XInclude
   - /bin/yasm
+
+  # Python artifacts
   - /bin/3DFin
   - /bin/f2py*
-  - /bin/jakteristics
-  - /bin/opencv_version
+  - /bin/laspy
+  - /bin/numpy-config
+  - /bin/setuptools-scm
+
   - /bin/pybind11-config
   - /bin/setup_vars_opencv4.sh
   - /bin/vba_extract.py
@@ -68,6 +73,7 @@ cleanup:
   - /share/gdal
   - /share/info
   - /share/man
+  - /share/opencv4
   - /share/pcl-*
   - /share/pkgconfig
   - /share/proj
@@ -85,6 +91,7 @@ build-options:
   env:
     CC: clang
     CXX: clang++
+    BASEAPP_REMOVE_WEBENGINE: 1 #PyQtBaseApp
 
 modules:
   - name: boost
