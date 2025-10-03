@@ -96,7 +96,7 @@ modules:
           type: anitya
           project-id: 6845
           stable-only: true
-          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.gz
+          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --with-toolset=clang --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
@@ -105,8 +105,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.0.1/CGAL-6.0.1-library.tar.xz
-        sha256: c752737f91d1af71fa96038f0e37945ce82a5f1fffb6200172cfcdd77755a356
+        url: https://github.com/CGAL/cgal/releases/download/v6.1/CGAL-6.1-library.tar.xz
+        sha256: ef4861f1a55417d1e884306c9408ff64fdf39362a38443f17885c55f7f19278a
         x-checker-data:
           type: anitya
           project-id: 273
@@ -121,8 +121,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.6.0/proj-9.6.0.tar.gz
-        sha256: d8cae521c311c39513193657e75767f7cfbf2f91bd202fcd4a200028d3b57e14
+        url: https://github.com/OSGeo/PROJ/releases/download/9.7.0/proj-9.7.0.tar.gz
+        sha256: 65705ecd987b50bf63e15820ce6bd17c042feaabda981249831bd230f6689709
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -181,8 +181,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.10.3/gdal-3.10.3.tar.gz
-        sha256: e4bf7f104acbcb3e2d16c97fd1af2b92b28d0ba59d17d976e3ef08b794f4153b
+        url: https://github.com/OSGeo/gdal/releases/download/v3.11.4/gdal-3.11.4.tar.gz
+        md5: 9f4fa4b3be48fb60d5dd76fecb11a5f6
         x-checker-data:
           type: anitya
           project-id: 881
