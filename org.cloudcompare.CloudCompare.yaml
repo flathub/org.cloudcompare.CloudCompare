@@ -87,11 +87,11 @@ cleanup-commands:
 
 build-options:
   append-path: /usr/lib/sdk/llvm18/bin
-  prepend-ld-library-path: /usr/lib/sdk/llvm18lib
+  prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
   env:
     CC: clang
     CXX: clang++
-    BASEAPP_REMOVE_WEBENGINE: 1 #PyQtBaseApp
+    BASEAPP_REMOVE_WEBENGINE: "1"
 
 modules:
   - name: boost
