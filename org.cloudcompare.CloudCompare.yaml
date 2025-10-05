@@ -58,8 +58,8 @@ cleanup:
   - /lib/cmake
   - /lib/gdalplugins
   - /lib/pkgconfig
-  - "*.a"
-  - "*.la"
+  - '*.a'
+  - '*.la'
 
   - /share/cmake
   - /share/doc
@@ -201,8 +201,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.1.0.tar.gz
-        sha256: ed067603ece0dc832d2881ba5c516625ac2522c665d95f767ef6304e34f961b5
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.2.0.tar.gz
+        sha256: f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -218,8 +218,8 @@ modules:
   - name: Eigen
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+        url: https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.bz2
+        sha256: bdca0ec740fb83be21fe038699923f4c589ead9ab904f4058a9c97752e60d50b
         x-checker-data:
           type: anitya
           project-id: 666
@@ -251,8 +251,8 @@ modules:
   - name: Dlib
     sources:
       - type: archive
-        url: http://dlib.net/files/dlib-20.0.zip
-        sha256: ea4dc1649cfae831b4488bc8ba2d4508bb0e766eedbf5c8c4fd7fd4e1a435bd9
+        url: http://dlib.net/files/dlib-20.0.tar.bz2
+        sha256: 5fce3181d9f0bf4e4bc867f13e5a0172f19d47918e6a4d335de478daf269fb63
         x-checker-data:
           type: anitya
           project-id: 18600
@@ -335,8 +335,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.11.0.tar.gz
-        sha256: 9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f
+        url: https://github.com/opencv/opencv/archive/4.12.0.tar.gz
+        sha256: 44c106d5bb47efec04e531fd93008b3fcd1d27138985c5baf4eafac0e1ec9e9d
         x-checker-data:
           type: anitya
           project-id: 6615
