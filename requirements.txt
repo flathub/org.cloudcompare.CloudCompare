@@ -10,9 +10,10 @@ pandas==2.2.3
 pgeof==0.3.2
 pybind11==2.13.6
 pydantic==1.10.24
-PyQt5==5.15.11
-PyQt5-Qt5==5.15.17
-PyQt5_sip==12.17.0
+# provided by the runtime
+# PyQt5==5.15.11 #
+# PyQt5-Qt5==5.15.17
+# PyQt5_sip==12.17.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
 scikit-learn==1.6.1
