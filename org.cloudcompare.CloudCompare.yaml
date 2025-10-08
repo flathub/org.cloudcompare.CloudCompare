@@ -395,6 +395,8 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
       - -DCCCORELIB_USE_CGAL=ON
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
       - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
