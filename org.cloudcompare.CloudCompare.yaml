@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: 6.9
 sdk: org.kde.Sdk
-base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-24.08
+base: io.qt.PySide.BaseApp
+base-version: 6.9
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -85,7 +85,8 @@ cleanup-commands:
 
 build-options:
   env:
-    BASEAPP_REMOVE_WEBENGINE: "1" # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
+    - BASEAPP_REMOVE_WEBENGINE=1 # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
+    #- BASEAPP_DISABLE_NUMPY=1 # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
 
 modules:
   - name: boost
@@ -350,7 +351,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_LIST=ml,core,imgproc,imgcodecs,highgui
       - -DWITH_OPENCL=ON
-      - -DWITH_QT=ON
+      - -DWITH_QT6=ON
       - -DWITH_TBB=ON
       - -DWITH_PROTOBUF=OFF
       - -DBUILD_opencv_python2=OFF
@@ -380,23 +381,22 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 8660dcc86da2d86066649dc3e8438a813d310dc7 # Sept 21 2025
+        commit: d5269efa2476852a2e895ac3ef82936830b48434 # Oct 05 2025 / qt6 branch
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: a07c38407455bb0a7bd924bc65c3c26e6399bc15 # Sept 27 2025
+        commit: 0f7846b18fac805439c1ce275a94f6406d6459f8 # Sept 29 2025 / qt6 branch
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
-    build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
+      - -DCCCORELIB_USE_CGAL=ON
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF
-      - -DCCCORELIB_USE_CGAL=ON # implicit use for CGAL warning
       - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
@@ -409,6 +409,7 @@ modules:
       - -DPLUGIN_IO_QCORE=ON
       - -DPLUGIN_IO_QCSV_MATRIX=ON
       - -DPLUGIN_IO_QE57=ON
+      - -DBUILD_SHARED_LIBS=OFF
       - -DPLUGIN_IO_QPHOTOSCAN=ON
       - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
@@ -423,8 +424,8 @@ modules:
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
-      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
-      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
+      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=OFF # deprecated no qt6
+      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=OFF # deprecated no qt6
       - -DPLUGIN_STANDARD_QMPLANE=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON

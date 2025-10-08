@@ -1,4 +1,5 @@
-3DFin==0.5.0
+# Pyside6 packages are provided by the runtime
+3DFin==0.6.0a4
 CSF_3DFin==2.0.1
 dendromatics==0.6.0
 dendroptimized==0.2.2
@@ -10,10 +11,6 @@ pandas==2.2.3
 pgeof==0.3.2
 pybind11==2.13.6
 pydantic==1.10.24
-# provided by the runtime
-# PyQt5==5.15.11 #
-# PyQt5-Qt5==5.15.17
-# PyQt5_sip==12.17.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
 scikit-learn==1.6.1
