@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 6.9
+runtime-version: "6.9"
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: 6.9
+base-version: "6.9"
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -96,7 +96,7 @@ modules:
         sha256: 85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a
         x-checker-data:
           type: anitya
-          project-id: 6845
+          ect-id: 6845
           stable-only: true
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
@@ -204,8 +204,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.2.0.tar.gz
-        sha256: f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
+        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -381,12 +381,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: d5269efa2476852a2e895ac3ef82936830b48434 # Oct 05 2025 / qt6 branch
+        commit: 2d13bb9e5ed5c60cc02f993bb3559d779155d557 # Nov 18 2025
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 0f7846b18fac805439c1ce275a94f6406d6459f8 # Sept 29 2025 / qt6 branch
+        commit: 5f4c9d6c43cf6dd52361fec2fcfa8ec34905d2d1 # Nov 10 2025
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
