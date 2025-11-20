@@ -251,23 +251,6 @@ modules:
       - -DBUILD_TESTS=OFF
       - -DBUILD_DOC=OFF
 
-  - name: Dlib
-    sources:
-      - type: archive
-        url: http://dlib.net/files/dlib-20.0.zip
-        sha256: ea4dc1649cfae831b4488bc8ba2d4508bb0e766eedbf5c8c4fd7fd4e1a435bd9
-        x-checker-data:
-          type: anitya
-          project-id: 18600
-          stable-only: true
-          url-template: http://dlib.net/files/dlib-${major}.${minor}.tar.bz2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DDLIB_NO_GUI_SUPPORT=ON
-
   - name: PCL
     sources:
       - type: archive
@@ -381,7 +364,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 2d13bb9e5ed5c60cc02f993bb3559d779155d557 # Nov 18 2025
+        commit: 3fbc490802fbc6120c5a5e346b37ecd0f41f94c6 # Nov 18 2025
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
