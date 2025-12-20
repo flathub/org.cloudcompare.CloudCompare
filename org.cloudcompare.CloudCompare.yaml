@@ -364,12 +364,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 3fbc490802fbc6120c5a5e346b37ecd0f41f94c6 # Nov 18 2025
+        commit: 8ddc7062a69db9890d71c622581b9ce6db961ddf # Dec 3 2025
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 5f4c9d6c43cf6dd52361fec2fcfa8ec34905d2d1 # Nov 10 2025
+        commit: a5886de67d0d28ef605c64b76ede67ae691abf9f # Dec 11 2025
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
@@ -407,8 +407,6 @@ modules:
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
-      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=OFF # deprecated no qt6
-      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=OFF # deprecated no qt6
       - -DPLUGIN_STANDARD_QMPLANE=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
