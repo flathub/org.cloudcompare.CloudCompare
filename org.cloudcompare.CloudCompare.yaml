@@ -226,6 +226,7 @@ modules:
           type: anitya
           project-id: 666
           stable-only: true
+          versions: {<: '4.0'}
           url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
