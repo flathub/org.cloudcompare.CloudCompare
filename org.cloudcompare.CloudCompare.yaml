@@ -122,8 +122,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.7.1/proj-9.7.1.tar.gz
-        sha256: 6c097dc803c561929cdfcc46e4bf9945ea977611fb31493ad14e88edaeae260f
+        url: https://github.com/OSGeo/PROJ/releases/download/9.8.1/proj-9.8.1.tar.gz
+        sha256: af5b731c145c1d13c4e3b4eeb7d167e94e845e440f71e3496b4ed8dae0291960
         x-checker-data:
           type: anitya
           project-id: 9463
