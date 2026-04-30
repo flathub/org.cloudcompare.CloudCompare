@@ -107,8 +107,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.1/CGAL-6.1-library.tar.xz
-        sha256: ef4861f1a55417d1e884306c9408ff64fdf39362a38443f17885c55f7f19278a
+        url: https://github.com/CGAL/cgal/releases/download/v6.1.1/CGAL-6.1.1-library.tar.xz
+        sha256: 37e9fffe48a83209b070e1914c6aa0a7bae8076749712ab78b53245e176e0e0e
         x-checker-data:
           type: anitya
           project-id: 273
@@ -123,8 +123,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.7.0/proj-9.7.0.tar.gz
-        sha256: 65705ecd987b50bf63e15820ce6bd17c042feaabda981249831bd230f6689709
+        url: https://github.com/OSGeo/PROJ/releases/download/9.8.1/proj-9.8.1.tar.gz
+        sha256: af5b731c145c1d13c4e3b4eeb7d167e94e845e440f71e3496b4ed8dae0291960
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -183,8 +183,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.11.4/gdal-3.11.4.tar.gz
-        sha256: 0fa36ee34d4451db586d2bf78ea0dbfa3b0dfae0516587f8130d21add0ac9dad
+        url: https://github.com/OSGeo/gdal/releases/download/v3.12.4/gdal-3.12.4.tar.gz
+        sha256: 68844ae29557b7efae4292c3b4cb3a3b8a79d14b765b89c5a7b17cbae7fa715a
         x-checker-data:
           type: anitya
           project-id: 881
@@ -221,8 +221,8 @@ modules:
   - name: Eigen
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.tar.bz2
+        sha256: 8bb7280b7551bf06418d11a9671fdf998cb927830cf21589b394382d26779821
         x-checker-data:
           type: anitya
           project-id: 666
@@ -321,8 +321,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.12.0.tar.gz
-        sha256: 44c106d5bb47efec04e531fd93008b3fcd1d27138985c5baf4eafac0e1ec9e9d
+        url: https://github.com/opencv/opencv/archive/4.13.0.tar.gz
+        sha256: 1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d
         x-checker-data:
           type: anitya
           project-id: 6615
@@ -364,12 +364,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 8ddc7062a69db9890d71c622581b9ce6db961ddf # Dec 3 2025
+        commit: 569fde79424d40966d942223aea05e3c53c28efa # Apr 2026
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: a5886de67d0d28ef605c64b76ede67ae691abf9f # Dec 11 2025
+        commit: dd39f54e24b89b438b5a2e85fef5b191f7945f42 # Apr 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
@@ -407,6 +407,7 @@ modules:
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
+      - -DPLUGIN-3rdParty_MESH_IO=ON
       - -DPLUGIN_STANDARD_QMPLANE=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
