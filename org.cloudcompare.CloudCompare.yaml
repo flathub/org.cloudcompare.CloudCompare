@@ -244,6 +244,7 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # ignore "Compatibility with CMake < 3.5 has been removed from CMake." error
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF # builds libflann_cpp.so and libflann_cpp_s.a anyway
       - -DBUILD_C_BINDINGS=OFF
