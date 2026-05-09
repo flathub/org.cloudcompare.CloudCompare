@@ -100,7 +100,7 @@ modules:
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
+      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,date_time,filesystem,iostreams,atomic,chrono,graph
       - ./b2 toolset=gcc cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
