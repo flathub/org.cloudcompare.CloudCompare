@@ -6,6 +6,7 @@ build-commands:
   --prefix=${FLATPAK_DEST} --no-build-isolation 3DFin dendromatics lazrs pandas pydantic
   pyside6 xlsxwriter csf-3dfin laspy numpy pgeof scikit-learn scipy dendroptimized
   python-dateutil pytz tzdata joblib threadpoolctl shiboken6 PySide6_Essentials PySide6_Addons
+  pybind11
 sources:
 - type: file
   url: https://files.pythonhosted.org/packages/15/15/0b35747b2070cdd4581bff4476968de88c8eeb9b01a8f592036cae2dc292/3dfin-0.6.0-py3-none-any.whl
@@ -59,6 +60,9 @@ sources:
   sha256: aab0c4efd812c827968f7458e961cbfafc292884c344532d870c0da8fa3e475a
   only-arches:
   - x86_64
+- type: file
+  url: https://files.pythonhosted.org/packages/b3/06/c3a23c9a0263b136c519f033a58d4641e73065fefc7754e9667ec206d992/pybind11-3.0.4-py3-none-any.whl
+  sha256: 961720ee652da51d531b7b2451a6bd2bc042b0106e6d9baa48ecb7d58034ce63
 - type: file
   url: https://files.pythonhosted.org/packages/13/3d/16e9655ffbe92d01024afbcd223df602dcff6948eec39622e7b46bc9eb1f/pydantic-1.10.0-py3-none-any.whl
   sha256: 4d2b9258f5bd2d129bd4cf2d31f9d40094b9ed6ef64896e2f7a70729b2d599ea

@@ -1,3 +1,4 @@
+# 3DFin and dependencies
 3DFin==0.6.0
 dendromatics==0.7.0
 lazrs==0.8.0
@@ -20,3 +21,6 @@ threadpoolctl==3.1.0
 shiboken6==6.11.0
 PySide6_Essentials==6.11.0
 PySide6_Addons==6.11.0
+
+# pybind11
+pybind11==3.0.4
