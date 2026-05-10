@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: 5.15-25.08
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-24.08
+base-version: 5.15-25.08
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -244,6 +244,7 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # ignore "Compatibility with CMake < 3.5 has been removed from CMake." error
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF # builds libflann_cpp.so and libflann_cpp_s.a anyway
       - -DBUILD_C_BINDINGS=OFF
@@ -392,7 +393,7 @@ modules:
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
     build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
+      cxxflags: -I/usr/include/python3.13 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
