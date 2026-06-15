@@ -107,8 +107,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.1.1/CGAL-6.1.1-library.tar.xz
-        sha256: 37e9fffe48a83209b070e1914c6aa0a7bae8076749712ab78b53245e176e0e0e
+        url: https://github.com/CGAL/cgal/releases/download/v6.2/CGAL-6.2-library.tar.xz
+        sha256: f75d2b2486842fb47222c780c7241c262d392802d0811143c4e9b539972ee55b
         x-checker-data:
           type: anitya
           project-id: 273
@@ -183,8 +183,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.12.4/gdal-3.12.4.tar.gz
-        sha256: 68844ae29557b7efae4292c3b4cb3a3b8a79d14b765b89c5a7b17cbae7fa715a
+        url: https://github.com/OSGeo/gdal/releases/download/v3.13.1/gdal-3.13.1.tar.gz
+        sha256: e04e9813bd215b56753d5554330c53be25f3df2d7ed7e6413a19e6b66751c675
         x-checker-data:
           type: anitya
           project-id: 881
@@ -204,8 +204,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
-        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.0.0.tar.gz
+        sha256: f8767b971ec6aea25dde58ae0f593e94e7aa75a739a86f67967012f69e2199b1
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -364,12 +364,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 569fde79424d40966d942223aea05e3c53c28efa # Apr 2026
+        commit: 0c5eb8c0f240f444d596176c9304b6e70e0223dd # Jun 2026
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: dd39f54e24b89b438b5a2e85fef5b191f7945f42 # Apr 2026
+        commit: 92e0edc21a61a96850ab929a7a91bd3bce93110c # Jun 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
