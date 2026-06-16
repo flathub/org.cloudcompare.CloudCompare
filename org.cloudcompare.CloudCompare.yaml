@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: "6.10"
 sdk: org.kde.Sdk
-base: com.riverbankcomputing.PyQt.BaseApp
-base-version: 5.15-24.08
+base: io.qt.PySide.BaseApp
+base-version: "6.10"
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -61,8 +61,8 @@ cleanup:
   - /lib/cmake
   - /lib/gdalplugins
   - /lib/pkgconfig
-  - '*.a'
-  - '*.la'
+  - "*.a"
+  - "*.la"
 
   - /share/cmake
   - /share/doc
@@ -85,7 +85,8 @@ cleanup-commands:
 
 build-options:
   env:
-    BASEAPP_REMOVE_WEBENGINE: '1' # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
+    - BASEAPP_REMOVE_WEBENGINE=1 # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
+    #- BASEAPP_DISABLE_NUMPY=1 # Do not run this variable, as it will remove numpy regardless of its origin (in clear it could remove Numpy 'piped' from PyPI)
 
 modules:
   - name: boost
@@ -95,7 +96,7 @@ modules:
         sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
         x-checker-data:
           type: anitya
-          project-id: 6845
+          ect-id: 6845
           stable-only: true
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
@@ -106,8 +107,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.1.1/CGAL-6.1.1-library.tar.xz
-        sha256: 37e9fffe48a83209b070e1914c6aa0a7bae8076749712ab78b53245e176e0e0e
+        url: https://github.com/CGAL/cgal/releases/download/v6.2/CGAL-6.2-library.tar.xz
+        sha256: f75d2b2486842fb47222c780c7241c262d392802d0811143c4e9b539972ee55b
         x-checker-data:
           type: anitya
           project-id: 273
@@ -136,12 +137,7 @@ modules:
       - -DBUILD_SHARED_LIBS=OFF
       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       - -DBUILD_TESTING=OFF
-      - -DBUILD_CCT=OFF
-      - -DBUILD_CS2CS=OFF
-      - -DBUILD_GEOD=OFF
-      - -DBUILD_GIE=OFF
-      - -DBUILD_PROJ=OFF
-      - -DBUILD_PROJINFO=OFF
+      - -DBUILD_APPS=OFF
 
   - name: XercesC
     sources:
@@ -182,8 +178,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.12.3/gdal-3.12.3.tar.gz
-        sha256: 1fdfe51181d08b9b83037b611da4de4a7cf1fca69e6564945ac99d3f7d0367dd
+        url: https://github.com/OSGeo/gdal/releases/download/v3.13.1/gdal-3.13.1.tar.gz
+        sha256: e04e9813bd215b56753d5554330c53be25f3df2d7ed7e6413a19e6b66751c675
         x-checker-data:
           type: anitya
           project-id: 881
@@ -203,8 +199,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
-        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.0.0.tar.gz
+        sha256: f8767b971ec6aea25dde58ae0f593e94e7aa75a739a86f67967012f69e2199b1
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -226,7 +222,7 @@ modules:
           type: anitya
           project-id: 666
           stable-only: true
-          versions: {<: '4.0'}
+          versions: { <: "4.0" }
           url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
@@ -241,6 +237,8 @@ modules:
           project-id: 21432
           stable-only: true
           url-template: https://github.com/flann-lib/flann/archive/refs/tags/$version.tar.gz
+      - type: patch
+        path: patches/flann.patch
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -250,23 +248,6 @@ modules:
       - -DBUILD_EXAMPLES=OFF
       - -DBUILD_TESTS=OFF
       - -DBUILD_DOC=OFF
-
-  - name: Dlib
-    sources:
-      - type: archive
-        url: http://dlib.net/files/dlib-20.0.tar.bz2
-        sha256: 5fce3181d9f0bf4e4bc867f13e5a0172f19d47918e6a4d335de478daf269fb63
-        x-checker-data:
-          type: anitya
-          project-id: 18600
-          stable-only: true
-          url-template: http://dlib.net/files/dlib-${major}.${minor}.tar.bz2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=OFF
-      - -DDLIB_NO_GUI_SUPPORT=ON
 
   - name: PCL
     sources:
@@ -351,7 +332,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_LIST=ml,core,imgproc,imgcodecs,highgui
       - -DWITH_OPENCL=ON
-      - -DWITH_QT=ON
+      - -DWITH_QT6=ON
       - -DWITH_TBB=ON
       - -DWITH_PROTOBUF=OFF
       - -DBUILD_opencv_python2=OFF
@@ -381,23 +362,22 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 8660dcc86da2d86066649dc3e8438a813d310dc7 # Sept 21 2025
+        commit: 0c5eb8c0f240f444d596176c9304b6e70e0223dd # Jun 2026
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: a07c38407455bb0a7bd924bc65c3c26e6399bc15 # Sept 27 2025
+        commit: 92e0edc21a61a96850ab929a7a91bd3bce93110c # Jun 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
     builddir: true
-    build-options:
-      cxxflags: -I/usr/include/python3.11 -Wno-deprecated-declarations # reduce QT deprecations noise, should be fixed upstream
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=Release # implicit use for CGAL warning
+      - -DCCCORELIB_USE_CGAL=ON
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF
-      - -DCCCORELIB_USE_CGAL=ON # implicit use for CGAL warning
       - -DCCCORELIB_USE_TBB=ON
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
@@ -410,6 +390,7 @@ modules:
       - -DPLUGIN_IO_QCORE=ON
       - -DPLUGIN_IO_QCSV_MATRIX=ON
       - -DPLUGIN_IO_QE57=ON
+      - -DBUILD_SHARED_LIBS=OFF
       - -DPLUGIN_IO_QPHOTOSCAN=ON
       - -DPLUGIN_IO_QLAS=ON
       - -DPLUGIN_STANDARD_QANIMATION=ON
@@ -424,8 +405,7 @@ modules:
       - -DPLUGIN_STANDARD_QHOUGH_NORMALS=ON
       - -DPLUGIN_STANDARD_QHPR=ON
       - -DPLUGIN_STANDARD_QM3C2=ON
-      - -DPLUGIN_STANDARD_MASONRY_QAUTO_SEG=ON
-      - -DPLUGIN_STANDARD_MASONRY_QMANUAL_SEG=ON
+      - -DPLUGIN-3rdParty_MESH_IO=ON
       - -DPLUGIN_STANDARD_QMPLANE=ON
       - -DPLUGIN_STANDARD_QPCL=ON
       - -DPLUGIN_STANDARD_QPCV=ON
