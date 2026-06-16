@@ -86,14 +86,14 @@ cleanup-commands:
 build-options:
   env:
     - BASEAPP_REMOVE_WEBENGINE=1 # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
-    #- BASEAPP_DISABLE_NUMPY=1 # cleanup-BaseApp.sh will remove PyQT WebEngine artifacts
+    #- BASEAPP_DISABLE_NUMPY=1 # Do not run this variable, as it will remove numpy regardless of its origin (in clear it could remove Numpy 'piped' from PyPI)
 
 modules:
   - name: boost
     sources:
       - type: archive
-        url: https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2
-        sha256: 85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a
+        url: https://archives.boost.io/release/1.91.0/source/boost_1_91_0.tar.bz2
+        sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
         x-checker-data:
           type: anitya
           ect-id: 6845
@@ -101,7 +101,7 @@ modules:
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,system,date_time,filesystem,iostreams,atomic,chrono,graph,multiprecision
+      - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,date_time,filesystem,iostreams,atomic,chrono,graph
       - ./b2 toolset=gcc cxxflags=-fPIC cflags=-fPIC -a link=static install -j ${FLATPAK_BUILDER_N_JOBS}
 
   - name: CGAL
@@ -222,6 +222,7 @@ modules:
           type: anitya
           project-id: 666
           stable-only: true
+          versions: { <: "4.0" }
           url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
