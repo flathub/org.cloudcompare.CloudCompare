@@ -5,3 +5,4 @@ Comment=3D point cloud and mesh processing software
 Exec=ccViewer
 Categories=Graphics;
 Icon=org.cloudcompare.CloudCompare.Viewer
+MimeType=model/ply;application/ply;model/obj;model/vnd.obj;model/stl;application/sla;application/x-stl;application/vnd.las;application/x-las;application/x-laszip;application/x-laz;application/x-e57;application/x-pcd;application/x-vtk;application/x-off;model/off;application/x-fbx;image/vnd.dxf;application/dxf;application/vnd.shp;image/tiff;image/geotiff;image/jpeg;image/png;image/bmp;text/csv;text/comma-separated-values;text/plain;text/x-xyz;chemical/x-xyz;application/octet-stream;
