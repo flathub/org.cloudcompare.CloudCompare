@@ -91,8 +91,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://archives.boost.io/release/1.91.0/source/boost_1_91_0.tar.bz2
-        sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
+        url: https://archives.boost.io/release/1.92.0/source/boost_1_92_0.tar.bz2
+        sha256: 5c1d40cb8e19adbf740a4ec2da35b3e58f3f5804b1dce44deb53df72193cbc6c
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -106,8 +106,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.1.1/CGAL-6.1.1-library.tar.xz
-        sha256: 37e9fffe48a83209b070e1914c6aa0a7bae8076749712ab78b53245e176e0e0e
+        url: https://github.com/CGAL/cgal/releases/download/v6.2.1/CGAL-6.2.1-library.tar.xz
+        sha256: 8e7ce1e30e8ffcb3e69d153c3a561bb1f38bbb4becd8e6544cbaa0fb2889af62
         x-checker-data:
           type: anitya
           project-id: 273
@@ -182,8 +182,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.12.3/gdal-3.12.3.tar.gz
-        sha256: 1fdfe51181d08b9b83037b611da4de4a7cf1fca69e6564945ac99d3f7d0367dd
+        url: https://github.com/OSGeo/gdal/releases/download/v3.13.3/gdal-3.13.3.tar.gz
+        sha256: 5e0c388d83da2d686cc00a40272882432cdb54edff43d4af173e532844a0a0ea
         x-checker-data:
           type: anitya
           project-id: 881
@@ -203,8 +203,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
-        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.1.0.tar.gz
+        sha256: 191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -338,8 +338,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.13.0.tar.gz
-        sha256: 1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d
+        url: https://github.com/opencv/opencv/archive/5.0.0.tar.gz
+        sha256: b0528f5a1d379d59d4701cb28c36e22214cc51cf64594e5b56f2d3e6c0233095
         x-checker-data:
           type: anitya
           project-id: 6615
