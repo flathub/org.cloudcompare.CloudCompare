@@ -1,25 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <component type="desktop-application">
   <id>org.cloudcompare.CloudCompare</id>
   <name>CloudCompare</name>
   <releases>
-    <release date="2024-07-11" version="2.13.2"/>
+    <release date="2026-06-16" version="2.14.0rc" />
   </releases>
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
 
+  <keywords>
+    <keyword>3D</keyword>
+    <keyword>point cloud</keyword>
+    <keyword>mesh</keyword>
+    <keyword>laser scanning</keyword>
+    <keyword>LIDAR</keyword>
+  </keywords>
+
+  <categories>
+    <category>Graphics</category>
+    <category>Science</category>
+    <category>Engineering</category>
+  </categories>
+
   <!-- Copyright 2003 EDF R&D / TELECOM ParisTech (ENST-TSI) -->
   <summary>3D point cloud and mesh processing</summary>
   <description>
-    <p>CloudCompare is a 3D point cloud (and triangular mesh) processing software. It has been originally designed to perform comparison between two dense 3D points clouds (such as the ones acquired with a laser scanner) or between a point cloud and a triangular mesh. It relies on a specific octree structure dedicated to this task.  Afterwards, it has been extended to a more generic point cloud processing software, including many advanced algorithms (registration, resampling, color/normal/scalar fields handling, statistics computation, sensor management, interactive or automatic segmentation, display enhancement, etc.).</p>
+    <p
+        >CloudCompare is a 3D point cloud (and triangular mesh) processing software. It has been originally designed to perform comparison between two dense 3D points clouds (such as the ones acquired with a laser scanner) or between a point cloud and a triangular mesh. It relies on a specific octree structure dedicated to this task.  Afterwards, it has been extended to a more generic point cloud processing software, including many advanced algorithms (registration, resampling, color/normal/scalar fields handling, statistics computation, sensor management, interactive or automatic segmentation, display enhancement, etc.).</p>
   </description>
   <content_rating type="oars-1.1" />
-  <launchable type="desktop-id">org.cloudcompare.CloudCompare.desktop</launchable>
-  <launchable type="desktop-id">org.cloudcompare.CloudCompare.Viewer.desktop</launchable>
+  <launchable
+        type="desktop-id"
+    >org.cloudcompare.CloudCompare.desktop</launchable>
+  <launchable
+        type="desktop-id"
+    >org.cloudcompare.CloudCompare.Viewer.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <caption>CloudCompare (view, edit and process)</caption>
-      <image width="1040">http://www.cloudcompare.org/images/snapshot2.jpg</image>
+      <image
+                width="1040"
+            >http://www.cloudcompare.org/images/snapshot2.jpg</image>
     </screenshot>
     <screenshot>
       <caption>ccViewer (light viewer only)</caption>
@@ -29,7 +50,9 @@
   <url type="homepage">http://www.cloudcompare.org</url>
   <developer_name>Daniel Girardeau-Montaut</developer_name>
   <developer_name>EDF R&amp;D / TELECOM ParisTech (ENST-TSI)</developer_name>
-  <url type="bugtracker">https://github.com/CloudCompare/CloudCompare/issues</url>
+  <url
+        type="bugtracker"
+    >https://github.com/CloudCompare/CloudCompare/issues</url>
   <url type="donation">https://donorbox.org/support-cloudcompare</url>
   <url type="help">https://www.cloudcompare.org/forum</url>
   <url type="translate">https://github.com/CloudCompare/CloudCompare</url>
