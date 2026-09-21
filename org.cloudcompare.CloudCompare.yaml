@@ -360,7 +360,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: d4bdbf88a4aaa1c32881f1b0d5e1f4bf4f8382cf # Sept. 2026
+        commit: 6b68df295807885892f5a6c95bb4a40adb2b035a # Sept. 2026
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
@@ -380,7 +380,7 @@ modules:
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
-      - -DOPTION_SUPPORT_3DMOUSE_WITH_HIDAPI=OFF # yet to be debugged / evaluated upstream on linux. Listen every mouse Input, not only 3D ones...
+      - -DOPTION_SUPPORT_3DMOUSE_WITH_HIDAPI=ON
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
       - -DPLUGIN_STANDARD_3DFIN=ON
       - -DPLUGIN_STANDARD_3DMASC=ON
