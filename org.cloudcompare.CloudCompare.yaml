@@ -48,9 +48,7 @@ cleanup:
   - /bin/yasm
 
   # Python artifacts
-  - /bin/3DFin
   - /bin/f2py*
-  - /bin/laspy
   - /bin/numpy-config
   - /bin/setuptools-scm
 
@@ -355,19 +353,19 @@ modules:
       - /lib/*.la
       - /lib/pkgconfig
 
-  # Python3 modules needed by CloudCompare-PythonRuntime, 3DFin, etc
+  # Python3 modules needed by CloudCompare-PythonRuntime
   - python3-deps.yaml
 
   - name: CloudCompare
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 0c5eb8c0f240f444d596176c9304b6e70e0223dd # Jun 2026
+        commit: 6b68df295807885892f5a6c95bb4a40adb2b035a # Sept. 2026
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 92e0edc21a61a96850ab929a7a91bd3bce93110c # Jun 2026
+        commit: afe7c48945483b7daa673097d86be74a25fb24a5 # Sept. 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
@@ -382,7 +380,9 @@ modules:
       - -DOPTION_USE_GDAL=ON
       - -DOPTION_USE_DXF_LIB=ON
       - -DOPTION_USE_SHAPE_LIB=ON
+      - -DOPTION_SUPPORT_3DMOUSE_WITH_HIDAPI=ON
       - -DEIGEN_ROOT_DIR=/app/include/eigen3
+      - -DPLUGIN_STANDARD_3DFIN=ON
       - -DPLUGIN_STANDARD_3DMASC=ON
       - -DPLUGIN_GL_QEDL=ON
       - -DPLUGIN_GL_QSSAO=ON
