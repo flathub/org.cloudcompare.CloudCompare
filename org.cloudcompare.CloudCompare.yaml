@@ -361,6 +361,7 @@ modules:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
         tag: v2.14.beta # Sept. 2026
+        commit: fa9db6b7181f0ff6622b0a34d83516b66292fa4e
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
