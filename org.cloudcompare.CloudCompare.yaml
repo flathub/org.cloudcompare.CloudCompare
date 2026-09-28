@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "6.10"
+runtime-version: "6.11"
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: "6.10"
+base-version: "6.11"
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -360,12 +360,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        commit: 6b68df295807885892f5a6c95bb4a40adb2b035a # Sept. 2026
+        tag: v2.14.beta # Sept. 2026
+        commit: fa9db6b7181f0ff6622b0a34d83516b66292fa4e
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: afe7c48945483b7daa673097d86be74a25fb24a5 # Sept. 2026
+        commit: 772efa65ab5d74767fb24f788004d6ed351984cf # Sept. 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
