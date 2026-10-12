@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "6.11"
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: "6.11"
+base-version: '6.11'
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -59,8 +59,8 @@ cleanup:
   - /lib/cmake
   - /lib/gdalplugins
   - /lib/pkgconfig
-  - "*.a"
-  - "*.la"
+  - '*.a'
+  - '*.la'
 
   - /share/cmake
   - /share/doc
@@ -105,8 +105,8 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.2/CGAL-6.2-library.tar.xz
-        sha256: f75d2b2486842fb47222c780c7241c262d392802d0811143c4e9b539972ee55b
+        url: https://github.com/CGAL/cgal/releases/download/v6.2.1/CGAL-6.2.1-library.tar.xz
+        sha256: 8e7ce1e30e8ffcb3e69d153c3a561bb1f38bbb4becd8e6544cbaa0fb2889af62
         x-checker-data:
           type: anitya
           project-id: 273
@@ -121,8 +121,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.8.1/proj-9.8.1.tar.gz
-        sha256: af5b731c145c1d13c4e3b4eeb7d167e94e845e440f71e3496b4ed8dae0291960
+        url: https://github.com/OSGeo/PROJ/releases/download/9.9.0/proj-9.9.0.tar.gz
+        sha256: 791a0610547eeabb17006cfd49cdbd2034f3240f47ed5e88a1031811f4e2bcf3
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -176,8 +176,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.13.1/gdal-3.13.1.tar.gz
-        sha256: e04e9813bd215b56753d5554330c53be25f3df2d7ed7e6413a19e6b66751c675
+        url: https://github.com/OSGeo/gdal/releases/download/v3.13.3/gdal-3.13.3.tar.gz
+        sha256: 5e0c388d83da2d686cc00a40272882432cdb54edff43d4af173e532844a0a0ea
         x-checker-data:
           type: anitya
           project-id: 881
@@ -197,8 +197,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.0.0.tar.gz
-        sha256: f8767b971ec6aea25dde58ae0f593e94e7aa75a739a86f67967012f69e2199b1
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.1.0.tar.gz
+        sha256: 191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -220,7 +220,7 @@ modules:
           type: anitya
           project-id: 666
           stable-only: true
-          versions: { <: "4.0" }
+          versions: {<: '4.0'}
           url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
@@ -317,8 +317,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.13.0.tar.gz
-        sha256: 1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d
+        url: https://github.com/opencv/opencv/archive/5.0.0.tar.gz
+        sha256: b0528f5a1d379d59d4701cb28c36e22214cc51cf64594e5b56f2d3e6c0233095
         x-checker-data:
           type: anitya
           project-id: 6615
