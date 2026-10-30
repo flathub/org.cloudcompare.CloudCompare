@@ -1,9 +1,9 @@
 app-id: org.cloudcompare.CloudCompare
 runtime: org.kde.Platform
-runtime-version: "6.11"
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 base: io.qt.PySide.BaseApp
-base-version: "6.11"
+base-version: '6.11'
 command: CloudCompare
 finish-args:
   - --socket=wayland
@@ -59,8 +59,8 @@ cleanup:
   - /lib/cmake
   - /lib/gdalplugins
   - /lib/pkgconfig
-  - "*.a"
-  - "*.la"
+  - '*.a'
+  - '*.la'
 
   - /share/cmake
   - /share/doc
@@ -96,7 +96,8 @@ modules:
           type: anitya
           ect-id: 6845
           stable-only: true
-          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
+          url-template: 
+            https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,date_time,filesystem,iostreams,atomic,chrono,graph
@@ -105,13 +106,14 @@ modules:
   - name: CGAL
     sources:
       - type: archive
-        url: https://github.com/CGAL/cgal/releases/download/v6.2/CGAL-6.2-library.tar.xz
-        sha256: f75d2b2486842fb47222c780c7241c262d392802d0811143c4e9b539972ee55b
+        url: https://github.com/CGAL/cgal/releases/download/v6.2.1/CGAL-6.2.1-library.tar.xz
+        sha256: 8e7ce1e30e8ffcb3e69d153c3a561bb1f38bbb4becd8e6544cbaa0fb2889af62
         x-checker-data:
           type: anitya
           project-id: 273
           stable-only: true
-          url-template: https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
+          url-template: 
+            https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -121,8 +123,8 @@ modules:
   - name: PROJ
     sources:
       - type: archive
-        url: https://github.com/OSGeo/PROJ/releases/download/9.8.1/proj-9.8.1.tar.gz
-        sha256: af5b731c145c1d13c4e3b4eeb7d167e94e845e440f71e3496b4ed8dae0291960
+        url: https://github.com/OSGeo/PROJ/releases/download/9.9.0/proj-9.9.0.tar.gz
+        sha256: 791a0610547eeabb17006cfd49cdbd2034f3240f47ed5e88a1031811f4e2bcf3
         x-checker-data:
           type: anitya
           project-id: 9463
@@ -158,13 +160,15 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.tar.gz
+        url: 
+          https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.tar.gz
         sha256: c598d04fdf2ba25c4352844dafa81dde3f7fd968daa7ad131228cd91e9d3dc47
         x-checker-data:
           type: anitya
           project-id: 21361
           stable-only: true
-          url-template: https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
+          url-template: 
+            https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -176,8 +180,8 @@ modules:
   - name: GDAL
     sources:
       - type: archive
-        url: https://github.com/OSGeo/gdal/releases/download/v3.13.1/gdal-3.13.1.tar.gz
-        sha256: e04e9813bd215b56753d5554330c53be25f3df2d7ed7e6413a19e6b66751c675
+        url: https://github.com/OSGeo/gdal/releases/download/v3.13.3/gdal-3.13.3.tar.gz
+        sha256: 5e0c388d83da2d686cc00a40272882432cdb54edff43d4af173e532844a0a0ea
         x-checker-data:
           type: anitya
           project-id: 881
@@ -197,8 +201,8 @@ modules:
   - name: TBB
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.0.0.tar.gz
-        sha256: f8767b971ec6aea25dde58ae0f593e94e7aa75a739a86f67967012f69e2199b1
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.2.0.tar.gz
+        sha256: 80cb62e62defeee67ea1885a6f72d97ac81404f8fde9cded62fb51524808a30c
         x-checker-data:
           type: anitya
           project-id: 8217
@@ -220,7 +224,7 @@ modules:
           type: anitya
           project-id: 666
           stable-only: true
-          versions: { <: "4.0" }
+          versions: {<: '4.0'}
           url-template: https://gitlab.com/libeigen/eigen/-/archive/$version/eigen-$version.tar.bz2
     builddir: true
     buildsystem: cmake-ninja
@@ -250,13 +254,15 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
+        url: 
+          https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
         sha256: f187b2646422ae6fb6daf7eec2d62c538ae7fe626397ed649c0e9b5a5b862b5a
         x-checker-data:
           type: anitya
           project-id: 141386
           stable-only: true
-          url-template: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
+          url-template: 
+            https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -308,7 +314,8 @@ modules:
           type: anitya
           project-id: 241499
           stable-only: true
-          url-template: https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
+          url-template: 
+            https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -317,8 +324,8 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.13.0.tar.gz
-        sha256: 1d40ca017ea51c533cf9fd5cbde5b5fe7ae248291ddf2af99d4c17cf8e13017d
+        url: https://github.com/opencv/opencv/archive/5.0.0.tar.gz
+        sha256: b0528f5a1d379d59d4701cb28c36e22214cc51cf64594e5b56f2d3e6c0233095
         x-checker-data:
           type: anitya
           project-id: 6615
