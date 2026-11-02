@@ -94,7 +94,7 @@ modules:
         sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
         x-checker-data:
           type: anitya
-          ect-id: 6845
+          project-id: 6845
           stable-only: true
           url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
