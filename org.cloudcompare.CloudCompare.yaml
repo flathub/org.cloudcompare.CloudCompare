@@ -375,13 +375,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
-        tag: v2.14.beta # Sept. 2026
-        commit: fa9db6b7181f0ff6622b0a34d83516b66292fa4e
+        tag: v2.14.beta3 # Nov. 2026
+        commit: bcc1fd8ab6f9aeaca3dee297913c2bb5ef24f066 
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
         url: https://github.com/tmontaigu/CloudCompare-PythonRuntime.git
-        commit: 772efa65ab5d74767fb24f788004d6ed351984cf # Sept. 2026
+        commit: 82879eecf20886b361358d1a32afe0d1b52499b7 # Sept. 2026
         dest: plugins/private/CloudCompare-PythonRuntime
       - type: patch
         path: patches/CloudCompare-PythonRuntime.patch
