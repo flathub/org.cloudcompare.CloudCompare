@@ -90,14 +90,13 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://archives.boost.io/release/1.91.0/source/boost_1_91_0.tar.bz2
-        sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
+        url: https://archives.boost.io/release/1.92.0/source/boost_1_92_0.tar.bz2
+        sha256: 5c1d40cb8e19adbf740a4ec2da35b3e58f3f5804b1dce44deb53df72193cbc6c
         x-checker-data:
           type: anitya
           project-id: 6845
           stable-only: true
-          url-template: 
-            https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
+          url-template: https://archives.boost.io/release/$version/source/boost_${major}_${minor}_${patch}.tar.bz2
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --with-toolset=gcc --prefix=/app --with-libraries=thread,date_time,filesystem,iostreams,atomic,chrono,graph
@@ -112,8 +111,7 @@ modules:
           type: anitya
           project-id: 273
           stable-only: true
-          url-template: 
-            https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
+          url-template: https://github.com/CGAL/cgal/releases/download/v$version/CGAL-$version-library.tar.xz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -160,15 +158,13 @@ modules:
   - name: GeoTIFF
     sources:
       - type: archive
-        url: 
-          https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.tar.gz
+        url: https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.tar.gz
         sha256: c598d04fdf2ba25c4352844dafa81dde3f7fd968daa7ad131228cd91e9d3dc47
         x-checker-data:
           type: anitya
           project-id: 21361
           stable-only: true
-          url-template: 
-            https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
+          url-template: https://github.com/OSGeo/libgeotiff/releases/download/$version/libgeotiff-$version.tar.gz
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
@@ -254,15 +250,13 @@ modules:
   - name: PCL
     sources:
       - type: archive
-        url: 
-          https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
+        url: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-1.15.1/source.tar.gz
         sha256: f187b2646422ae6fb6daf7eec2d62c538ae7fe626397ed649c0e9b5a5b862b5a
         x-checker-data:
           type: anitya
           project-id: 141386
           stable-only: true
-          url-template: 
-            https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
+          url-template: https://github.com/PointCloudLibrary/pcl/releases/download/pcl-$version/source.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -314,8 +308,7 @@ modules:
           type: anitya
           project-id: 241499
           stable-only: true
-          url-template: 
-            https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
+          url-template: https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -376,7 +369,7 @@ modules:
       - type: git
         url: https://github.com/CloudCompare/CloudCompare.git
         tag: v2.14.beta3 # Nov. 2026
-        commit: bcc1fd8ab6f9aeaca3dee297913c2bb5ef24f066 
+        commit: bcc1fd8ab6f9aeaca3dee297913c2bb5ef24f066
       - type: patch
         path: patches/cc-treeiso.patch
       - type: git
