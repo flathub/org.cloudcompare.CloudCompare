@@ -338,7 +338,7 @@ modules:
           type: anitya
           project-id: 370818
           stable-only: true
-          url-template: https://github.com/opencv/opencv/archive_contrib/$version.tar.gz
+          url-template: https://github.com/opencv/opencv_contrib/archive/refs/tags/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
