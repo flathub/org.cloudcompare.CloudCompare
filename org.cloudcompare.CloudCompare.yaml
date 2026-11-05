@@ -315,7 +315,7 @@ modules:
           project-id: 241499
           stable-only: true
           url-template: 
-            https://github.com/LASzip/LASzip/releases/download/$version/laszip-src-$version.tar.gz
+            https://github.com/LASzip/LASzip/archive/refs/tags/$version.tar.gz
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
