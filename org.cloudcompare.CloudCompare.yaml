@@ -90,8 +90,8 @@ modules:
   - name: boost
     sources:
       - type: archive
-        url: https://archives.boost.io/release/1.91.0/source/boost_1_91_0.tar.bz2
-        sha256: de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
+        url: https://archives.boost.io/release/1.92.0/source/boost_1_92_0.tar.bz2
+        sha256: 5c1d40cb8e19adbf740a4ec2da35b3e58f3f5804b1dce44deb53df72193cbc6c
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -308,8 +308,8 @@ modules:
   - name: LASzip
     sources:
       - type: archive
-        url: https://github.com/LASzip/LASzip/releases/download/3.4.4/laszip-src-3.4.4.tar.gz
-        sha256: 41f826848ff106f471b134224f58075ac8e36a62b6ba0ad75be8a8c191bdba4b
+        url: https://github.com/LASzip/LASzip/archive/refs/tags/3.5.0.tar.gz
+        sha256: 6e9baac8689dfd2e1502ceafabb20c62b6cd572744d240fb755503fd57c2a6af
         x-checker-data:
           type: anitya
           project-id: 241499
@@ -324,16 +324,16 @@ modules:
   - name: OpenCV
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/5.0.0.tar.gz
-        sha256: b0528f5a1d379d59d4701cb28c36e22214cc51cf64594e5b56f2d3e6c0233095
+        url: https://github.com/opencv/opencv/archive/5.1.0.tar.gz
+        sha256: 638c1dae7e37e45afea21aa217dc667ad7cf57acc66cdf652c074f1e0e5ad6d2
         x-checker-data:
           type: anitya
           project-id: 6615
           stable-only: true
           url-template: https://github.com/opencv/opencv/archive/$version.tar.gz
       - type: archive
-        url: https://github.com/opencv/opencv_contrib/archive/5.0.0.tar.gz
-        sha256: c58f6344170c39abf187c56f3843b59cab1fd3e89cf19ba2ce25dc061659b27f
+        url: https://github.com/opencv/opencv_contrib/archive/refs/tags/5.1.0.tar.gz
+        sha256: 6aee68285f0e7b7bf77d3656bc6568820c6f15704860fc0922def357d40ebeff
         x-checker-data:
           type: anitya
           project-id: 370818
